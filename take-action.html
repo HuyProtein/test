@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành động vì Động vật Hoang dã - Khám phá thế giới Động vật Hoang dã</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        /* Take Action Page Styles */
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.page-header {
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.page-description {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--gray-color);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Hero Section */
+.take-action-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1msG0V?w=0&h=0&q=60&m=6&f=jpg&u=t');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 80px 40px;
+  border-radius: var(--border-radius);
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.take-action-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.take-action-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.take-action-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Ways to Help Section */
+.ways-to-help-section {
+  margin-bottom: 60px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.section-header p {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--gray-color);
+}
+
+/* Tabs */
+.action-tabs {
+  margin-top: 40px;
+}
+
+.tab-header {
+  display: flex;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.tab {
+  padding: 15px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  flex: 1;
+  text-align: center;
+}
+
+.tab.active {
+  background-color: white;
+  color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.tab-pane {
+  display: none;
+  padding: 30px;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Action Cards */
+.action-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.action-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+}
+
+.action-icon {
+  width: 64px;
+  height: 64px;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.action-card h3 {
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.action-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.action-list li {
+  margin-bottom: 10px;
+  color: var(--gray-color);
+}
+
+/* Donate Section */
+.donate-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.donate-info h3,
+.donate-form h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.donate-list,
+.donate-options {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 20px 0;
+}
+
+.donate-list li,
+.donate-options li {
+  margin-bottom: 10px;
+  color: var(--gray-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.donation-amounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.donation-amount {
+  padding: 10px 15px;
+  background-color: white;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.donation-amount:hover,
+.donation-amount.active {
+  background-color: var(--primary-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: white;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Volunteer Section */
+.volunteer-section {
+  margin-top: 30px;
+}
+
+.volunteer-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.volunteer-opportunities {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.volunteer-opportunity {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.volunteer-opportunity h4 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.volunteer-tasks {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 15px;
+}
+
+.volunteer-tasks li {
+  margin-bottom: 8px;
+  color: var(--gray-color);
+}
+
+/* Advocate Section */
+.advocate-section {
+  margin-top: 30px;
+}
+
+.advocate-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.advocacy-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.advocacy-action {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.advocacy-action h4 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.current-campaigns {
+  background-color: var(--primary-light);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  margin-top: 30px;
+}
+
+.campaign-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.campaign-list li {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.campaign-list li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+}
+
+.campaign-link {
+  color: var(--primary-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.campaign-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Join Us Section */
+.join-us-section {
+  background-color: var(--primary-light);
+  border-radius: var(--border-radius);
+  padding: 60px 40px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.join-us-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.join-us-content h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.join-us-content p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.join-us-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Button Styles */
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.primary-button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .donate-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .donate-form {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .take-action-hero {
+    padding: 60px 20px;
+  }
+  
+  .take-action-hero h2 {
+    font-size: 2rem;
+  }
+  
+  .tab-header {
+    flex-wrap: wrap;
+  }
+  
+  .tab {
+    flex: 0 0 50%;
+  }
+  
+  .volunteer-opportunities,
+  .advocacy-actions {
+    grid-template-columns: 1fr;
+  }
+  
+  .join-us-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .py-12 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .action-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .donation-amounts {
+    flex-direction: column;
+  }
+}
+    </style>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+            
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container py-12">
+            <div class="page-header text-center">
+                <h1>Hành động vì Động vật Hoang dã</h1>
+                <p class="page-description">
+                    Mỗi người đều có thể đóng góp vào công tác bảo tồn động vật hoang dã. Khám phá những cách bạn có thể giúp đỡ và tạo nên sự khác biệt.
+                </p>
+            </div>
+            
+            <!-- Hero Section -->
+            <div class="take-action-hero">
+                <div class="take-action-hero-content">
+                    <h2>Mỗi hành động đều quan trọng</h2>
+                    <p>
+                        Từ những việc nhỏ hàng ngày đến những đóng góp lớn hơn, mỗi hành động của bạn đều có thể tạo nên sự khác biệt trong việc bảo vệ động vật hoang dã và môi trường sống của chúng.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Ways to Help -->
+            <div class="ways-to-help-section">
+                <div class="section-header">
+                    <h2>Cách bạn có thể giúp đỡ</h2>
+                    <p>
+                        Có nhiều cách để bạn có thể đóng góp vào công tác bảo tồn động vật hoang dã, từ những hành động đơn giản hàng ngày đến những đóng góp lớn hơn.
+                    </p>
+                </div>
+                
+                <div class="action-tabs">
+                    <div class="tab-header">
+                        <div class="tab active" data-tab="everyday">Hành động hàng ngày</div>
+                        <div class="tab" data-tab="donate">Ủng hộ & Quyên góp</div>
+                        <div class="tab" data-tab="volunteer">Tình nguyện viên</div>
+                        <div class="tab" data-tab="advocate">Vận động chính sách</div>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="everyday">
+                            <div class="action-cards">
+                                <div class="action-card">
+                                    <div class="action-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3>Tiêu dùng có trách nhiệm</h3>
+                                    <ul class="action-list">
+                                        <li>Không mua các sản phẩm làm từ động vật hoang dã</li>
+                                        <li>Chọn các sản phẩm có chứng nhận bền vững</li>
+                                        <li>Giảm tiêu thụ thịt và sử dụng các sản phẩm từ động vật</li>
+                                        <li>Tránh các sản phẩm có dầu cọ không bền vững</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="action-card">
+                                    <div class="action-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3>Giảm thiểu tác động môi trường</h3>
+                                    <ul class="action-list">
+                                        <li>Giảm sử dụng nhựa một lần</li>
+                                        <li>Tiết kiệm nước và năng lượng</li>
+                                        <li>Sử dụng phương tiện giao thông công cộng hoặc xe đạp</li>
+                                        <li>Tái chế và tái sử dụng</li>
+                                        <li>Trồng cây và tạo môi trường sống cho động vật hoang dã địa phương</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="action-card">
+                                    <div class="action-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3>Nâng cao nhận thức</h3>
+                                    <ul class="action-list">
+                                        <li>Chia sẻ thông tin về bảo tồn động vật hoang dã trên mạng xã hội</li>
+                                        <li>Giáo dục gia đình và bạn bè về tầm quan trọng của động vật hoang dã</li>
+                                        <li>Tham gia các sự kiện bảo tồn địa phương</li>
+                                        <li>Ủng hộ các tổ chức bảo tồn động vật hoang dã</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="donate">
+                            <div class="donate-section">
+                                <div class="donate-info">
+                                    <h3>Ủng hộ tài chính cho công tác bảo tồn</h3>
+                                    <p>
+                                        Ủng hộ tài chính là một trong những cách hiệu quả nhất để hỗ trợ công tác bảo tồn động vật hoang dã. Số tiền ủng hộ của bạn sẽ được sử dụng để:
+                                    </p>
+                                    <ul class="donate-list">
+                                        <li>Bảo vệ môi trường sống tự nhiên của động vật hoang dã</li>
+                                        <li>Hỗ trợ các đội tuần tra chống săn bắt trái phép</li>
+                                        <li>Cứu hộ và phục hồi các cá thể bị thương hoặc bị buôn bán trái phép</li>
+                                        <li>Nghiên cứu khoa học về các loài động vật hoang dã</li>
+                                        <li>Giáo dục cộng đồng về tầm quan trọng của bảo tồn</li>
+                                    </ul>
+                                    <p>
+                                        Bạn có thể ủng hộ theo nhiều cách khác nhau:
+                                    </p>
+                                    <ul class="donate-options">
+                                        <li>Ủng hộ một lần</li>
+                                        <li>Ủng hộ định kỳ hàng tháng</li>
+                                        <li>Nhận nuôi tượng trưng một loài động vật</li>
+                                        <li>Tài trợ cho một dự án cụ thể</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="donate-form">
+                                    <h3>Ủng hộ ngay</h3>
+                                    <form id="donation-form">
+                                        <div class="form-group">
+                                            <label for="donation-amount">Số tiền ủng hộ</label>
+                                            <div class="donation-amounts">
+                                                <button type="button" class="donation-amount">100.000 VNĐ</button>
+                                                <button type="button" class="donation-amount">200.000 VNĐ</button>
+                                                <button type="button" class="donation-amount">500.000 VNĐ</button>
+                                                <button type="button" class="donation-amount active">1.000.000 VNĐ</button>
+                                                <button type="button" class="donation-amount">Khác</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="donation-project">Dự án</label>
+                                            <select id="donation-project">
+                                                <option value="all">Tất cả các dự án</option>
+                                                <option value="tiger">Bảo tồn hổ Đông Dương</option>
+                                                <option value="elephant">Bảo vệ voi châu Á</option>
+                                                <option value="marine">Bảo tồn sinh vật biển</option>
+                                                <option value="forest">Bảo vệ rừng nhiệt đới</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="button primary-button full-width"><a href="donate.html" class="mobile-nav-link">Ủng hộ ngay </a></button>
+                                       
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="volunteer">
+                            <div class="volunteer-section">
+                                <h3>Tham gia làm tình nguyện viên</h3>
+                                <button type="submit" class="button primary-button full-width"><a href="volunteer.html" class="mobile-nav-link">Tìm hiểu thêm </a></button>
+                                <p>
+                                    Tham gia làm tình nguyện viên là cách tuyệt vời để đóng góp thời gian, kỹ năng và đam mê của bạn cho công tác bảo tồn động vật hoang dã. Có nhiều cơ hội tình nguyện khác nhau phù hợp với sở thích, kỹ năng và thời gian của bạn.
+                                </p>
+                                
+                                <div class="volunteer-opportunities">
+                                    <div class="volunteer-opportunity">
+                                        <h4>Tình nguyện viên tại chỗ</h4>
+                                        <p>
+                                            Tham gia trực tiếp vào các hoạt động bảo tồn tại các khu bảo tồn, vườn quốc gia hoặc trung tâm cứu hộ động vật hoang dã.
+                                        </p>
+                                        <ul class="volunteer-tasks">
+                                            <li>Hỗ trợ chăm sóc động vật</li>
+                                            <li>Tham gia tuần tra rừng</li>
+                                            <li>Hỗ trợ nghiên cứu khoa học</li>
+                                            <li>Tham gia các hoạt động giáo dục cộng đồng</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="volunteer-opportunity">
+                                        <h4>Tình nguyện viên từ xa</h4>
+                                        <p>
+                                            Đóng góp kỹ năng và thời gian của bạn từ xa, phù hợp với những người có lịch trình bận rộn hoặc không thể di chuyển đến các địa điểm bảo tồn.
+                                        </p>
+                                        <ul class="volunteer-tasks">
+                                            <li>Hỗ trợ truyền thông và mạng xã hội</li>
+                                            <li>Dịch thuật tài liệu</li>
+                                            <li>Thiết kế đồ họa và nội dung</li>
+                                            <li>Phân tích dữ liệu và nghiên cứu</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="volunteer-opportunity">
+                                        <h4>Tổ chức sự kiện</h4>
+                                        <p>
+                                            Tham gia tổ chức các sự kiện gây quỹ, nâng cao nhận thức hoặc giáo dục về bảo tồn động vật hoang dã.
+                                        </p>
+                                        <ul class="volunteer-tasks">
+                                            <li>Lên kế hoạch và tổ chức sự kiện</li>
+                                            <li>Hỗ trợ truyền thông và quảng bá</li>
+                                            <li>Điều phối tình nguyện viên</li>
+                                            <li>Gây quỹ và tìm kiếm tài trợ</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="volunteer-cta">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="advocate">
+                            <div class="advocate-section">
+                                <h3>Vận động chính sách</h3>
+                                <p>
+                                    Vận động chính sách là một cách quan trọng để tạo ra những thay đổi lớn và lâu dài trong công tác bảo tồn động vật hoang dã. Bằng cách ủng hộ các chính sách và luật pháp bảo vệ động vật hoang dã, bạn có thể giúp tạo ra một môi trường pháp lý thuận lợi cho công tác bảo tồn.
+                                </p>
+                                
+                                <div class="advocacy-actions">
+                                    <div class="advocacy-action">
+                                        <h4>Liên hệ với các nhà lập pháp</h4>
+                                        <p>
+                                            Gửi thư, email hoặc gọi điện cho các đại biểu Quốc hội, lãnh đạo địa phương để bày tỏ sự ủng hộ của bạn đối với các chính sách bảo tồn động vật hoang dã.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="advocacy-action">
+                                        <h4>Ký và chia sẻ các kiến nghị</h4>
+                                        <p>
+                                            Tham gia ký các kiến nghị trực tuyến ủng hộ bảo tồn động vật hoang dã và chia sẻ chúng trên mạng xã hội để thu hút thêm sự ủng hộ.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="advocacy-action">
+                                        <h4>Tham gia các tổ chức vận động</h4>
+                                        <p>
+                                            Tham gia các tổ chức phi chính phủ và mạng lưới vận động chính sách để cùng nhau tạo ra tiếng nói mạnh mẽ hơn.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="advocacy-action">
+                                        <h4>Tham gia các sự kiện vận động</h4>
+                                        <p>
+                                            Tham gia các cuộc họp công khai, hội thảo, và các sự kiện khác để bày tỏ sự ủng hộ của bạn đối với các chính sách bảo tồn.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="current-campaigns">
+                                    <h4>Các chiến dịch vận động hiện tại</h4>
+                                    <ul class="campaign-list">
+                                        <li>
+                                            <a >Kiến nghị chống buôn bán ngà voi trái phép</a>
+                                        </li>
+                                        <li>
+                                            <a >Ủng hộ dự luật bảo vệ rừng nhiệt đới</a>
+                                        </li>
+                                        <li>
+                                            <a >Kiến nghị mở rộng các khu bảo tồn biển</a>
+                                        </li>
+                                        <li>
+                                            <a>Vận động chống biến đổi khí hậu</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+            <!-- Join Us -->
+            <div class="join-us-section">
+                <div class="join-us-content">
+                    <h2>Tham gia cùng chúng tôi</h2>
+                    <p>
+                        Hãy tham gia cùng chúng tôi trong hành trình bảo tồn động vật hoang dã. Mỗi hành động, dù nhỏ, đều có thể tạo nên sự khác biệt lớn.
+                    </p>
+                    <div class="join-us-buttons">
+                        <a href="contact.html" class="button primary-button">Liên hệ ngay</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh,Thị xã Hoàng Mai,Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="page-interactions.js"></script>
+    </body>
+    </html>

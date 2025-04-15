@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khu bảo tồn động vật hoang dã | Wildlife</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop'); background-size: cover; background-position: center;">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 style="color: white;">Khu bảo tồn động vật hoang dã</h1>
+                    <p style="color: white;">
+                        Những thiên đường tự nhiên được bảo vệ - nơi các loài động vật hoang dã được sống trong môi trường tự nhiên an toàn
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Giới thiệu về Khu bảo tồn</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="intro-content">
+                    <div class="intro-text">
+                        <p>
+                            Khu bảo tồn động vật hoang dã là những khu vực được thiết lập và bảo vệ đặc biệt nhằm duy trì môi trường sống tự nhiên cho các loài động vật hoang dã. Đây là một trong những biện pháp bảo tồn hiệu quả nhất, giúp bảo vệ các loài động vật khỏi các mối đe dọa như săn bắn trái phép, phá hủy môi trường sống và các hoạt động của con người.
+                        </p>
+                        <p>
+                            Các khu bảo tồn không chỉ bảo vệ các loài động vật mà còn bảo vệ toàn bộ hệ sinh thái, bao gồm thực vật, đất, nước và không khí. Chúng cũng đóng vai trò quan trọng trong nghiên cứu khoa học, giáo dục môi trường và phát triển du lịch sinh thái bền vững.
+                        </p>
+                        <p>
+                            Hiện nay, trên toàn thế giới có hàng nghìn khu bảo tồn với quy mô và mục đích khác nhau, từ các vườn quốc gia rộng lớn đến các khu bảo tồn nhỏ dành riêng cho một loài cụ thể.
+                        </p>
+                    </div>
+
+                    <div class="intro-image">
+                        <img src="https://images.baodantoc.vn/uploads/2022/Th%C3%A1ng%203/Ng%C3%A0y%204/Anh/untitled%20folder/khu_bao_ton_SERENGETI_Tanzania%20(1).jpg" alt="Khu bảo tồn động vật hoang dã">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Types of Reserves Section -->
+        <section class="animal-categories" style="background-color: #ffeaea;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Các loại Khu bảo tồn</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab active" data-tab="national-parks">Vườn Quốc gia</div>
+                        <div class="tab" data-tab="wildlife-sanctuaries">Khu bảo tồn thiên nhiên</div>
+                        <div class="tab" data-tab="biosphere-reserves">Khu dự trữ sinh quyển</div>
+                        <div class="tab" data-tab="marine-reserves">Khu bảo tồn biển</div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="national-parks">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Vườn Quốc gia</h3>
+                                    <p>
+                                        Vườn Quốc gia là những khu vực rộng lớn được bảo vệ bởi chính phủ quốc gia, nơi bảo tồn các hệ sinh thái tự nhiên và đa dạng sinh học. Đây thường là những khu vực có giá trị đặc biệt về cảnh quan, đa dạng sinh học hoặc di sản văn hóa.
+                                    </p>
+                                    <p>
+                                        Vườn Quốc gia không chỉ bảo vệ động vật hoang dã mà còn phục vụ mục đích giáo dục, nghiên cứu khoa học và du lịch sinh thái. Các hoạt động của con người trong vườn quốc gia thường bị hạn chế và được kiểm soát chặt chẽ.
+                                    </p>
+                                    <p>
+                                        Một số Vườn Quốc gia nổi tiếng trên thế giới bao gồm Vườn Quốc gia Yellowstone (Hoa Kỳ), Vườn Quốc gia Serengeti (Tanzania), và Vườn Quốc gia Cúc Phương (Việt Nam).
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://www.thiennhien.net/wp-content/uploads/2022/11/0911_VQGCPtaithaDVHD.jpg" alt="Vườn Quốc gia">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="wildlife-sanctuaries">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Khu bảo tồn thiên nhiên</h3>
+                                    <p>
+                                        Khu bảo tồn thiên nhiên là những khu vực được thiết lập để bảo vệ các loài động vật hoang dã cụ thể hoặc các hệ sinh thái đặc biệt. Khác với Vườn Quốc gia, các khu bảo tồn thiên nhiên thường tập trung vào việc bảo vệ các loài động vật cụ thể và môi trường sống của chúng.
+                                    </p>
+                                    <p>
+                                        Trong các khu bảo tồn thiên nhiên, các hoạt động của con người bị hạn chế nghiêm ngặt hơn so với Vườn Quốc gia. Việc săn bắn, khai thác gỗ và các hoạt động phát triển khác thường bị cấm hoàn toàn.
+                                    </p>
+                                    <p>
+                                        Các khu bảo tồn thiên nhiên nổi tiếng bao gồm Khu bảo tồn Hổ Sundarbans (Ấn Độ và Bangladesh), Khu bảo tồn Voi Samburu (Kenya), và Khu bảo tồn thiên nhiên Sao La (Việt Nam).
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56?q=80&w=2070&auto=format&fit=crop" alt="Khu bảo tồn thiên nhiên">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="biosphere-reserves">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Khu dự trữ sinh quyển</h3>
+                                    <p>
+                                        Khu dự trữ sinh quyển là những khu vực được UNESCO công nhận trong khuôn khổ Chương trình Con người và Sinh quyển (MAB). Đây là những khu vực đại diện cho các hệ sinh thái quan trọng, nơi thúc đẩy các giải pháp hài hòa giữa bảo tồn đa dạng sinh học và sử dụng bền vững tài nguyên thiên nhiên.
+                                    </p>
+                                    <p>
+                                        Khu dự trữ sinh quyển thường được chia thành ba vùng: vùng lõi (được bảo vệ nghiêm ngặt), vùng đệm (cho phép các hoạt động tương thích với bảo tồn), và vùng chuyển tiếp (cho phép phát triển bền vững).
+                                    </p>
+                                    <p>
+                                        Một số khu dự trữ sinh quyển nổi tiếng bao gồm Khu dự trữ sinh quyển Amazon (Brazil), Khu dự trữ sinh quyển Kruger to Canyons (Nam Phi), và Khu dự trữ sinh quyển Cát Bà (Việt Nam).
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2072&auto=format&fit=crop" alt="Khu dự trữ sinh quyển">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="marine-reserves">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Khu bảo tồn biển</h3>
+                                    <p>
+                                        Khu bảo tồn biển là những khu vực biển được bảo vệ nhằm bảo tồn các hệ sinh thái biển, các loài sinh vật biển và các nguồn tài nguyên biển. Đây là những khu vực quan trọng cho việc bảo vệ các rạn san hô, thảm cỏ biển, các loài cá và các loài sinh vật biển khác.
+                                    </p>
+                                    <p>
+                                        Trong các khu bảo tồn biển, các hoạt động như đánh bắt cá, khai thác khoáng sản, và các hoạt động giải trí có thể bị hạn chế hoặc cấm hoàn toàn. Một số khu bảo tồn biển cho phép đánh bắt cá bền vững và du lịch có kiểm soát.
+                                    </p>
+                                    <p>
+                                        Các khu bảo tồn biển nổi tiếng bao gồm Rạn san hô Great Barrier (Australia), Khu bảo tồn biển Galápagos (Ecuador), và Khu bảo tồn biển Nha Trang (Việt Nam).
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?q=80&w=2070&auto=format&fit=crop" alt="Khu bảo tồn biển">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Famous Reserves Section -->
+        <section class="featured-animals">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Khu bảo tồn nổi tiếng trên thế giới</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="animal-cards">
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/17/cb/7e/8e/serengeti-national-park.jpg" alt="Vườn Quốc gia Serengeti">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Vườn Quốc gia Serengeti</h3>
+                            <p class="animal-scientific-name">Tanzania, Châu Phi</p>
+                            <p class="animal-description">
+                                Vườn Quốc gia Serengeti là một trong những khu bảo tồn động vật hoang dã nổi tiếng nhất thế giới, nổi tiếng với hiện tượng di cư hàng năm của hàng triệu con linh dương đầu bò, ngựa vằn và linh dương gnu. Khu vực này cũng là nơi sinh sống của "Big Five" châu Phi: sư tử, voi, tê giác, báo và trâu rừng.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Vườn Quốc gia</span>
+                                <span class="animal-tag">Châu Phi</span>
+                                <span class="animal-tag">Di cư động vật</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://e.khoahoc.tv/photos/image/2016/01/13/khu-bao-ton-Sundarbans-5.jpg" alt="Khu bảo tồn Hổ Sundarbans">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Khu bảo tồn Hổ Sundarbans</h3>
+                            <p class="animal-scientific-name">Ấn Độ và Bangladesh, Châu Á</p>
+                            <p class="animal-description">
+                                Sundarbans là khu rừng ngập mặn lớn nhất thế giới và là nơi sinh sống của quần thể hổ Bengal lớn. Khu bảo tồn này trải rộng trên cả Ấn Độ và Bangladesh, tạo thành một hệ sinh thái độc đáo với sự đa dạng sinh học phong phú, bao gồm 453 loài động vật có xương sống và nhiều loài thực vật.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Khu bảo tồn thiên nhiên</span>
+                                <span class="animal-tag">Châu Á</span>
+                                <span class="animal-tag">Rừng ngập mặn</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://ik.imagekit.io/tvlk/blog/2023/07/rang-san-ho-great-barrier-3.png" alt="Rạn san hô Great Barrier">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Rạn san hô Great Barrier</h3>
+                            <p class="animal-scientific-name">Australia, Châu Đại Dương</p>
+                            <p class="animal-description">
+                                Rạn san hô Great Barrier là hệ thống rạn san hô lớn nhất thế giới, bao gồm hơn 2,900 rạn san hô riêng biệt và 900 hòn đảo. Đây là nơi sinh sống của hơn 1,500 loài cá, 400 loài san hô, 4,000 loài động vật thân mềm, và nhiều loài sinh vật biển khác, tạo nên một trong những hệ sinh thái đa dạng nhất trên Trái Đất.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Khu bảo tồn biển</span>
+                                <span class="animal-tag">Châu Đại Dương</span>
+                                <span class="animal-tag">Rạn san hô</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animal-cards">
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://ik.imagekit.io/tvlk/blog/2023/06/vuon-quoc-gia-yellowstone-5.jpg?tr=q-70,c-at_max,w-500,h-300,dpr-2" alt="Vườn Quốc gia Yellowstone">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Vườn Quốc gia Yellowstone</h3>
+                            <p class="animal-scientific-name">Hoa Kỳ, Bắc Mỹ</p>
+                            <p class="animal-description">
+                                Vườn Quốc gia Yellowstone là vườn quốc gia đầu tiên trên thế giới, được thành lập vào năm 1872. Khu vực này nổi tiếng với các hiện tượng địa nhiệt như Old Faithful và là nơi sinh sống của nhiều loài động vật hoang dã như gấu xám, sói, bò rừng và nai sừng tấm. Yellowstone cũng là nơi thực hiện một trong những chương trình tái thả sói thành công nhất.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Vườn Quốc gia</span>
+                                <span class="animal-tag">Bắc Mỹ</span>
+                                <span class="animal-tag">Địa nhiệt</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJgOmyVXMrRkfzuPNZDMuBzCfSHCTo-RAJdQ&s" alt="Khu bảo tồn Voi Samburu">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Khu bảo tồn Voi Samburu</h3>
+                            <p class="animal-scientific-name">Kenya, Châu Phi</p>
+                            <p class="animal-description">
+                                Khu bảo tồn Quốc gia Samburu là nơi sinh sống của quần thể voi lớn và nhiều loài động vật hoang dã khác như hươu cao cổ lưới, ngựa vằn Grevy, và linh dương gerenuk. Khu bảo tồn này cũng là nơi thực hiện nhiều nghiên cứu quan trọng về hành vi và sinh thái học của voi châu Phi.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Khu bảo tồn thiên nhiên</span>
+                                <span class="animal-tag">Châu Phi</span>
+                                <span class="animal-tag">Voi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://giaytrekking.com/wp-content/uploads/2024/01/Vai-tro-quan-trong-cua-rung-Amazon-voi-khi-hau-va-moi-truong-toan-cau.jpg" alt="Khu dự trữ sinh quyển Amazon">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Khu dự trữ sinh quyển Amazon</h3>
+                            <p class="animal-scientific-name">Brazil, Nam Mỹ</p>
+                            <p class="animal-description">
+                                Rừng Amazon là khu rừng nhiệt đới lớn nhất thế giới và là nơi sinh sống của khoảng 10% số loài động thực vật trên Trái Đất. Khu dự trữ sinh quyển Amazon bao gồm nhiều khu bảo tồn khác nhau, bảo vệ đa dạng sinh học phong phú và cung cấp dịch vụ hệ sinh thái quan trọng như điều hòa khí hậu và lưu trữ carbon.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Khu dự trữ sinh quyển</span>
+                                <span class="animal-tag">Nam Mỹ</span>
+                                <span class="animal-tag">Rừng nhiệt đới</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vietnam Reserves Section -->
+        <section class="conservation-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Khu bảo tồn tại Việt Nam</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="threats-section">
+                    <div class="threats-info">
+                        <h3>Hệ thống khu bảo tồn tại Việt Nam</h3>
+                        <p>
+                            Việt Nam là một trong những quốc gia có đa dạng sinh học phong phú nhất thế giới, với nhiều loài động thực vật đặc hữu. Để bảo vệ tài nguyên thiên nhiên quý giá này, Việt Nam đã thiết lập một hệ thống khu bảo tồn đa dạng, bao gồm:
+                        </p>
+
+                        <div class="threats-list">
+                            <div class="threat-item">
+                                <div class="threat-icon" style="background-color: #e8f5e9; color: #2e7d32;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"></path>
+                                    </svg>
+                                </div>
+                                <div class="threat-content">
+                                    <h4>Vườn Quốc gia</h4>
+                                    <p>
+                                        Việt Nam có 34 Vườn Quốc gia, bao gồm những khu vực nổi tiếng như Vườn Quốc gia Cúc Phương, Vườn Quốc gia Phong Nha-Kẻ Bàng, và Vườn Quốc gia Cát Tiên. Các vườn quốc gia này bảo vệ nhiều hệ sinh thái quan trọng và là nơi sinh sống của nhiều loài động vật quý hiếm.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="threat-item">
+                                <div class="threat-icon" style="background-color: #e8f5e9; color: #2e7d32;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="threat-content">
+                                    <h4>Khu bảo tồn thiên nhiên</h4>
+                                    <p>
+                                        Việt Nam có hơn 60 Khu bảo tồn thiên nhiên, bảo vệ các hệ sinh thái đặc thù và các loài động thực vật đặc hữu. Một số khu bảo tồn nổi tiếng bao gồm Khu bảo tồn thiên nhiên Sao La, Khu bảo tồn thiên nhiên Xuân Liên, và Khu bảo tồn thiên nhiên Bắc Hướng Hóa.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="threat-item">
+                                <div class="threat-icon" style="background-color: #e8f5e9; color: #2e7d32;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M2 12h20"></path>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    </svg>
+                                </div>
+                                <div class="threat-content">
+                                    <h4>Khu dự trữ sinh quyển</h4>
+                                    <p>
+                                        Việt Nam có 9 Khu dự trữ sinh quyển được UNESCO công nhận, bao gồm Cát Bà, Đồng Nai, Cần Giờ, Châu thổ sông Hồng, Tây Nghệ An, Cù Lao Chàm - Hội An, Mũi Cà Mau, Langbiang và Kiên Giang. Các khu vực này kết hợp bảo tồn với phát triển bền vững.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="threat-item">
+                                <div class="threat-icon" style="background-color: #e8f5e9; color: #2e7d32;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                                    </svg>
+                                </div>
+                                <div class="threat-content">
+                                    <h4>Khu bảo tồn biển</h4>
+                                    <p>
+                                        Việt Nam có 16 Khu bảo tồn biển, bảo vệ các hệ sinh thái biển quan trọng như rạn san hô, thảm cỏ biển và rừng ngập mặn. Các khu bảo tồn biển nổi tiếng bao gồm Khu bảo tồn biển Nha Trang, Cù Lao Chàm, và Côn Đảo.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="threats-image">
+                        <img src="https://nbca.gov.vn/wp-content/uploads/2023/10/bac-ninh-702x367-1.jpg" alt="Vườn Quốc gia Phong Nha-Kẻ Bàng, Việt Nam">
+                    </div>
+                </div>
+
+                <div class="conservation-methods">
+                    <h3>Các khu bảo tồn tiêu biểu tại Việt Nam</h3>
+
+                    <div class="methods-grid">
+                        <div class="method-card">
+                            <h4>Vườn Quốc gia Cúc Phương</h4>
+                            <p>
+                                Thành lập năm 1962, là vườn quốc gia đầu tiên của Việt Nam. Nơi đây bảo tồn hệ sinh thái rừng nhiệt đới nguyên sinh và là nơi sinh sống của nhiều loài động vật quý hiếm như voọc mông trắng, culi lớn và khỉ mặt đỏ.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Vườn Quốc gia Phong Nha-Kẻ Bàng</h4>
+                            <p>
+                                Được UNESCO công nhận là Di sản Thiên nhiên Thế giới, nổi tiếng với hệ thống hang động kỳ vĩ và đa dạng sinh học phong phú. Nơi đây là nơi sinh sống của nhiều loài linh trưởng quý hiếm và hơn 300 loài chim.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Vườn Quốc gia Cát Tiên</h4>
+                            <p>
+                                Một trong những khu rừng nguyên sinh lớn nhất còn lại ở Việt Nam, là nơi sinh sống của nhiều loài động vật quý hiếm như voi châu Á, bò tót, gấu ngựa và hơn 350 loài chim.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Khu bảo tồn thiên nhiên Sao La</h4>
+                            <p>
+                                Được thành lập để bảo vệ loài Sao La - một trong những loài thú lớn hiếm nhất thế giới, chỉ được phát hiện vào năm 1992. Khu bảo tồn này cũng là nơi sinh sống của nhiều loài động vật quý hiếm khác.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Khu dự trữ sinh quyển Cát Bà</h4>
+                            <p>
+                                Bao gồm Vườn Quốc gia Cát Bà và vùng biển xung quanh, là nơi sinh sống của loài voọc đầu trắng Cát Bà cực kỳ quý hiếm và nhiều loài sinh vật biển đa dạng.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Khu bảo tồn biển Nha Trang</h4>
+                            <p>
+                                Khu bảo tồn biển đầu tiên của Việt Nam, bảo vệ hệ sinh thái rạn san hô phong phú và đa dạng sinh học biển. Nơi đây là nơi sinh sống của hơn 350 loài san hô cứng và hơn 700 loài cá biển.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="take-action">
+                    <h3>Thách thức và giải pháp</h3>
+                    <p>
+                        Mặc dù đã có nhiều nỗ lực bảo tồn, các khu bảo tồn tại Việt Nam vẫn đối mặt với nhiều thách thức như săn bắt trái phép, phá rừng, phát triển cơ sở hạ tầng và biến đổi khí hậu. Để bảo vệ hiệu quả các khu bảo tồn, cần có sự tham gia của cộng đồng địa phương, tăng cường thực thi pháp luật và đầu tư vào nghiên cứu khoa học.
+                    </p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Importance Section -->
+        <section class="introduction">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tầm quan trọng của Khu bảo tồn</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="intro-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Bảo vệ đa dạng sinh học</h3>
+                        <p>
+                            Khu bảo tồn đóng vai trò quan trọng trong việc bảo vệ các loài động thực vật và hệ sinh thái, đặc biệt là các loài đang bị đe dọa và các hệ sinh thái dễ bị tổn thương.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12h20"></path>
+                                <path d="M12 2v20"></path>
+                                <path d="M20 16l-4-4 4-4"></path>
+                                <path d="M4 8l4 4-4 4"></path>
+                            </svg>
+                        </div>
+                        <h3>Duy trì dịch vụ hệ sinh thái</h3>
+                        <p>
+                            Khu bảo tồn giúp duy trì các dịch vụ hệ sinh thái quan trọng như cung cấp nước sạch, điều hòa khí hậu, bảo vệ đất và phòng chống thiên tai.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h3>Nghiên cứu khoa học</h3>
+                        <p>
+                            Khu bảo tồn cung cấp môi trường lý tưởng cho các nghiên cứu khoa học về sinh thái học, hành vi động vật, và tác động của biến đổi khí hậu đến đa dạng sinh học.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Phát triển du lịch sinh thái</h3>
+                        <p>
+                            Khu bảo tồn thúc đẩy phát triển du lịch sinh thái bền vững, tạo cơ hội việc làm cho cộng đồng địa phương và nâng cao nhận thức về bảo tồn thiên nhiên.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="view-all" style="margin-top: 40px;">
+                    <a href="conservation.html" class="button primary-button">Tìm hiểu thêm về bảo tồn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year">2025</span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // Tab Functionality
+            const tabs = document.querySelectorAll('.tab');
+            if (tabs.length > 0) {
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        // Remove active class from all tabs
+                        tabs.forEach(t => t.classList.remove('active'));
+                        
+                        // Add active class to clicked tab
+                        this.classList.add('active');
+                        
+                        // Hide all tab panes
+                        const tabPanes = document.querySelectorAll('.tab-pane');
+                        tabPanes.forEach(pane => pane.classList.remove('active'));
+                        
+                        // Show the corresponding tab pane
+                        const tabId = this.getAttribute('data-tab');
+                        const activePane = document.getElementById(tabId);
+                        if (activePane) {
+                            activePane.classList.add('active');
+                        }
+                    });
+                });
+            }
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (backToTopButton) {
+                // Show/hide button based on scroll position
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                // Scroll to top when button is clicked
+                backToTopButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

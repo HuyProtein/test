@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phục hồi quần thể động vật hoang dã | Wildlife</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1550358864-518f202c02ba?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 style="color: white;">Phục hồi quần thể động vật hoang dã</h1>
+                    <p style="color: white;">
+                        Mang lại hy vọng cho các loài đang bị đe dọa và hệ sinh thái bị suy thoái
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Giới thiệu về Phục hồi Quần thể</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="intro-content">
+                    <div class="intro-text">
+                        <p>
+                            Phục hồi quần thể động vật hoang dã là quá trình tăng số lượng cá thể của các loài bị đe dọa hoặc suy giảm, nhằm đảm bảo sự tồn tại lâu dài của chúng trong tự nhiên. Đây là một trong những biện pháp bảo tồn quan trọng, đặc biệt đối với các loài đang đứng trước nguy cơ tuyệt chủng.
+                        </p>
+                        <p>
+                            Phục hồi quần thể có thể được thực hiện thông qua nhiều phương pháp khác nhau, bao gồm bảo vệ và phục hồi môi trường sống, nhân giống bảo tồn, tái thả động vật về tự nhiên, và di chuyển các cá thể giữa các quần thể khác nhau để tăng cường đa dạng di truyền.
+                        </p>
+                        <p>
+                            Các chương trình phục hồi quần thể thành công không chỉ giúp bảo vệ các loài bị đe dọa mà còn góp phần phục hồi các hệ sinh thái, duy trì đa dạng sinh học và cung cấp các dịch vụ hệ sinh thái quan trọng cho con người.
+                        </p>
+                    </div>
+
+                    <div class="intro-image">
+                        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?q=80&w=2070&auto=format&fit=crop" alt="Phục hồi quần thể động vật hoang dã">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Restoration Methods Section -->
+        <section class="animal-categories" style="background-color: #f1f8e9;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Phương pháp Phục hồi Quần thể</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab active" data-tab="habitat-restoration">Phục hồi môi trường sống</div>
+                        <div class="tab" data-tab="captive-breeding">Nhân giống bảo tồn</div>
+                        <div class="tab" data-tab="reintroduction">Tái thả về tự nhiên</div>
+                        <div class="tab" data-tab="translocation">Di chuyển quần thể</div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="habitat-restoration">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Phục hồi môi trường sống</h3>
+                                    <p>
+                                        Phục hồi môi trường sống là một trong những phương pháp quan trọng nhất để phục hồi quần thể động vật hoang dã. Môi trường sống cung cấp thức ăn, nơi trú ẩn, và không gian sinh sản cho các loài, và sự suy thoái môi trường sống là một trong những nguyên nhân chính dẫn đến sự suy giảm quần thể.
+                                    </p>
+                                    <p>
+                                        Phục hồi môi trường sống có thể bao gồm các hoạt động như:
+                                    </p>
+                                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                        <li><strong>Trồng lại rừng:</strong> Trồng lại các loài cây bản địa để phục hồi rừng bị phá hủy.</li>
+                                        <li><strong>Phục hồi đất ngập nước:</strong> Khôi phục các vùng đất ngập nước đã bị thoát nước hoặc lấp đầy.</li>
+                                        <li><strong>Loại bỏ các loài xâm lấn:</strong> Loại bỏ các loài thực vật và động vật xâm lấn cạnh tranh với các loài bản địa.</li>
+                                        <li><strong>Kiểm soát ô nhiễm:</strong> Giảm ô nhiễm nước, đất và không khí ảnh hưởng đến môi trường sống.</li>
+                                        <li><strong>Tạo hành lang sinh thái:</strong> Kết nối các khu vực môi trường sống bị phân mảnh để cho phép động vật di chuyển và trao đổi gen.</li>
+                                    </ul>
+                                    <p>
+                                        Phục hồi môi trường sống không chỉ có lợi cho một loài cụ thể mà còn cho toàn bộ hệ sinh thái, bao gồm nhiều loài động thực vật khác nhau.
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/08/tai-nguyen-thien-nhien-la-gi.jpg" alt="Phục hồi môi trường sống">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="captive-breeding">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Nhân giống bảo tồn</h3>
+                                    <p>
+                                        Nhân giống bảo tồn là quá trình nhân giống các loài bị đe dọa trong điều kiện nuôi nhốt, với mục đích tăng số lượng cá thể và cuối cùng là tái thả chúng về tự nhiên. Phương pháp này đặc biệt quan trọng đối với các loài có số lượng cá thể rất ít trong tự nhiên và đang đứng trước nguy cơ tuyệt chủng cao.
+                                    </p>
+                                    <p>
+                                        Các chương trình nhân giống bảo tồn thường bao gồm các yếu tố sau:
+                                    </p>
+                                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                        <li><strong>Quản lý di truyền:</strong> Duy trì đa dạng di truyền thông qua việc lựa chọn cẩn thận các cá thể để nhân giống, tránh cận huyết.</li>
+                                        <li><strong>Chăm sóc thú y:</strong> Cung cấp chăm sóc y tế để đảm bảo sức khỏe của các cá thể.</li>
+                                        <li><strong>Môi trường nuôi nhốt phù hợp:</strong> Tạo môi trường nuôi nhốt mô phỏng môi trường tự nhiên càng nhiều càng tốt.</li>
+                                        <li><strong>Huấn luyện kỹ năng sống:</strong> Dạy các kỹ năng sống cần thiết cho các cá thể sẽ được tái thả về tự nhiên.</li>
+                                        <li><strong>Nghiên cứu sinh học sinh sản:</strong> Nghiên cứu về sinh học sinh sản của loài để tối ưu hóa quá trình nhân giống.</li>
+                                    </ul>
+                                    <p>
+                                        Nhân giống bảo tồn đã giúp cứu nhiều loài khỏi bờ vực tuyệt chủng, như hổ Amur, gấu trúc, và đại bàng đầu trắng Mỹ. Tuy nhiên, phương pháp này cũng đối mặt với nhiều thách thức, bao gồm chi phí cao, khó khăn trong việc duy trì hành vi tự nhiên, và rủi ro về di truyền.
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56?q=80&w=2070&auto=format&fit=crop" alt="Nhân giống bảo tồn">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="reintroduction">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Tái thả về tự nhiên</h3>
+                                    <p>
+                                        Tái thả về tự nhiên là quá trình đưa các cá thể được nhân giống trong điều kiện nuôi nhốt hoặc được cứu hộ trở lại môi trường tự nhiên. Đây là một bước quan trọng trong nhiều chương trình phục hồi quần thể, đặc biệt là đối với các loài đã biến mất hoặc gần như biến mất khỏi một khu vực cụ thể.
+                                    </p>
+                                    <p>
+                                        Quá trình tái thả về tự nhiên thường bao gồm các bước sau:
+                                    </p>
+                                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                        <li><strong>Đánh giá môi trường:</strong> Đánh giá môi trường sống để đảm bảo nó phù hợp cho loài được tái thả, bao gồm thức ăn, nơi trú ẩn, và không gian sinh sản.</li>
+                                        <li><strong>Chuẩn bị cá thể:</strong> Chuẩn bị các cá thể cho cuộc sống trong tự nhiên, có thể bao gồm huấn luyện kỹ năng săn mồi, tránh kẻ thù, và tìm kiếm thức ăn.</li>
+                                        <li><strong>Tái thả từ từ:</strong> Thực hiện tái thả từ từ, cho phép các cá thể thích nghi dần với môi trường mới.</li>
+                                        <li><strong>Giám sát sau tái thả:</strong> Giám sát các cá thể sau khi tái thả để đánh giá sự thích nghi và thành công của chương trình.</li>
+                                        <li><strong>Hỗ trợ bổ sung:</strong> Cung cấp hỗ trợ bổ sung nếu cần thiết, như thức ăn bổ sung hoặc chăm sóc y tế.</li>
+                                    </ul>
+                                    <p>
+                                        Tái thả về tự nhiên đã giúp phục hồi nhiều quần thể động vật hoang dã, như sói xám ở Yellowstone, gấu trúc ở Trung Quốc, và đại bàng đầu trắng ở Mỹ. Tuy nhiên, quá trình này cũng đối mặt với nhiều thách thức, bao gồm khó khăn trong việc thích nghi của các cá thể, xung đột với con người, và chi phí cao.
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://images.unsplash.com/photo-1559253664-ca249d4608c6?q=80&w=2070&auto=format&fit=crop" alt="Tái thả về tự nhiên">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="translocation">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Di chuyển quần thể</h3>
+                                    <p>
+                                        Di chuyển quần thể là quá trình di chuyển các cá thể từ một quần thể hoang dã đến một khu vực khác, với mục đích thiết lập quần thể mới, tăng cường quần thể hiện có, hoặc tăng cường đa dạng di truyền. Phương pháp này khác với tái thả về tự nhiên ở chỗ các cá thể được di chuyển đã sống trong tự nhiên, không phải trong điều kiện nuôi nhốt.
+                                    </p>
+                                    <p>
+                                        Di chuyển quần thể có thể được thực hiện vì nhiều lý do khác nhau:
+                                    </p>
+                                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                        <li><strong>Thiết lập quần thể mới:</strong> Di chuyển các cá thể đến khu vực mới để thiết lập quần thể mới, đặc biệt là ở những nơi loài đã biến mất.</li>
+                                        <li><strong>Tăng cường quần thể hiện có:</strong> Bổ sung các cá thể vào quần thể nhỏ hoặc suy giảm để tăng số lượng và đa dạng di truyền.</li>
+                                        <li><strong>Cứu hộ quần thể bị đe dọa:</strong> Di chuyển các cá thể khỏi khu vực bị đe dọa bởi phá hủy môi trường sống, biến đổi khí hậu, hoặc các mối đe dọa khác.</li>
+                                        <li><strong>Giảm xung đột với con người:</strong> Di chuyển các cá thể gây xung đột với con người đến khu vực ít có khả năng xảy ra xung đột.</li>
+                                        <li><strong>Quản lý di truyền:</strong> Di chuyển các cá thể giữa các quần thể bị cô lập để tăng cường đa dạng di truyền và giảm nguy cơ cận huyết.</li>
+                                    </ul>
+                                    <p>
+                                        Di chuyển quần thể đã được sử dụng thành công trong nhiều chương trình bảo tồn, như di chuyển tê giác đen ở Nam Phi, sư tử ở châu Phi, và gấu nâu ở châu Âu. Tuy nhiên, phương pháp này cũng đối mặt với nhiều thách thức, bao gồm stress cho các cá thể, rủi ro lây lan bệnh, và khó khăn trong việc thích nghi với môi trường mới.
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://img.loigiaihay.com/picture/article/2021/0913/cau-truc-di-truyen-cua-quan-the-sach-giao-khoa-sinh-hoc-12_1_1631524628.jpg" alt="Di chuyển quần thể">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section class="featured-animals">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Câu chuyện thành công</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="animal-cards">
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSFmEBb3r7EhX8GwGD60jucbP-V_mAYGwMEw&s" alt="Đại bàng đầu trắng Mỹ">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Đại bàng đầu trắng Mỹ</h3>
+                            <p class="animal-scientific-name">Haliaeetus leucocephalus</p>
+                            <p class="animal-description">
+                                Đại bàng đầu trắng Mỹ, biểu tượng quốc gia của Hoa Kỳ, từng đứng trước nguy cơ tuyệt chủng vào những năm 1960 do sử dụng thuốc trừ sâu DDT, săn bắn và phá hủy môi trường sống. Nhờ lệnh cấm DDT, bảo vệ pháp lý, bảo vệ môi trường sống và nhân giống bảo tồn, số lượng đại bàng đầu trắng đã tăng từ chỉ 417 cặp vào năm 1963 lên hơn 9,700 cặp vào năm 2007, và đã được loại khỏi Danh sách các loài bị đe dọa của Hoa Kỳ.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Bắc Mỹ</span>
+                                <span class="animal-tag">Chim săn mồi</span>
+                                <span class="animal-tag">Phục hồi thành công</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBBX6svNNd54XaEXPJz74sZmiprHQKp96n5A&s" alt="Hổ Amur">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Hổ Amur</h3>
+                            <p class="animal-scientific-name">Panthera tigris altaica</p>
+                            <p class="animal-description">
+                                Hổ Amur, còn được gọi là hổ Siberia, từng đứng trước nguy cơ tuyệt chủng với chỉ khoảng 40 cá thể trong tự nhiên vào những năm 1940. Nhờ các nỗ lực bảo tồn của Nga và Trung Quốc, bao gồm bảo vệ nghiêm ngặt, bảo vệ môi trường sống, và hợp tác quốc tế, số lượng hổ Amur đã tăng lên khoảng 500-550 cá thể trong tự nhiên hiện nay. Mặc dù vẫn bị đe dọa, đây là một trong những câu chuyện thành công đáng chú ý trong bảo tồn loài hổ.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Châu Á</span>
+                                <span class="animal-tag">Thú ăn thịt</span>
+                                <span class="animal-tag">Phục hồi đang tiến triển</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://genk.mediacdn.vn/139269124445442048/2024/1/15/v2-d8c6b8c9293ddae92aeedecce348a-1705295910688812014304.jpg" alt="Sói xám">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Sói xám</h3>
+                            <p class="animal-scientific-name">Canis lupus</p>
+                            <p class="animal-description">
+                                Sói xám từng bị săn bắn đến gần tuyệt chủng ở Hoa Kỳ vào đầu thế kỷ 20. Một trong những nỗ lực phục hồi quần thể nổi tiếng nhất là việc tái thả sói vào Vườn Quốc gia Yellowstone vào năm 1995. Từ 31 con sói ban đầu, quần thể đã phát triển lên hơn 500 con ở vùng Greater Yellowstone. Sự trở lại của sói đã có tác động tích cực đến toàn bộ hệ sinh thái, gọi là "hiệu ứng tầng thác dinh dưỡng", bao gồm việc kiểm soát quần thể hươu, cho phép thảm thực vật phục hồi, và thậm chí thay đổi dòng chảy của sông.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Bắc Mỹ</span>
+                                <span class="animal-tag">Thú ăn thịt</span>
+                                <span class="animal-tag">Tái thả thành công</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animal-cards">
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4LLZFtvNjVbbuZQdVULJus34M7nXLr54oZQ&s" alt="Tê giác đen">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Tê giác đen</h3>
+                            <p class="animal-scientific-name">Diceros bicornis</p>
+                            <p class="animal-description">
+                                Tê giác đen châu Phi từng đối mặt với nguy cơ tuyệt chủng nghiêm trọng, với số lượng giảm từ khoảng 65,000 con vào năm 1970 xuống chỉ còn 2,500 con vào năm 1993 do nạn săn trộm lấy sừng. Nhờ các nỗ lực bảo tồn mạnh mẽ, bao gồm chống săn trộm, di chuyển quần thể, và nhân giống bảo tồn, số lượng tê giác đen đã tăng lên hơn 5,000 con hiện nay. Nam Phi đã đạt được thành công đặc biệt trong việc phục hồi quần thể tê giác đen thông qua chương trình "Black Rhino Range Expansion Project".
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Châu Phi</span>
+                                <span class="animal-tag">Động vật có vú</span>
+                                <span class="animal-tag">Phục hồi đang tiến triển</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://cdn2.tuoitre.vn/thumb_w/1200/471584752817336320/2024/12/11/ca-voi-lung-gu-17339251433742054516825-0-0-570-1089-crop-17339251780961254155008.jpg" alt="Cá voi lưng gù">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Cá voi lưng gù</h3>
+                            <p class="animal-scientific-name">Megaptera novaeangliae</p>
+                            <p class="animal-description">
+                                Cá voi lưng gù từng bị săn bắn đến mức gần tuyệt chủng vào đầu thế kỷ 20, với số lượng giảm xuống chỉ còn khoảng 10% so với quần thể ban đầu. Nhờ lệnh cấm săn bắt cá voi thương mại của Ủy ban Đánh bắt Cá voi Quốc tế vào năm 1966 và các biện pháp bảo vệ khác, quần thể cá voi lưng gù đã phục hồi đáng kể. Hiện nay, nhiều quần thể cá voi lưng gù đã phục hồi lên đến 80-90% số lượng trước khi săn bắt, với tổng số lượng toàn cầu ước tính khoảng 80,000 cá thể.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Đại dương</span>
+                                <span class="animal-tag">Động vật có vú biển</span>
+                                <span class="animal-tag">Phục hồi thành công</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+       
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // Tab Functionality
+            const tabs = document.querySelectorAll('.tab');
+            if (tabs.length > 0) {
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        // Remove active class from all tabs
+                        tabs.forEach(t => t.classList.remove('active'));
+                        
+                        // Add active class to clicked tab
+                        this.classList.add('active');
+                        
+                        // Hide all tab panes
+                        const tabPanes = document.querySelectorAll('.tab-pane');
+                        tabPanes.forEach(pane => pane.classList.remove('active'));
+                        
+                        // Show the corresponding tab pane
+                        const tabId = this.getAttribute('data-tab');
+                        const activePane = document.getElementById(tabId);
+                        if (activePane) {
+                            activePane.classList.add('active');
+                        }
+                    });
+                });
+            }
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (backToTopButton) {
+                // Show/hide button based on scroll position
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                // Scroll to top when button is clicked
+                backToTopButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

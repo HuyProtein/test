@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luật pháp và chính sách bảo tồn | Wildlife</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 style="color: white;">Luật pháp và chính sách bảo tồn</h1>
+                    <p style="color: white;">
+                        Khung pháp lý bảo vệ động vật hoang dã và môi trường sống tự nhiên
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Giới thiệu về Luật pháp và Chính sách Bảo tồn</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="intro-content">
+                    <div class="intro-text">
+                        <p>
+                            Luật pháp và chính sách bảo tồn đóng vai trò quan trọng trong việc bảo vệ động vật hoang dã và môi trường sống tự nhiên. Chúng tạo ra khung pháp lý để ngăn chặn các hoạt động gây hại như săn bắt trái phép, buôn bán động vật hoang dã, phá hủy môi trường sống và các hành vi khác đe dọa đến sự tồn tại của các loài.
+                        </p>
+                        <p>
+                            Các luật và chính sách bảo tồn được ban hành ở nhiều cấp độ khác nhau, từ cấp quốc tế (các công ước và hiệp định quốc tế), cấp quốc gia (luật và quy định của từng quốc gia), đến cấp địa phương (quy định của tỉnh, thành phố hoặc khu vực).
+                        </p>
+                        <p>
+                            Hiệu quả của việc bảo tồn động vật hoang dã phụ thuộc không chỉ vào việc ban hành luật pháp và chính sách mà còn phụ thuộc vào việc thực thi chúng một cách nghiêm túc và nhất quán.
+                        </p>
+                    </div>
+
+                    <div class="intro-image">
+                        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?q=80&w=2070&auto=format&fit=crop" alt="Luật pháp bảo tồn động vật hoang dã">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- International Laws Section -->
+        <section class="animal-categories" style="background-color: #f1f8e9;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Luật pháp và Công ước Quốc tế</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab active" data-tab="cites">CITES</div>
+                        <div class="tab" data-tab="cbd">CBD</div>
+                        <div class="tab" data-tab="cms">CMS</div>
+                        <div class="tab" data-tab="ramsar">Ramsar</div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="cites">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Công ước về buôn bán quốc tế các loài động, thực vật hoang dã nguy cấp (CITES)</h3>
+                                    <p>
+                                        CITES (Convention on International Trade in Endangered Species of Wild Fauna and Flora) là một hiệp định quốc tế được ký kết vào năm 1973, nhằm đảm bảo rằng việc buôn bán quốc tế các loài động vật và thực vật hoang dã không đe dọa đến sự tồn tại của chúng.
+                                    </p>
+                                    <p>
+                                        CITES hoạt động thông qua một hệ thống cấp phép và chứng chỉ quốc tế cho việc xuất khẩu, tái xuất khẩu và nhập khẩu các loài động thực vật được liệt kê trong ba phụ lục:
+                                    </p>
+                                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                        <li><strong>Phụ lục I:</strong> Bao gồm các loài bị đe dọa tuyệt chủng, cấm buôn bán quốc tế vì mục đích thương mại.</li>
+                                        <li><strong>Phụ lục II:</strong> Bao gồm các loài chưa bị đe dọa tuyệt chủng nhưng có thể trở nên như vậy nếu không kiểm soát buôn bán.</li>
+                                        <li><strong>Phụ lục III:</strong> Bao gồm các loài được bảo vệ ở ít nhất một quốc gia, yêu cầu sự hợp tác quốc tế để kiểm soát buôn bán.</li>
+                                    </ul>
+                                    <p>
+                                        Hiện nay, CITES có hơn 180 quốc gia thành viên và bảo vệ hơn 35,000 loài động thực vật.
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://tapchimoitruong.vn/files/cities.jpg" alt="CITES">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="cbd">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Công ước về Đa dạng Sinh học (CBD)</h3>
+                                    <p>
+                                        Công ước về Đa dạng Sinh học (Convention on Biological Diversity - CBD) là một hiệp ước quốc tế được ký kết tại Hội nghị Thượng đỉnh Trái đất ở Rio de Janeiro năm 1992, với mục tiêu bảo tồn đa dạng sinh học, sử dụng bền vững các thành phần của đa dạng sinh học và chia sẻ công bằng, hợp lý các lợi ích từ việc sử dụng tài nguyên di truyền.
+                                    </p>
+                                    <p>
+                                        CBD công nhận rằng bảo tồn đa dạng sinh học là "mối quan tâm chung của nhân loại" và là một phần không thể thiếu của quá trình phát triển. Công ước bao gồm ba mục tiêu chính:
+                                    </p>
+                                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                        <li>Bảo tồn đa dạng sinh học</li>
+                                        <li>Sử dụng bền vững các thành phần của đa dạng sinh học</li>
+                                        <li>Chia sẻ công bằng và hợp lý các lợi ích phát sinh từ việc sử dụng tài nguyên di truyền</li>
+                                    </ul>
+                                    <p>
+                                        Công ước cũng đặt ra mục tiêu Aichi về đa dạng sinh học, bao gồm 20 mục tiêu cụ thể để bảo tồn đa dạng sinh học toàn cầu đến năm 2020, và gần đây đã được cập nhật với Khung Đa dạng Sinh học Toàn cầu sau năm 2020.
+                                    </p>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://trungtamnhietdoivietnga.com.vn/Upload/news/cop-15-thong-qua-khung-da-dang-sinh-hoc-toan-cau.jpg" alt="Công ước về Đa dạng Sinh học">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="cms">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Công ước về Bảo tồn các Loài Di cư (CMS)</h3>
+                                    <p>
+                                        Công ước về Bảo tồn các Loài Di cư (Convention on the Conservation of Migratory Species of Wild Animals - CMS), còn được gọi là Công ước Bonn, là một hiệp ước môi trường quốc tế được ký kết vào năm 1979 dưới sự bảo trợ của Chương trình Môi trường Liên Hợp Quốc.
+                                    </p>
+                                    <p>
+                                        CMS nhằm bảo tồn các loài động vật hoang dã di cư trên toàn cầu. Công ước cung cấp một nền tảng toàn cầu cho việc bảo tồn và sử dụng bền vững các loài động vật di cư và môi trường sống của chúng.
+                                    </p>
+                                    <p>
+                                        CMS hoạt động thông qua hai phụ lục:
+                                    </p>
+                                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                        <li><strong>Phụ lục I:</strong> Liệt kê các loài di cư đang bị đe dọa tuyệt chủng. Các quốc gia thành viên CMS phải nỗ lực bảo vệ nghiêm ngặt các loài này, bảo tồn hoặc phục hồi môi trường sống của chúng, giảm thiểu các rào cản đối với việc di cư và kiểm soát các yếu tố khác có thể gây nguy hiểm cho chúng.</li>
+                                        <li><strong>Phụ lục II:</strong> Liệt kê các loài di cư cần hoặc sẽ được hưởng lợi đáng kể từ hợp tác quốc tế. Công ước khuyến khích các quốc gia ký kết các thỏa thuận toàn cầu hoặc khu vực để bảo tồn các loài này.</li>
+                                    </ul>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6cUvqgsttY3A81cUpDtjp--wjB6WMpwTUtQ&s" alt="Công ước về Bảo tồn các Loài Di cư">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="ramsar">
+                            <div class="category-content">
+                                <div class="category-info">
+                                    <h3>Công ước Ramsar về Đất ngập nước</h3>
+                                    <p>
+                                        Công ước Ramsar về Đất ngập nước có tầm quan trọng quốc tế (Ramsar Convention on Wetlands of International Importance) là một hiệp ước quốc tế được ký kết vào năm 1971 tại thành phố Ramsar, Iran, nhằm bảo tồn và sử dụng bền vững các vùng đất ngập nước và tài nguyên của chúng.
+                                    </p>
+                                    <p>
+                                        Đất ngập nước là những khu vực quan trọng cho nhiều loài động vật hoang dã, đặc biệt là các loài chim nước và cá. Chúng cũng cung cấp nhiều dịch vụ hệ sinh thái quan trọng như lọc nước, kiểm soát lũ lụt và bảo vệ bờ biển.
+                                    </p>
+                                    <p>
+                                        Theo Công ước Ramsar, các quốc gia thành viên cam kết:
+                                    </p>
+                                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                                        <li>Chỉ định ít nhất một khu vực đất ngập nước trong lãnh thổ của mình để đưa vào Danh sách Đất ngập nước có tầm quan trọng quốc tế (Danh sách Ramsar)</li>
+                                        <li>Thúc đẩy việc sử dụng khôn ngoan tất cả các vùng đất ngập nước trong lãnh thổ của mình</li>
+                                        <li>Thúc đẩy hợp tác quốc tế về đất ngập nước xuyên biên giới, hệ thống đất ngập nước chung và các loài di cư</li>
+                                        <li>Thành lập các khu bảo tồn đất ngập nước</li>
+                                    </ul>
+                                </div>
+                                <div class="category-image">
+                                    <img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NV/041223/vung-ngap-nuoc-1.jpg" alt="Công ước Ramsar về Đất ngập nước">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- National Laws Section -->
+        <section class="featured-animals">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Luật pháp và Chính sách Quốc gia</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="animal-cards">
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2023/4/20/z382282148316707dab51af84b26d031ed6a2d9776be64df154-16819769776061527233217.jpg" alt="Luật Bảo vệ và Phát triển rừng">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Luật Bảo vệ và Phát triển rừng</h3>
+                            <p class="animal-scientific-name">Việt Nam</p>
+                            <p class="animal-description">
+                                Luật Bảo vệ và Phát triển rừng của Việt Nam quy định về quản lý, bảo vệ, phát triển, sử dụng rừng, quyền và nghĩa vụ của chủ rừng. Luật này bảo vệ các loài động vật hoang dã sống trong rừng, đặc biệt là các loài quý hiếm, và quy định các biện pháp xử lý vi phạm.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Luật quốc gia</span>
+                                <span class="animal-tag">Bảo vệ rừng</span>
+                                <span class="animal-tag">Việt Nam</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://btnmt.1cdn.vn/thumbs/540x360/2022/06/29/ngoai-lai.jpg" alt="Luật Đa dạng Sinh học">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Luật Đa dạng Sinh học</h3>
+                            <p class="animal-scientific-name">Việt Nam</p>
+                            <p class="animal-description">
+                                Luật Đa dạng Sinh học của Việt Nam quy định về bảo tồn và phát triển bền vững đa dạng sinh học; quyền và nghĩa vụ của tổ chức, hộ gia đình, cá nhân trong bảo tồn và phát triển bền vững đa dạng sinh học. Luật này bảo vệ các loài hoang dã, đặc biệt là các loài nguy cấp, quý, hiếm được ưu tiên bảo vệ.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Luật quốc gia</span>
+                                <span class="animal-tag">Đa dạng sinh học</span>
+                                <span class="animal-tag">Việt Nam</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://nghiencuuquocte.org/wp-content/uploads/2024/12/28.12.Endangered-Species-Act.jpg" alt="Endangered Species Act">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Đạo luật Bảo vệ Loài Nguy cấp (ESA)</h3>
+                            <p class="animal-scientific-name">Hoa Kỳ</p>
+                            <p class="animal-description">
+                                Đạo luật Bảo vệ Loài Nguy cấp (Endangered Species Act - ESA) của Hoa Kỳ được ban hành vào năm 1973, là một trong những luật bảo tồn mạnh mẽ nhất thế giới. ESA bảo vệ các loài bị đe dọa và nguy cấp, cũng như môi trường sống quan trọng của chúng. Đạo luật cấm "săn bắt" (bao gồm giết, bẫy, săn bắn) và buôn bán các loài được liệt kê.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Luật quốc gia</span>
+                                <span class="animal-tag">Loài nguy cấp</span>
+                                <span class="animal-tag">Hoa Kỳ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animal-cards">
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://baovemoitruong.org.vn/wp-content/uploads/2021/04/190421_baydvhd2.jpg" alt="Wildlife Protection Act">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Đạo luật Bảo vệ Động vật Hoang dã</h3>
+                            <p class="animal-scientific-name">Ấn Độ</p>
+                            <p class="animal-description">
+                                Đạo luật Bảo vệ Động vật Hoang dã (Wildlife Protection Act) của Ấn Độ được ban hành vào năm 1972, cung cấp khung pháp lý cho việc bảo vệ các loài động vật hoang dã, chim và thực vật. Đạo luật cấm săn bắn hầu hết các loài động vật hoang dã, quy định việc thành lập các khu bảo tồn động vật hoang dã, và kiểm soát buôn bán các loài được bảo vệ.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Luật quốc gia</span>
+                                <span class="animal-tag">Bảo vệ động vật</span>
+                                <span class="animal-tag">Ấn Độ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://cdnmedia.baotintuc.vn/Upload/3qVxwVtNEPp6Wp9kkF77g/files/2021/06/12/hoang-da-120621.jpg" alt="Wildlife and Countryside Act">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Đạo luật Động vật Hoang dã và Nông thôn</h3>
+                            <p class="animal-scientific-name">Vương quốc Anh</p>
+                            <p class="animal-description">
+                                Đạo luật Động vật Hoang dã và Nông thôn (Wildlife and Countryside Act) của Vương quốc Anh được ban hành vào năm 1981, là luật chính bảo vệ động vật hoang dã ở Anh, Scotland và Wales. Đạo luật bảo vệ các loài động vật hoang dã, đặc biệt là chim, một số loài động vật có vú và thực vật, và quy định việc thành lập các khu bảo tồn thiên nhiên.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Luật quốc gia</span>
+                                <span class="animal-tag">Động vật hoang dã</span>
+                                <span class="animal-tag">Vương quốc Anh</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animal-card">
+                        <div class="animal-image">
+                            <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2022/12/27/ddsh2021-167214625906172111960.jpg" alt="Environment Protection and Biodiversity Conservation Act">
+                        </div>
+                        <div class="animal-info">
+                            <h3 class="animal-name">Đạo luật Bảo vệ Môi trường và Bảo tồn Đa dạng Sinh học</h3>
+                            <p class="animal-scientific-name">Australia</p>
+                            <p class="animal-description">
+                                Đạo luật Bảo vệ Môi trường và Bảo tồn Đa dạng Sinh học (Environment Protection and Biodiversity Conservation Act) của Australia được ban hành vào năm 1999, là luật chính của chính phủ liên bang về môi trường và bảo tồn. Đạo luật bảo vệ các loài bị đe dọa, các cộng đồng sinh thái bị đe dọa, và các khu vực di sản thế giới.
+                            </p>
+                            <div class="animal-tags">
+                                <span class="animal-tag">Luật quốc gia</span>
+                                <span class="animal-tag">Bảo vệ môi trường</span>
+                                <span class="animal-tag">Australia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enforcement Section -->
+        <section class="conservation-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Thực thi Luật pháp và Chính sách</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="threats-section">
+                    <div class="threats-info">
+                        <h3>Thách thức trong thực thi luật pháp bảo tồn</h3>
+                        <p>
+                            Mặc dù đã có nhiều luật pháp và chính sách bảo tồn được ban hành, việc thực thi chúng vẫn gặp nhiều thách thức. Hiệu quả của việc bảo tồn động vật hoang dã phụ thuộc vào khả năng thực thi luật pháp một cách nghiêm túc và nhất quán.
+                        </p>
+
+                        <div class="threats-list">
+                            <div class="threat-item">
+                                <div class="threat-icon" style="background-color: #e8f5e9; color: #2e7d32;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                                <div class="threat-content">
+                                    <h4>Thiếu nguồn lực</h4>
+                                    <p>
+                                        Nhiều quốc gia, đặc biệt là các nước đang phát triển, thiếu nguồn lực tài chính, nhân lực và kỹ thuật để thực thi hiệu quả các luật bảo tồn. Điều này dẫn đến việc kiểm soát săn bắt trái phép và buôn bán động vật hoang dã không hiệu quả.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="threat-item">
+                                <div class="threat-icon" style="background-color: #e8f5e9; color: #2e7d32;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="threat-content">
+                                    <h4>Tham nhũng và lợi ích kinh tế</h4>
+                                    <p>
+                                        Tham nhũng trong các cơ quan thực thi pháp luật và lợi ích kinh tế từ buôn bán động vật hoang dã trái phép có thể làm suy yếu nỗ lực thực thi luật pháp. Buôn bán động vật hoang dã trái phép là một ngành công nghiệp trị giá hàng tỷ đô la, tạo động lực mạnh mẽ cho các hoạt động bất hợp pháp.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="threat-item">
+                                <div class="threat-icon" style="background-color: #e8f5e9; color: #2e7d32;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M2 12h20"></path>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    </svg>
+                                </div>
+                                <div class="threat-content">
+                                    <h4>Thiếu hợp tác quốc tế</h4>
+                                    <p>
+                                        Buôn bán động vật hoang dã trái phép thường là một vấn đề xuyên biên giới, đòi hỏi sự hợp tác giữa các quốc gia. Tuy nhiên, sự hợp tác này không phải lúc nào cũng hiệu quả do khác biệt về ưu tiên, nguồn lực và cam kết chính trị.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="threat-item">
+                                <div class="threat-icon" style="background-color: #e8f5e9; color: #2e7d32;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                                    </svg>
+                                </div>
+                                <div class="threat-content">
+                                    <h4>Nhận thức cộng đồng thấp</h4>
+                                    <p>
+                                        Nhiều cộng đồng không nhận thức đầy đủ về tầm quan trọng của việc bảo tồn động vật hoang dã hoặc về các luật pháp bảo vệ chúng. Điều này có thể dẫn đến việc không tuân thủ luật pháp do thiếu hiểu biết.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="threats-image">
+                        <img src="https://mtcs.1cdn.vn/2025/01/02/z2.jpg" alt="Thực thi luật pháp bảo tồn">
+                    </div>
+                </div>
+
+                <div class="conservation-methods">
+                    <h3>Giải pháp nâng cao hiệu quả thực thi</h3>
+
+                    <div class="methods-grid">
+                        <div class="method-card">
+                            <h4>Tăng cường nguồn lực</h4>
+                            <p>
+                                Đầu tư nhiều hơn vào việc đào tạo và trang bị cho các cán bộ kiểm lâm, hải quan và các cơ quan thực thi pháp luật khác. Tăng cường sử dụng công nghệ như camera giám sát, drone và phần mềm nhận dạng để phát hiện các hoạt động bất hợp pháp.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Tăng cường hợp tác quốc tế</h4>
+                            <p>
+                                Thúc đẩy hợp tác giữa các quốc gia trong việc chia sẻ thông tin, phối hợp điều tra và truy tố các tội phạm liên quan đến động vật hoang dã. Tăng cường vai trò của các tổ chức quốc tế như INTERPOL và Tổ chức Hải quan Thế giới.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Nâng cao nhận thức cộng đồng</h4>
+                            <p>
+                                Triển khai các chiến dịch giáo dục và nâng cao nhận thức để thông báo cho công chúng về tầm quan trọng của việc bảo tồn động vật hoang dã và các luật pháp bảo vệ chúng. Khuyến khích sự tham gia của cộng đồng trong các nỗ lực bảo tồn.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Tăng cường chế tài xử phạt</h4>
+                            <p>
+                                Áp dụng các hình phạt nghiêm khắc hơn đối với các vi phạm luật bảo tồn động vật hoang dã để tăng tính răn đe. Đảm bảo rằng các hình phạt tương xứng với mức độ nghiêm trọng của tội phạm và tác động đến các loài bị đe dọa.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Phát triển sinh kế thay thế</h4>
+                            <p>
+                                Phát triển các cơ hội sinh kế thay thế cho các cộng đồng phụ thuộc vào săn bắn và buôn bán động vật hoang dã. Điều này có thể bao gồm du lịch sinh thái, nông nghiệp bền vững, và các ngành nghề thủ công.
+                            </p>
+                        </div>
+
+                        <div class="method-card">
+                            <h4>Giám sát và đánh giá</h4>
+                            <p>
+                                Thiết lập các hệ thống giám sát và đánh giá hiệu quả để theo dõi tiến độ thực hiện các luật pháp và chính sách bảo tồn. Điều chỉnh các chiến lược thực thi dựa trên kết quả đánh giá để cải thiện hiệu quả.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="take-action">
+                    <h3>Vai trò của cá nhân</h3>
+                    <p>
+                        Mỗi cá nhân đều có thể đóng góp vào việc thực thi luật pháp bảo tồn thông qua việc tuân thủ luật pháp, báo cáo các hoạt động bất hợp pháp, không mua các sản phẩm từ động vật hoang dã bị đe dọa, và nâng cao nhận thức trong cộng đồng.
+                    </p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Policies Section -->
+        <section class="introduction">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Xu hướng chính sách trong tương lai</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="intro-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Tích hợp bảo tồn và phát triển</h3>
+                        <p>
+                            Các chính sách trong tương lai sẽ ngày càng tích hợp mục tiêu bảo tồn với phát triển kinh tế và xã hội, thúc đẩy các mô hình phát triển bền vững có lợi cho cả con người và động vật hoang dã.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12h20"></path>
+                                <path d="M12 2v20"></path>
+                                <path d="M20 16l-4-4 4-4"></path>
+                                <path d="M4 8l4 4-4 4"></path>
+                            </svg>
+                        </div>
+                        <h3>Ứng phó với biến đổi khí hậu</h3>
+                        <p>
+                            Các chính sách bảo tồn sẽ ngày càng tập trung vào việc giúp các loài và hệ sinh thái thích ứng với biến đổi khí hậu, bao gồm việc thiết lập các hành lang sinh thái và khu vực bảo tồn có khả năng chống chịu với khí hậu.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h3>Công nghệ và đổi mới</h3>
+                        <p>
+                            Các chính sách sẽ tận dụng công nghệ mới như trí tuệ nhân tạo, dữ liệu lớn và blockchain để cải thiện việc giám sát, thực thi và truy xuất nguồn gốc trong bảo tồn động vật hoang dã.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Tham gia của cộng đồng</h3>
+                        <p>
+                            Các chính sách bảo tồn sẽ ngày càng nhấn mạnh vào sự tham gia của cộng đồng địa phương và người dân bản địa, công nhận kiến thức truyền thống và quyền của họ trong quản lý tài nguyên thiên nhiên.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="view-all" style="margin-top: 40px;">
+                    <a href="conservation.html" class="button primary-button">Tìm hiểu thêm về bảo tồn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year">2025</span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // Tab Functionality
+            const tabs = document.querySelectorAll('.tab');
+            if (tabs.length > 0) {
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        // Remove active class from all tabs
+                        tabs.forEach(t => t.classList.remove('active'));
+                        
+                        // Add active class to clicked tab
+                        this.classList.add('active');
+                        
+                        // Hide all tab panes
+                        const tabPanes = document.querySelectorAll('.tab-pane');
+                        tabPanes.forEach(pane => pane.classList.remove('active'));
+                        
+                        // Show the corresponding tab pane
+                        const tabId = this.getAttribute('data-tab');
+                        const activePane = document.getElementById(tabId);
+                        if (activePane) {
+                            activePane.classList.add('active');
+                        }
+                    });
+                });
+            }
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (backToTopButton) {
+                // Show/hide button based on scroll position
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                // Scroll to top when button is clicked
+                backToTopButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

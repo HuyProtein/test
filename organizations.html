@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổ chức bảo tồn - Wildlife</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        .habitat-hero {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.habitat-hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.habitat-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease forwards;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.main-header {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c5f2d;
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #2c5f2d;
+}
+
+.mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Main Content Styles */
+.page-header {
+    padding: 120px 0 60px;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c5f2d;
+    font-size: 32px;
+}
+
+/* Organizations Grid */
+.organizations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.organization-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.organization-card:hover {
+    transform: translateY(-5px);
+}
+
+.organization-logo img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    padding: 20px;
+}
+
+.organization-content {
+    padding: 20px;
+}
+
+.organization-content h3 {
+    color: #2c5f2d;
+    margin-bottom: 15px;
+}
+
+.organization-focus {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* Button Styles */
+.button {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.primary-button {
+    background: #2c5f2d;
+    color: white;
+}
+
+.primary-button:hover {
+    background: #1e401f;
+}
+
+.secondary-button {
+    background: #f8f9fa;
+    color: #2c5f2d;
+    border: 2px solid #2c5f2d;
+}
+
+.secondary-button:hover {
+    background: #2c5f2d;
+    color: white;
+}
+
+/* Support Section */
+.support-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.support-text {
+    flex: 1;
+}
+
+.support-image img {
+    width: 100%;
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+.support-list {
+    margin: 20px 0;
+    list-style: none;
+}
+
+.support-list li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.support-list li::before {
+    content: "•";
+    color: #2c5f2d;
+    position: absolute;
+    left: 0;
+}
+
+/* Footer Styles */
+
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer-about p {
+    margin: 15px 0;
+}
+
+
+
+.footer-links ul,
+.footer-resources ul {
+    list-style: none;
+}
+
+.footer-links a,
+.footer-resources a {
+    color: white;
+    text-decoration: none;
+    line-height: 2;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-item svg {
+    flex-shrink: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-list {
+        display: none;
+    }
+    
+    .mobile-menu-button {
+        display: block;
+    }
+    
+    .support-content {
+        flex-direction: column;
+    }
+    
+    .organizations-intro {
+        flex-direction: column;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+.back-to-top.show {
+    opacity: 1;
+}
+    </style>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+         <!-- Page Header -->
+         <section class="habitat-hero">
+            <div class="container">
+                <div class="habitat-hero-content">
+                    <p> </p>
+                    <p>   </p>
+                    <h1>Tổ chức bảo tồn</h1>
+                    <p >Khám phá các tổ chức đang nỗ lực bảo vệ động vật hoang dã và môi trường sống của chúng</p>
+            </div>
+        </section>
+       
+
+        <section class="organizations-intro-section">
+            <div class="container">
+                <div class="organizations-intro">
+                    <div class="organizations-intro-content">
+                        <h2>Các tổ chức bảo tồn động vật hoang dã</h2>
+                        <p>
+                            Các tổ chức bảo tồn đóng vai trò quan trọng trong việc bảo vệ các loài động vật hoang dã và môi trường sống của chúng. Từ các tổ chức quốc tế lớn đến các nhóm địa phương nhỏ, họ đều đang nỗ lực để ngăn chặn nạn săn bắt trái phép, bảo vệ môi trường sống, phục hồi các quần thể động vật bị suy giảm và nâng cao nhận thức về tầm quan trọng của đa dạng sinh học.
+                        </p>
+                        <p>
+                            Trang này giới thiệu các tổ chức bảo tồn hàng đầu đang hoạt động ở Việt Nam và trên thế giới, cùng với thông tin về cách bạn có thể hỗ trợ công việc của họ.
+                        </p>
+                    </div>
+                    <div class="organizations-intro-image">
+                        <img src="https://media.thuonghieucongluan.vn/uploads/2018_01_22/16-to-chuc-tham-gia-ki-vao-thu-keu-goi-1516606713.png" alt="Tổ chức bảo tồn động vật hoang dã" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="international-organizations-section">
+            <div class="container">
+                <h2 class="section-title">Tổ chức quốc tế</h2>
+                
+                <div class="organizations-grid">
+                    <div class="organization-card">
+                        <div class="organization-logo">
+                            <img src="https://mcg.com.vn/wp-content/uploads/2016/06/wwf-01.jpg" alt="WWF Logo" loading="lazy">
+                        </div>
+                        <div class="organization-content">
+                            <h3>Quỹ Quốc tế Bảo vệ Thiên nhiên (WWF)</h3>
+                            <p>
+                                WWF là một trong những tổ chức bảo tồn lớn nhất và được tôn trọng nhất thế giới. Họ hoạt động ở hơn 100 quốc gia và có sứ mệnh ngăn chặn sự suy thoái của môi trường tự nhiên trên Trái đất và xây dựng một tương lai nơi con người sống hài hòa với thiên nhiên.
+                            </p>
+                            <div class="organization-focus">
+                                <h4>Trọng tâm:</h4>
+                                <ul>
+                                    <li>Bảo tồn các loài đang bị đe dọa</li>
+                                    <li>Bảo vệ các hệ sinh thái quan trọng</li>
+                                    <li>Thúc đẩy phát triển bền vững</li>
+                                    <li>Giải quyết biến đổi khí hậu</li>
+                                </ul>
+                            </div>
+                            <a href="https://www.worldwildlife.org/" target="_blank" class="button secondary-button">Truy cập trang web</a>
+                        </div>
+                    </div>
+                    
+                    <div class="organization-card">
+                        <div class="organization-logo">
+                            <img src="https://static.ybox.vn/2021/4/2/1617676512103-Emily%20In%20Paris.png" alt="IUCN Logo" loading="lazy">
+                        </div>
+                        <div class="organization-content">
+                            <h3>Liên minh Bảo tồn Thiên nhiên Quốc tế (IUCN)</h3>
+                            <p>
+                                IUCN là một tổ chức quốc tế làm việc trong lĩnh vực bảo tồn thiên nhiên và sử dụng bền vững tài nguyên thiên nhiên. Họ nổi tiếng với Danh sách Đỏ về các loài bị đe dọa, một công cụ quan trọng để đánh giá tình trạng bảo tồn của các loài động thực vật.
+                            </p>
+                            <div class="organization-focus">
+                                <h4>Trọng tâm:</h4>
+                                <ul>
+                                    <li>Đánh giá tình trạng bảo tồn của các loài</li>
+                                    <li>Thúc đẩy chính sách bảo tồn</li>
+                                    <li>Hỗ trợ nghiên cứu khoa học</li>
+                                    <li>Quản lý các khu bảo tồn</li>
+                                </ul>
+                            </div>
+                            <a href="https://www.iucn.org/" target="_blank" class="button secondary-button">Truy cập trang web</a>
+                        </div>
+                    </div>
+                    
+                    <div class="organization-card">
+                        <div class="organization-logo">
+                            <img src="https://static.ybox.vn/2019/2/4/1551289095793-11.jpg" alt="WCS Logo" loading="lazy">
+                        </div>
+                        <div class="organization-content">
+                            <h3>Hiệp hội Bảo tồn Động vật Hoang dã (WCS)</h3>
+                            <p>
+                                WCS là một tổ chức phi lợi nhuận có trụ sở tại New York, hoạt động để bảo tồn các loài động vật hoang dã và các vùng hoang dã trên toàn thế giới. Họ quản lý các dự án bảo tồn ở hơn 60 quốc gia và điều hành các vườn thú nổi tiếng ở New York.
+                            </p>
+                            <div class="organization-focus">
+                                <h4>Trọng tâm:</h4>
+                                <ul>
+                                    <li>Bảo vệ động vật hoang dã</li>
+                                    <li>Bảo tồn các vùng hoang dã</li>
+                                    <li>Nghiên cứu khoa học</li>
+                                    <li>Giáo dục và nâng cao nhận thức</li>
+                                </ul>
+                            </div>
+                            <a href="https://www.wcs.org/" target="_blank" class="button secondary-button">Truy cập trang web</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="local-organizations-section">
+            <div class="container">
+                <h2 class="section-title">Tổ chức trong nước</h2>
+                
+                <div class="organizations-grid">
+                    <div class="organization-card">
+                        <div class="organization-logo">
+                            <img src="https://vietnature.org/uploads/about/logo/tnvlogo.png" alt="VCF Logo" loading="lazy">
+                        </div>
+                        <div class="organization-content">
+                            <h3>Trung tâm Bảo tồn Thiên nhiên Việt (VCF)</h3>
+                            <p>
+                                VCF là một tổ chức phi chính phủ Việt Nam hoạt động trong lĩnh vực bảo tồn đa dạng sinh học và phát triển bền vững. Họ thực hiện các dự án bảo tồn các loài đặc hữu của Việt Nam và nâng cao nhận thức cộng đồng về bảo vệ môi trường.
+                            </p>
+                            <div class="organization-focus">
+                                <h4>Trọng tâm:</h4>
+                                <ul>
+                                    <li>Bảo tồn các loài đặc hữu Việt Nam</li>
+                                    <li>Phục hồi môi trường sống</li>
+                                    <li>Giáo dục môi trường</li>
+                                    <li>Phát triển cộng đồng bền vững</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="button secondary-button">Truy cập trang web</a>
+                        </div>
+                    </div>
+                    
+                    <div class="organization-card">
+                        <div class="organization-logo">
+                            <img src="https://vitabox.vn/wp-content/uploads/2022/05/1557709718969-SVW-LOGO-GREEN-01-300x158.png" alt="SVW Logo" loading="lazy">
+                        </div>
+                        <div class="organization-content">
+                            <h3>Tổ chức Bảo vệ Động vật Hoang dã Việt Nam (SVW)</h3>
+                            <p>
+                                SVW là một tổ chức phi chính phủ chuyên về bảo tồn các loài động vật hoang dã đang bị đe dọa ở Việt Nam. Họ tập trung vào việc chống buôn bán động vật hoang dã trái phép, cứu hộ và phục hồi các loài bị săn bắt, và nâng cao nhận thức cộng đồng.
+                            </p>
+                            <div class="organization-focus">
+                                <h4>Trọng tâm:</h4>
+                                <ul>
+                                    <li>Chống buôn bán động vật hoang dã</li>
+                                    <li>Cứu hộ và phục hồi động vật</li>
+                                    <li>Giáo dục cộng đồng</li>
+                                    <li>Nghiên cứu bảo tồn</li>
+                                </ul>
+                            </div>
+                            <a href="https://www.savevietnamswildlife.org/" target="_blank" class="button secondary-button">Truy cập trang web</a>
+                        </div>
+                    </div>
+                    
+                    <div class="organization-card">
+                        <div class="organization-logo">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxpFGZ10fBWpAiKDtUZeyJ8kRb0b2x_t8hYw&s" alt="PanNature Logo" loading="lazy">
+                        </div>
+                        <div class="organization-content">
+                            <h3>Trung tâm Con người và Thiên nhiên (PanNature)</h3>
+                            <p>
+                                PanNature là một tổ chức phi lợi nhuận Việt Nam hoạt động để bảo vệ môi trường, bảo tồn đa dạng sinh học và thúc đẩy phát triển bền vững. Họ thực hiện các dự án nghiên cứu, vận động chính sách và nâng cao năng lực cộng đồng.
+                            </p>
+                            <div class="organization-focus">
+                                <h4>Trọng tâm:</h4>
+                                <ul>
+                                    <li>Quản lý tài nguyên thiên nhiên</li>
+                                    <li>Bảo tồn đa dạng sinh học</li>
+                                    <li>Vận động chính sách môi trường</li>
+                                    <li>Phát triển cộng đồng bền vững</li>
+                                </ul>
+                            </div>
+                            <a href="https://www.nature.org.vn/" target="_blank" class="button secondary-button">Truy cập trang web</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="support-organizations-section">
+            <div class="container">
+                <div class="support-content">
+                    <div class="support-text">
+                        <h2>Cách hỗ trợ các tổ chức bảo tồn</h2>
+                        <p>
+                            Có nhiều cách để bạn có thể hỗ trợ công việc của các tổ chức bảo tồn động vật hoang dã. Dưới đây là một số cách bạn có thể đóng góp:
+                        </p>
+                        <ul class="support-list">
+                            <li>
+                                <strong>Quyên góp tài chính:</strong> Đóng góp tài chính trực tiếp cho các tổ chức bảo tồn để hỗ trợ các dự án của họ.
+                            </li>
+                            <li>
+                                <strong>Tình nguyện viên:</strong> Tham gia làm tình nguyện viên cho các tổ chức bảo tồn, cả trực tiếp và từ xa.
+                            </li>
+                            <li>
+                                <strong>Nhận nuôi tượng trưng:</strong> Nhiều tổ chức cung cấp chương trình nhận nuôi tượng trưng các loài động vật để hỗ trợ bảo tồn.
+                            </li>
+                            <li>
+                                <strong>Mua sắm có trách nhiệm:</strong> Hỗ trợ các sản phẩm thân thiện với môi trường và tránh các sản phẩm có nguồn gốc từ động vật hoang dã.
+                            </li>
+                            <li>
+                                <strong>Nâng cao nhận thức:</strong> Chia sẻ thông tin về bảo tồn động vật hoang dã với bạn bè và gia đình.
+                            </li>
+                            <li>
+                                <strong>Vận động chính sách:</strong> Ủng hộ các chính sách bảo vệ động vật hoang dã và môi trường sống của chúng.
+                            </li>
+                        </ul>
+                        <a href="../donate.html" class="button primary-button">Tìm hiểu thêm về cách ủng hộ</a>
+                    </div>
+                    <div class="support-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNiZigT0kqnF7UUihrUwo2yzR-8z9US1qdEQ&s" alt="Hỗ trợ bảo tồn động vật hoang dã" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh,Thị xã Hoàng Mai,Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+

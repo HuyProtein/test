@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản đồ phân bố - Khám phá thế giới Động vật Hoang dã</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles riêng cho trang map */
+        .map-container {
+            padding: 40px 0;
+        }
+
+        .map-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .filter-button {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-button:hover {
+            background-color: #e8f5e9;
+        }
+
+        .filter-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+        }
+
+        #world-map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .legend-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .animal-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            overflow: hidden;
+            display: none;
+        }
+
+        .animal-info-header {
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .animal-info-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .animal-info-scientific {
+            font-style: italic;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .animal-info-content {
+            padding: 15px;
+        }
+
+        .animal-info-image {
+            width: 100%;
+            height: 150px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .animal-info-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .animal-info-description {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+
+        .animal-info-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .status-endangered {
+            background-color: #fee2e2;
+            color: #ef4444;
+        }
+
+        .status-vulnerable {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-least-concern {
+            background-color: #d1fae5;
+            color: #059669;
+        }
+
+        .animal-info-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .animal-info-meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .animal-info-meta-item svg {
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .animal-info-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .animal-info-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .animal-info-actions .button {
+            flex: 1;
+            font-size: 14px;
+            padding: 8px 12px;
+        }
+
+        .map-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .map-control-button {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: none;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .map-control-button:hover {
+            background-color: #f5f5f5;
+        }
+
+        .map-search {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 300px;
+            z-index: 10;
+        }
+
+        .map-search-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        .map-search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .search-result-title {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .search-result-category {
+            font-size: 12px;
+            color: var(--gray-color);
+        }
+
+        .species-list {
+            margin-top: 40px;
+        }
+
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .species-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .species-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .species-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .species-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .species-card:hover .species-image img {
+            transform: scale(1.05);
+        }
+
+        .species-info {
+            padding: 15px;
+        }
+
+        .species-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .species-scientific {
+            font-style: italic;
+            font-size: 14px;
+            color: var(--gray-color);
+            margin-bottom: 10px;
+        }
+
+        .species-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .species-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .species-location {
+            font-size: 14px;
+            color: var(--gray-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .map-wrapper {
+                height: 400px;
+            }
+
+            .map-search {
+                width: calc(100% - 40px);
+            }
+
+            .animal-info-panel {
+                width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Bản đồ phân bố</h1>
+                <p>Khám phá sự phân bố của các loài động vật hoang dã trên khắp thế giới</p>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-container">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Bản đồ phân bố động vật hoang dã</h2>
+                    <div class="underline"></div>
+                    <p>Khám phá sự phân bố của các loài động vật hoang dã trên toàn cầu và tìm hiểu về môi trường sống tự nhiên của chúng</p>
+                </div>
+
+                <div class="map-filters">
+                    <button class="filter-button active" data-filter="all">Tất cả</button>
+                    <button class="filter-button" data-filter="mammals">Động vật có vú</button>
+                    <button class="filter-button" data-filter="birds">Chim</button>
+                    <button class="filter-button" data-filter="reptiles">Bò sát</button>
+                    <button class="filter-button" data-filter="amphibians">Lưỡng cư</button>
+                    <button class="filter-button" data-filter="fish">Cá</button>
+                    <button class="filter-button" data-filter="insects">Côn trùng</button>
+                </div>
+
+                <div class="map-wrapper">
+                    <!-- Map Search -->
+                    <div class="map-search">
+                        <input type="text" class="map-search-input" id="map-search-input" placeholder="Tìm kiếm loài động vật...">
+                        <div class="map-search-results" id="map-search-results">
+                            <!-- Search results will be added here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Map Controls -->
+                    <div class="map-controls">
+                        <button class="map-control-button" id="zoom-in">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                        <button class="map-control-button" id="zoom-out">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                        <button class="map-control-button" id="reset-map">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                                <path d="M3 3v5h5"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Map Legend -->
+                    <div class="map-legend">
+                        <div class="legend-title">Tình trạng bảo tồn</div>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #ef4444;"></div>
+                                <span>Cực kỳ nguy cấp (CR)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #f97316;"></div>
+                                <span>Nguy cấp (EN)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #f59e0b;"></div>
+                                <span>Sắp nguy cấp (VU)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #10b981;"></div>
+                                <span>Ít quan tâm (LC)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #6b7280;"></div>
+                                <span>Thiếu dữ liệu (DD)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Animal Info Panel -->
+                    <div class="animal-info-panel" id="animal-info-panel">
+                        <button class="animal-info-close" id="animal-info-close">&times;</button>
+                        <div class="animal-info-header">
+                            <h3 class="animal-info-title" id="animal-info-title">Tên động vật</h3>
+                            <p class="animal-info-scientific" id="animal-info-scientific">Tên khoa học</p>
+                        </div>
+                        <div class="animal-info-content">
+                            <div class="animal-info-image">
+                                <img id="animal-info-image" src="/placeholder.svg?height=150&width=270" alt="Hình ảnh động vật">
+                            </div>
+                            <div class="animal-info-status" id="animal-info-status">Tình trạng bảo tồn</div>
+                            <p class="animal-info-description" id="animal-info-description">Mô tả về loài động vật.</p>
+                            <div class="animal-info-meta">
+                                <div class="animal-info-meta-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span id="animal-info-habitat">Môi trường sống</span>
+                                </div>
+                                <div class="animal-info-meta-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                                    </svg>
+                                    <span id="animal-info-diet">Chế độ ăn</span>
+                                </div>
+                                <div class="animal-info-meta-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span id="animal-info-lifespan">Tuổi thọ</span>
+                                </div>
+                            </div>
+                            <div class="animal-info-actions">
+                                <a href="#" class="button outline-button" id="animal-info-more">Tìm hiểu thêm</a>
+                                <a href="#" class="button primary-button" id="animal-info-conservation">Bảo tồn</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- World Map -->
+                    <div id="world-map">
+                        <!-- Map will be loaded here by JavaScript -->
+                        <img src="/placeholder.svg?height=600&width=1200&text=World+Map" alt="Bản đồ thế giới" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Species List Section -->
+        <section class="species-list">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Các loài nổi bật</h2>
+                    <div class="underline"></div>
+                    <p>Khám phá thông tin về các loài động vật hoang dã nổi bật từ khắp nơi trên thế giới</p>
+                </div>
+
+                <div class="species-grid" id="species-grid">
+                    <!-- Species cards will be added here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Habitat Section -->
+        <section class="habitat-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Các môi trường sống chính</h2>
+                    <div class="underline"></div>
+                    <p>Tìm hiểu về các môi trường sống đa dạng và các loài động vật sinh sống trong chúng</p>
+                </div>
+
+                <div class="habitats-grid">
+                    <div class="habitat-card">
+                        <div class="habitat-image">
+                            <img src="/placeholder.svg?height=200&width=400&text=Rainforest" alt="Rừng nhiệt đới">
+                        </div>
+                        <div class="habitat-info">
+                            <h3>Rừng nhiệt đới</h3>
+                            <p>Rừng nhiệt đới là nơi sinh sống của hơn 50% các loài động vật trên Trái Đất, với sự đa dạng sinh học phong phú nhất trên hành tinh.</p>
+                            <a href="habitats.html" class="button outline-button">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+
+                    <div class="habitat-card">
+                        <div class="habitat-image">
+                            <img src="/placeholder.svg?height=200&width=400&text=Savanna" alt="Đồng cỏ Savanna">
+                        </div>
+                        <div class="habitat-info">
+                            <h3>Đồng cỏ Savanna</h3>
+                            <p>Đồng cỏ Savanna là nơi sinh sống của nhiều loài động vật lớn như sư tử, voi, hươu cao cổ và ngựa vằn, chủ yếu ở châu Phi.</p>
+                            <a href="habitats.html" class="button outline-button">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+
+                    <div class="habitat-card">
+                        <div class="habitat-image">
+                            <img src="/placeholder.svg?height=200&width=400&text=Ocean" alt="Đại dương">
+                        </div>
+                        <div class="habitat-info">
+                            <h3>Đại dương</h3>
+                            <p>Đại dương chiếm 71% bề mặt Trái Đất và là nơi sinh sống của hàng triệu loài sinh vật, từ sinh vật phù du nhỏ bé đến cá voi khổng lồ.</p>
+                            <a href="habitats.html" class="button outline-button">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+
+                    <div class="habitat-card">
+                        <div class="habitat-image">
+                            <img src="/placeholder.svg?height=200&width=400&text=Arctic" alt="Vùng Bắc Cực">
+                        </div>
+                        <div class="habitat-info">
+                            <h3>Vùng Bắc Cực</h3>
+                            <p>Vùng Bắc Cực là nơi sinh sống của các loài động vật đã thích nghi với điều kiện khắc nghiệt như gấu Bắc Cực, hải cẩu và chim cánh cụt.</p>
+                            <a href="habitats.html" class="button outline-button">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        // Dữ liệu mẫu cho các loài động vật
+        const animalsData = [
+            {
+                id: 1,
+                name: "Hổ Bengal",
+                scientificName: "Panthera tigris tigris",
+                description: "Hổ Bengal là một trong những loài mèo lớn nhất thế giới, sống chủ yếu ở các khu rừng Ấn Độ, Nepal, Bhutan và Bangladesh.",
+                status: "endangered",
+                statusText: "Nguy cấp",
+                image: "/placeholder.svg?height=150&width=270&text=Tiger",
+                habitat: "Rừng nhiệt đới, đầm lầy, đồng cỏ",
+                diet: "Ăn thịt (nai, lợn rừng, trâu rừng)",
+                lifespan: "8-10 năm trong tự nhiên, 16-18 năm trong nuôi nhốt",
+                locations: ["Ấn Độ", "Nepal", "Bhutan", "Bangladesh"],
+                category: "mammals",
+                coordinates: { lat: 20.5937, lng: 78.9629 }
+            },
+            {
+                id: 2,
+                name: "Đại bàng đầu trắc",
+                scientificName: "Haliaeetus leucocephalus",
+                description: "Đại bàng đầu trắc là biểu tượng quốc gia của Hoa Kỳ, là loài chim săn mồi lớn với đầu và đuôi màu trắng đặc trưng.",
+                status: "least-concern",
+                statusText: "Ít quan tâm",
+                image: "/placeholder.svg?height=150&width=270&text=Eagle",
+                habitat: "Rừng gần hồ, sông và vùng biển",
+                diet: "Ăn thịt (cá, chim, động vật nhỏ)",
+                lifespan: "20-30 năm trong tự nhiên",
+                locations: ["Hoa Kỳ", "Canada", "Mexico"],
+                category: "birds",
+                coordinates: { lat: 37.0902, lng: -95.7129 }
+            },
+            {
+                id: 3,
+                name: "Rắn hổ mang chúa",
+                scientificName: "Ophiophagus hannah",
+                description: "Rắn hổ mang chúa là loài rắn độc dài nhất thế giới, có thể đạt tới 5.5 mét. Chúng sống chủ yếu ở các khu rừng Đông Nam Á.",
+                status: "vulnerable",
+                statusText: "Sắp nguy cấp",
+                image: "/placeholder.svg?height=150&width=270&text=Snake",
+                habitat: "Rừng nhiệt đới, đồng bằng",
+                diet: "Ăn thịt (chủ yếu là rắn khác)",
+                lifespan: "15-20 năm",
+                locations: ["Thái Lan", "Việt Nam", "Philippines", "Indonesia"],
+                category: "reptiles",
+                coordinates: { lat: 15.8700, lng: 100.9925 }
+            },
+            {
+                id: 4,
+                name: "Ếch phi tiêu độc xanh dương",
+                scientificName: "Dendrobates azureus",
+                description: "Ếch phi tiêu độc xanh dương là một trong những loài ếch độc nhất thế giới, với làn da xanh dương rực rỡ chứa độc tố mạnh.",
+                status: "vulnerable",
+                statusText: "Sắp nguy cấp",
+                image: "/placeholder.svg?height=150&width=270&text=Frog",
+                habitat: "Rừng mưa nhiệt đới",
+                diet: "Ăn côn trùng nhỏ",
+                lifespan: "10-15 năm",
+                locations: ["Brazil", "Colombia", "Suriname"],
+                category: "amphibians",
+                coordinates: { lat: -14.2350, lng: -51.9253 }
+            },
+            {
+                id: 5,
+                name: "Cá mập trắng lớn",
+                scientificName: "Carcharodon carcharias",
+                description: "Cá mập trắng lớn là một trong những loài cá săn mồi hàng đầu trong đại dương, nổi tiếng với kích thước khổng lồ và sức mạnh.",
+                status: "vulnerable",
+                statusText: "Sắp nguy cấp",
+                image: "/placeholder.svg?height=150&width=270&text=Shark",
+                habitat: "Đại dương ven biển và ngoài khơi",
+                diet: "Ăn thịt (hải cẩu, cá lớn, cá heo)",
+                lifespan: "70+ năm",
+                locations: ["Nam Phi", "Australia", "California", "Mexico"],
+                category: "fish",
+                coordinates: { lat: -30.5595, lng: 22.9375 }
+            },
+            {
+                id: 6,
+                name: "Bướm Morpho xanh",
+                scientificName: "Morpho peleides",
+                description: "Bướm Morpho xanh nổi tiếng với đôi cánh màu xanh lam rực rỡ, là một trong những loài bướm đẹp nhất thế giới.",
+                status: "least-concern",
+                statusText: "Ít quan tâm",
+                image: "/placeholder.svg?height=150&width=270&text=Butterfly",
+                habitat: "Rừng nhiệt đới",
+                diet: "Ăn mật hoa, trái cây thối",
+                lifespan: "115-120 ngày",
+                locations: ["Brazil", "Costa Rica", "Colombia", "Venezuela"],
+                category: "insects",
+                coordinates: { lat: -14.2350, lng: -51.9253 }
+            },
+            {
+                id: 7,
+                name: "Voi châu Phi",
+                scientificName: "Loxodonta africana",
+                description: "Voi châu Phi là loài động vật có vú trên cạn lớn nhất thế giới, nổi tiếng với đôi tai to và ngà dài.",
+                status: "endangered",
+                statusText: "Nguy cấp",
+                image: "/placeholder.svg?height=150&width=270&text=Elephant",
+                habitat: "Đồng cỏ Savanna, rừng thưa",
+                diet: "Ăn cỏ, lá cây, vỏ cây",
+                lifespan: "60-70 năm",
+                locations: ["Kenya", "Tanzania", "Botswana", "Zimbabwe"],
+                category: "mammals",
+                coordinates: { lat: -0.0236, lng: 37.9062 }
+            },
+            {
+                id: 8,
+                name: "Chim hồng hạc",
+                scientificName: "Phoenicopterus roseus",
+                description: "Chim hồng hạc nổi tiếng với bộ lông màu hồng rực rỡ và đôi chân dài, thường sống thành đàn lớn tại các vùng nước nông.",
+                status: "least-concern",
+                statusText: "Ít quan tâm",
+                image: "/placeholder.svg?height=150&width=270&text=Flamingo",
+                habitat: "Hồ nước mặn, đầm lầy",
+                diet: "Ăn tảo, giáp xác nhỏ",
+                lifespan: "20-30 năm",
+                locations: ["Kenya", "Tanzania", "Nam Phi", "Ấn Độ"],
+                category: "birds",
+                coordinates: { lat: -0.0236, lng: 37.9062 }
+            },
+            {
+                id: 9,
+                name: "Cá heo mũi chai",
+                scientificName: "Tursiops truncatus",
+                description: "Cá heo mũi chai là một trong những loài cá heo thông minh nhất, nổi tiếng với khả năng giao tiếp phức tạp và tính cách thân thiện.",
+                status: "least-concern",
+                statusText: "Ít quan tâm",
+                image: "/placeholder.svg?height=150&width=270&text=Dolphin",
+                habitat: "Đại dương ven biển và ngoài khơi",
+                diet: "Ăn cá, mực, tôm",
+                lifespan: "40-60 năm",
+                locations: ["Toàn cầu - vùng biển ôn đới và nhiệt đới"],
+                category: "mammals",
+                coordinates: { lat: 0, lng: 0 }
+            }
+        ];
+
+        // Biến toàn cục
+        let activeFilter = "all";
+        let selectedAnimal = null;
+
+        // Khởi tạo trang
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hiển thị danh sách loài
+            renderSpecies();
+
+            // Xử lý sự kiện cho các nút lọc
+            const filterButtons = document.querySelectorAll(".filter-button");
+            filterButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    activeFilter = this.dataset.filter;
+                    
+                    // Cập nhật trạng thái active
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                    
+                    // Hiển thị lại danh sách loài
+                    renderSpecies();
+                });
+            });
+
+            // Xử lý sự kiện đóng panel thông tin
+            document.getElementById("animal-info-close").addEventListener("click", closeAnimalInfo);
+
+            // Xử lý sự kiện tìm kiếm
+            const searchInput = document.getElementById("map-search-input");
+            searchInput.addEventListener("input", function() {
+                const searchTerm = this.value.trim().toLowerCase();
+                if (searchTerm.length >= 2) {
+                    showSearchResults(searchTerm);
+                } else {
+                    hideSearchResults();
+                }
+            });
+
+            // Xử lý sự kiện click bên ngoài kết quả tìm kiếm
+            document.addEventListener("click", function(event) {
+                if (!event.target.closest(".map-search") && !event.target.closest(".map-search-results")) {
+                    hideSearchResults();
+                }
+            });
+
+            // Xử lý sự kiện các nút điều khiển bản đồ
+            document.getElementById("zoom-in").addEventListener("click", function() {
+                // Xử lý phóng to bản đồ
+                alert("Phóng to bản đồ");
+            });
+
+            document.getElementById("zoom-out").addEventListener("click", function() {
+                // Xử lý thu nhỏ bản  function() {
+                // Xử lý thu nhỏ bản đồ
+                alert("Thu nhỏ bản đồ");
+            });
+
+            document.getElementById("reset-map").addEventListener("click", function() {
+                // Xử lý đặt lại bản đồ
+                alert("Đặt lại bản đồ");
+            });
+
+            // Xử lý nút back-to-top
+            const backToTopButton = document.getElementById("back-to-top");
+            window.addEventListener("scroll", function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add("visible");
+                } else {
+                    backToTopButton.classList.remove("visible");
+                }
+            });
+            
+            backToTopButton.addEventListener("click", function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            // Xử lý menu mobile
+            const mobileMenuButton = document.getElementById("mobile-menu-button");
+            const mobileMenu = document.getElementById("mobile-menu");
+            
+            mobileMenuButton.addEventListener("click", function() {
+                mobileMenu.classList.toggle("active");
+            });
+
+            // Set current year in footer
+            document.getElementById("current-year").textContent = new Date().getFullYear();
+        });
+
+        // Hiển thị danh sách loài
+        function renderSpecies() {
+            const speciesGrid = document.getElementById("species-grid");
+            
+            // Lọc loài theo danh mục
+            const filteredSpecies = activeFilter === "all" 
+                ? animalsData 
+                : animalsData.filter(item => item.category === activeFilter);
+            
+            // Xóa nội dung cũ
+            speciesGrid.innerHTML = "";
+            
+            // Thêm các loài mới
+            filteredSpecies.forEach(animal => {
+                const speciesCard = document.createElement("div");
+                speciesCard.className = "species-card";
+                speciesCard.dataset.id = animal.id;
+                
+                speciesCard.innerHTML = `
+                    <div class="species-image">
+                        <img src="${animal.image}" alt="${animal.name}">
+                    </div>
+                    <div class="species-info">
+                        <h3 class="species-title">${animal.name}</h3>
+                        <p class="species-scientific">${animal.scientificName}</p>
+                        <div class="species-meta">
+                            <span class="species-status status-${animal.status}">${animal.statusText}</span>
+                            <span class="species-location">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                ${animal.locations[0]}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                
+                speciesCard.addEventListener("click", function() {
+                    showAnimalInfo(animal.id);
+                });
+                
+                speciesGrid.appendChild(speciesCard);
+            });
+        }
+
+        // Hiển thị thông tin chi tiết về loài
+        function showAnimalInfo(animalId) {
+            const animal = animalsData.find(item => item.id === animalId);
+            if (!animal) return;
+            
+            selectedAnimal = animal;
+            
+            // Cập nhật nội dung panel
+            document.getElementById("animal-info-title").textContent = animal.name;
+            document.getElementById("animal-info-scientific").textContent = animal.scientificName;
+            document.getElementById("animal-info-image").src = animal.image;
+            document.getElementById("animal-info-image").alt = animal.name;
+            
+            const statusElement = document.getElementById("animal-info-status");
+            statusElement.textContent = animal.statusText;
+            statusElement.className = `animal-info-status status-${animal.status}`;
+            
+            document.getElementById("animal-info-description").textContent = animal.description;
+            document.getElementById("animal-info-habitat").textContent = animal.habitat;
+            document.getElementById("animal-info-diet").textContent = animal.diet;
+            document.getElementById("animal-info-lifespan").textContent = animal.lifespan;
+            
+            document.getElementById("animal-info-more").href = `animals.html?id=${animal.id}`;
+            document.getElementById("animal-info-conservation").href = `conservation.html?species=${animal.id}`;
+            
+            // Hiển thị panel
+            document.getElementById("animal-info-panel").style.display = "block";
+        }
+
+        // Đóng panel thông tin
+        function closeAnimalInfo() {
+            document.getElementById("animal-info-panel").style.display = "none";
+            selectedAnimal = null;
+        }
+
+        // Hiển thị kết quả tìm kiếm
+        function showSearchResults(searchTerm) {
+            const resultsContainer = document.getElementById("map-search-results");
+            
+            // Tìm kiếm các loài phù hợp
+            const matchedAnimals = animalsData.filter(animal => 
+                animal.name.toLowerCase().includes(searchTerm) || 
+                animal.scientificName.toLowerCase().includes(searchTerm)
+            );
+            
+            // Xóa kết quả cũ
+            resultsContainer.innerHTML = "";
+            
+            // Thêm kết quả mới
+            if (matchedAnimals.length > 0) {
+                matchedAnimals.forEach(animal => {
+                    const resultItem = document.createElement("div");
+                    resultItem.className = "search-result-item";
+                    resultItem.innerHTML = `
+                        <div class="search-result-title">${animal.name}</div>
+                        <div class="search-result-category">${getCategoryName(animal.category)}</div>
+                    `;
+                    
+                    resultItem.addEventListener("click", function() {
+                        showAnimalInfo(animal.id);
+                        hideSearchResults();
+                    });
+                    
+                    resultsContainer.appendChild(resultItem);
+                });
+                
+                // Hiển thị kết quả
+                resultsContainer.style.display = "block";
+            } else {
+                resultsContainer.innerHTML = `<div class="search-result-item">Không tìm thấy kết quả phù hợp</div>`;
+                resultsContainer.style.display = "block";
+            }
+        }
+
+        // Ẩn kết quả tìm kiếm
+        function hideSearchResults() {
+            document.getElementById("map-search-results").style.display = "none";
+        }
+
+        // Lấy tên danh mục từ mã danh mục
+        function getCategoryName(categoryCode) {
+            const categories = {
+                "mammals": "Động vật có vú",
+                "birds": "Chim",
+                "reptiles": "Bò sát",
+                "amphibians": "Lưỡng cư",
+                "fish": "Cá",
+                "insects": "Côn trùng"
+            };
+            
+            return categories[categoryCode] || categoryCode;
+        }
+    </script>
+</body>
+</html>

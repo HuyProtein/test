@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos - Khám phá thế giới Động vật Hoang dã</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .habitat-hero {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.habitat-hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.habitat-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: 0.2s;
+}
+        /* Videos Page Specific Styles */
+.videos-container {
+    padding: 40px 0;
+}
+
+.video-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.filter-button {
+    background-color: #f1f8e9;
+    color: var(--primary-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.filter-button:hover {
+    background-color: #e8f5e9;
+}
+
+.filter-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.video-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+}
+
+.video-thumbnail {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent var(--primary-color);
+    margin-left: 5px;
+}
+
+.video-thumbnail:hover .play-button {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.video-duration {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.video-info {
+    padding: 20px;
+}
+
+.video-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.video-description {
+    color: var(--gray-color);
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.video-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--gray-color);
+    font-size: 14px;
+}
+
+.video-category {
+    display: inline-block;
+    background-color: #f1f8e9;
+    color: var(--primary-color);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 40px;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+}
+
+.video-player {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: black;
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.video-modal-info {
+    background-color: white;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.video-modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.video-modal-description {
+    color: var(--gray-color);
+    margin-bottom: 15px;
+}
+
+.video-modal-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--gray-color);
+    font-size: 14px;
+}
+
+/* Featured Video Section */
+.featured-video {
+    margin-bottom: 60px;
+}
+
+.featured-video-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 992px) {
+    .featured-video-container {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.featured-video-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: black;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.featured-video-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-video-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.featured-video-description {
+    color: var(--gray-color);
+    margin-bottom: 20px;
+}
+
+.featured-video-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+    color: var(--gray-color);
+}
+
+.featured-video-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.load-more {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Video Series Section */
+.video-series {
+    margin-top: 60px;
+}
+
+.series-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+}
+
+.series-header {
+    padding: 20px;
+    background-color: var(--primary-light);
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.series-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.series-description {
+    color: var(--gray-color);
+}
+
+.series-episodes {
+    padding: 20px;
+}
+
+.episode-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.episode-item:last-child {
+    border-bottom: none;
+}
+
+.episode-item:hover {
+    background-color: #f9f9f9;
+}
+
+.episode-thumbnail {
+    width: 120px;
+    height: 70px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.episode-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.episode-info {
+    flex-grow: 1;
+}
+
+.episode-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.episode-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--gray-color);
+    font-size: 12px;
+}
+
+/* Submit Video Section */
+.submit-form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--light-gray);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    width: auto;
+    margin-top: 5px;
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-video-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+        /* Styles riêng cho trang videos */
+        .videos-container {
+            padding: 40px 0;
+        }
+
+        .video-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .filter-button {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-button:hover {
+            background-color: #e8f5e9;
+        }
+
+        .filter-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 20px;
+            border-color: transparent transparent transparent var(--primary-color);
+            margin-left: 5px;
+        }
+
+        .video-thumbnail:hover .play-button {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .video-description {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+
+        .video-category {
+            display: inline-block;
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 40px;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .video-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: black;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .video-modal-info {
+            background-color: white;
+            padding: 20px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .video-modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .video-modal-description {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+
+        .video-modal-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+
+        .featured-video {
+            margin-bottom: 60px;
+        }
+
+        .featured-video-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .featured-video-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .featured-video-player {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: black;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .featured-video-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-video-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .featured-video-description {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+
+        .featured-video-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+
+        .featured-video-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .load-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .video-series {
+            margin-top: 60px;
+        }
+
+        .series-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+
+        .series-header {
+            padding: 20px;
+            background-color: var(--primary-light);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .series-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .series-description {
+            color: var(--gray-color);
+        }
+
+        .series-episodes {
+            padding: 20px;
+        }
+
+        .episode-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .episode-item:last-child {
+            border-bottom: none;
+        }
+
+        .episode-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .episode-thumbnail {
+            width: 120px;
+            height: 70px;
+            border-radius: 5px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .episode-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .episode-info {
+            flex-grow: 1;
+        }
+
+        .episode-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .episode-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray-color);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+<section class="hero" style="background-image: url('https://baonga.com/FileUpload/Images/nga_12_7.jpg'); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 style="color: white;">Videos</h1>
+            <p style="color: white;">
+                Khám phá thế giới động vật hoang dã qua những video tuyệt vời
+            </p>
+        </div>
+    </div>
+</section>
+      
+
+        <!-- Featured Video Section -->
+        <section class="featured-video">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Video nổi bật</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="featured-video-container">
+                    <div class="featured-video-player">
+                        <iframe width="100%" height="100%" src="tieude.mp4" title="Featured Wildlife Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="featured-video-info">
+                        <h3 class="featured-video-title">Những Cư Dân Sa Mạc</h3>
+                        <p class="featured-video-description">
+                            Động vật sa mạc hay động vật hoang mạc hay cư dân sa mạc là tên gọi chỉ về những loài động vật đã thích nghi để sống trong môi trường sa mạc, hoang mạc hay bán hoang mạc khô cằn với những điều kiện khắc nghiệt và cằn cỗi. Trong thuật ngữ khoa học, những dạng động vật sống trong môi trường này được gọi là xerocole bắt nguồn từ tiếng Hi Lạp là xēros có nghĩa là chịu khát. Vùng sa mạc, hoang mạc khô cằn là một môi trường cực kỳ khắc nghiệt, thử thách sự sống còn của các sinh vật sống, nhất là các loài động vật, mặc dù vật có hàng loạt động vật vẫn vật lộn để sinh tồn ở những nơi này, với những đặc điểm có được do tiến hóa để thích nghi với môi trường sống.
+                        </p>
+                        <div class="featured-video-meta">
+                            <div class="featured-video-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span>Đăng tải:  28/11/2022</span>
+                            </div>
+                            <div class="featured-video-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <span>2.179.887 lượt xem</span>
+                            </div>
+                            <div class="featured-video-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <span>Thời lượng: 50:41</span>
+                            </div>
+                        </div>
+                        <a href="#" class="button primary-button">Xem thêm video của chúng tôi</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section class="videos-container">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Thư viện video</h2>
+                    <div class="underline"></div>
+                    <p>Khám phá bộ sưu tập video về động vật hoang dã từ khắp nơi trên thế giới</p>
+                </div>
+
+                <div class="video-filters">
+                    <button class="filter-button active" data-filter="all">Tất cả</button>
+                    <button class="filter-button" data-filter="mammals">Động vật có vú</button>
+                    <button class="filter-button" data-filter="birds">Chim</button>
+                    <button class="filter-button" data-filter="reptiles">Bò sát</button>
+                    <button class="filter-button" data-filter="amphibians">Lưỡng cư</button>
+                    <button class="filter-button" data-filter="fish">Cá</button>
+                    <button class="filter-button" data-filter="insects">Côn trùng</button>
+                </div>
+
+                <div class="videos-grid" id="videos-grid">
+                    <!-- Video cards will be added here by JavaScript -->
+                </div>
+
+                <div class="load-more">
+                    <button class="button primary-button" id="load-more-btn">Xem thêm</button>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Submit Video Section -->
+        <section class="submit-video">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Chia sẻ video của bạn</h2>
+                    <div class="underline"></div>
+                    <p>Bạn có video về động vật hoang dã? Hãy chia sẻ với cộng đồng của chúng tôi!</p>
+                </div>
+
+                <div class="submit-form">
+                    <form id="video-submission-form">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="video-title">Tiêu đề video</label>
+                            <input type="text" id="video-title" name="video-title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="video-category">Danh mục</label>
+                            <select id="video-category" name="video-category" required>
+                                <option value="">-- Chọn danh mục --</option>
+                                <option value="mammals">Động vật có vú</option>
+                                <option value="birds">Chim</option>
+                                <option value="reptiles">Bò sát</option>
+                                <option value="amphibians">Lưỡng cư</option>
+                                <option value="fish">Cá</option>
+                                <option value="insects">Côn trùng</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="video-description">Mô tả</label>
+                            <textarea id="video-description" name="video-description" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="video-url">URL YouTube hoặc Vimeo</label>
+                            <input type="url" id="video-url" name="video-url" placeholder="https://www.youtube.com/watch?v=..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="video-thumbnail">Ảnh thumbnail (tùy chọn)</label>
+                            <input type="file" id="video-thumbnail" name="video-thumbnail" accept="image/*">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" required>
+                                <span>Tôi đồng ý với <a href="#">điều khoản sử dụng</a> và xác nhận rằng tôi có quyền chia sẻ video này</span>
+                            </label>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="button primary-button">Gửi video</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="video-modal-close">&times;</button>
+            <div class="video-player" id="video-player">
+                <!-- Video iframe will be added here by JavaScript -->
+            </div>
+            <div class="video-modal-info">
+                <h3 class="video-modal-title" id="video-modal-title"></h3>
+                <p class="video-modal-description" id="video-modal-description"></p>
+                <div class="video-modal-meta">
+                    <span id="video-modal-date"></span>
+                    <span id="video-modal-views"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        // Dữ liệu mẫu cho videos
+        const videosData = [
+            {
+                id: 1,
+                title: "Vùng Serengeti Hoang Dã ",
+                description: "Hệ sinh thái Serengeti là một phần của khu vực tự nhiên châu Phi, trải dài từ phía Bắc Tanzania đến Tây Nam Kenya ",
+                thumbnail: "https://www.chudu24.com/wp-content/uploads/2016/12/Du-l%E1%BB%8Bch-Kenya-6.jpg",
+                videoUrl: "seren.mp4",
+                category: "mammals",
+                duration: "09:50",
+                date: "15/03/2024",
+                views: "882,245"
+            },
+            {
+                id: 2,
+                title: "Chim cánh cụt Hoàng đế ở Nam Cực",
+                description: "Cuộc sống của chim cánh cụt Hoàng đế trong điều kiện khắc nghiệt của Nam Cực",
+                thumbnail: "https://static.tuoitre.vn/tto/i/s626/2013/01/12/WdlMJ9rG.jpg",
+                videoUrl: "penguin.mp4",
+                category: "birds",
+                duration: "31:54",
+                date: "22/02/2024",
+                views: "96,789"
+            },
+            {
+                id: 3,
+                title: "Rắn Anaconda khổng lồ ở Amazon",
+                description: "Khám phá cuộc sống của loài rắn Anaconda khổng lồ trong rừng Amazon",
+                thumbnail: "https://iv.vnecdn.net/vnexpress/images/web/2018/10/12/tran-anaconda-sat-thu-khong-lo-trong-rung-ram-amazon-1539313395.jpg",
+                videoUrl: "tran.mp4",
+                category: "reptiles",
+                duration: "06:16",
+                date: "10/01/2024",
+                views: "78,123"
+            },
+            {
+                id: 4,
+                title: "Động Vật Lưỡng Cư",
+                description: "Chúng là những sinh vật cổ xưa nhất, được biết đến như những hóa thạch sống trong thế giới hiện đại. Được biết đến với một số loài tiêu biểu như ếch, cóc hay kì nhông. Chúng có nhiều màu sắc và sự sáng tạo hơn bạn tưởng tượng.",
+                thumbnail: "https://sylvanlearning.edu.vn/wp-content/uploads/2021/10/5-3.jpg",
+                videoUrl: "ech.mp4",
+                category: "amphibians",
+                duration: "26:01",
+                date: "05/12/2023",
+                views: "605,432"
+            },
+            {
+                id: 5,
+                title: "Cá Mập - Kẻ Săn Mồi Tối Thượng",
+                description: "Đại dương có vô số những bí ẩn , nằm sâu bên dưới những con sóng khổng lồ đó là một thế giới hoàn toàn khác khó có thể quan sát được bằng mắt thường. Một thế giới hoàn mỹ, một thế giới sôi động. Nhưng đồng thời cũng chứa đựng những mối nguy hiểm luôn rình rập ở khắp nơi.",
+                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2FuVAG_kQC9ux6p718iI4lrHKkQFxux5MeQ&s",
+                videoUrl: "camap.mp4",
+                category: "fish",
+                duration: "22:25",
+                date: "18/11/2023",
+                views: "199,705 "
+            },
+            {
+                id: 6,
+                title: "Thế Giới Hoang Dã Của Loài Bướm",
+                description: "Có hơn 18.000 loài bướm đã được công nhận trên toàn thế giới. Cuộc hành trình của chúng ta bắt đầu được tổ chức trong một quả trứng nhỏ bé, khiêm tốn. Viên nang cuộc sống cực nhỏ này là một minh chứng cho tiềm năng, một điềm báo về những điều kỳ diệu vẫn chưa xảy ra. ",
+                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrN-PXyXzjtmM9gkhDiiZianiK_d7iHnXC4A&s",
+                videoUrl: "buom.mp4",
+                category: "insects",
+                duration: "21:10",
+                date: "29/10/2023",
+                views: "401,567"
+            },
+            {
+                id: 7,
+                title: "Voi - Gã Khổng Lồ Hiền Lành",
+                description: "Trên những đồng bằng Phi Châu , trong những cánh rừng ở Đông Nam Á , nằm tách biệt khỏi văn minh con người , cách xa cuộc sống quen thuộc với chúng ta. Sinh sống giữa thiên nhiên hoang dã ",
+                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa5wPYa6OBhO7Gy69izkmiJbUqCNSohIvEHA&s",
+                videoUrl: "voi.mp4",
+                category: "mammals",
+                duration: "22:58",
+                date: "12/09/2023",
+                views: "79,890"
+            },
+            {
+                id: 8,
+                title: "Đại Bàng Harpy - Vị Vua Bầu Trời Amazon",
+                description: "Trong những khu rừng rậm rạp của Trung và Nam Mỹ tồn tại một trong những kẻ săn mồi ghê gớm nhất của bầu trời.",
+                thumbnail: "https://i.ytimg.com/vi/3Gb-9kyw95A/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD2Clti4V9RwsQOhxC5EH7xGIohEQ",
+                videoUrl: "db.mp4",
+                category: "birds",
+                duration: "19:43",
+                date: "03/08/2023",
+                views: "233,666"
+            },
+            {
+                id: 9,
+                title: "Loài Cá Nóc Và Những Vòng Tròn Bí Ẩn",
+                description: "Những vòng tròn kích thước lớn được 'vẽ' công phu dưới đáy biển từng là điều bí ẩn trong mắt các nhà khoa học suốt một thời gian dài.",
+                thumbnail: "https://vcdn1-vnexpress.vnecdn.net/2020/10/14/VNE-Fish-2113-1602668456.jpg?w=460&h=0&q=100&dpr=2&fit=crop&s=PIbhP5cLkfIH6OpSM2AXbA",
+                videoUrl: "noc.mp4",
+                category: "mammals",
+                duration: "09:37",
+                date: "25/07/2023",
+                views: "9,765"
+            },
+            {
+                id: 10,
+                title: "Sư Tử - Kẻ Thống Trị Vùng Đồng Cỏ Châu Phi ",
+                description: "Vùng Hạ Sahara Châu Phi , mặt trời đang ló rạng trên thảo nguyên. Hiện tại đang là thời điểm trước khi cuộc di cư hàng năm diễn ra ",
+                thumbnail: "https://dongvat.edu.vn/upload/2024/07/su-tu-chau-phi-003.webp",
+                videoUrl: "st.mp4",
+                category: "mammals",
+                duration: "22:53",
+                date: "15/03/2024",
+                views: "882,245"
+            }
+        ];
+
+        // Biến toàn cục
+        let activeFilter = "all";
+        let currentPage = 1;
+        let itemsPerPage = 6;
+        let currentVideoId = null;
+
+        // Khởi tạo trang
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hiển thị danh sách video
+            renderVideos();
+
+            // Xử lý sự kiện cho các nút lọc
+            const filterButtons = document.querySelectorAll(".filter-button");
+            filterButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    activeFilter = this.dataset.filter;
+                    currentPage = 1;
+                    
+                    // Cập nhật trạng thái active
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                    
+                    // Hiển thị lại danh sách video
+                    renderVideos();
+                });
+            });
+
+            // Xử lý sự kiện nút "Xem thêm"
+            document.getElementById("load-more-btn").addEventListener("click", function() {
+                currentPage++;
+                renderVideos(true);
+            });
+
+            // Xử lý sự kiện đóng modal
+            document.getElementById("video-modal-close").addEventListener("click", closeVideoModal);
+
+            // Đóng modal khi click bên ngoài
+            document.getElementById("video-modal").addEventListener("click", function(event) {
+                if (event.target === this) {
+                    closeVideoModal();
+                }
+            });
+
+            // Xử lý sự kiện click vào episode
+            const episodeItems = document.querySelectorAll(".episode-item");
+            episodeItems.forEach(item => {
+                item.addEventListener("click", function() {
+                    const videoId = this.dataset.videoId;
+                    openVideoModal(videoId);
+                });
+            });
+
+            // Xử lý form gửi video
+            document.getElementById("video-submission-form").addEventListener("submit", function(event) {
+                event.preventDefault();
+                alert("Cảm ơn bạn đã gửi video! Chúng tôi sẽ xem xét và đăng tải sớm nhất có thể.");
+                this.reset();
+            });
+
+            // Xử lý nút back-to-top
+            const backToTopButton = document.getElementById("back-to-top");
+            window.addEventListener("scroll", function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add("visible");
+                } else {
+                    backToTopButton.classList.remove("visible");
+                }
+            });
+            
+            backToTopButton.addEventListener("click", function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            // Xử lý menu mobile
+            const mobileMenuButton = document.getElementById("mobile-menu-button");
+            const mobileMenu = document.getElementById("mobile-menu");
+            
+            mobileMenuButton.addEventListener("click", function() {
+                mobileMenu.classList.toggle("active");
+            });
+
+            // Set current year in footer
+            document.getElementById("current-year").textContent = new Date().getFullYear();
+        });
+
+        // Hiển thị danh sách video
+        function renderVideos(append = false) {
+            const videosGrid = document.getElementById("videos-grid");
+            
+            // Lọc video theo danh mục
+            const filteredVideos = activeFilter === "all" 
+                ? videosData 
+                : videosData.filter(item => item.category === activeFilter);
+            
+            // Phân trang
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedVideos = filteredVideos.slice(startIndex, endIndex);
+            
+            // Xóa nội dung cũ nếu không phải append
+            if (!append) {
+                videosGrid.innerHTML = "";
+            }
+            
+            // Thêm các video mới
+            paginatedVideos.forEach(item => {
+                const videoCard = document.createElement("div");
+                videoCard.className = "video-card";
+                
+                videoCard.innerHTML = `
+                    <div class="video-thumbnail" data-video-id="${item.id}">
+                        <img src="${item.thumbnail}" alt="${item.title}">
+                        <div class="play-button">
+                            <div class="play-icon"></div>
+                        </div>
+                        <div class="video-duration">${item.duration}</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">${item.title}</h3>
+                        <p class="video-description">${item.description}</p>
+                        <div class="video-meta">
+                            <span>${item.date}</span>
+                            <span class="video-category">${getCategoryName(item.category)}</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Xử lý sự kiện click vào thumbnail
+                videoCard.querySelector(".video-thumbnail").addEventListener("click", function() {
+                    openVideoModal(item.id);
+                });
+                
+                videosGrid.appendChild(videoCard);
+            });
+            
+            // Ẩn/hiện nút "Xem thêm"
+            const loadMoreBtn = document.getElementById("load-more-btn");
+            if (endIndex >= filteredVideos.length) {
+                loadMoreBtn.style.display = "none";
+            } else {
+                loadMoreBtn.style.display = "inline-block";
+            }
+        }
+
+        // Lấy tên danh mục từ mã danh mục
+        function getCategoryName(categoryCode) {
+            const categories = {
+                "mammals": "Động vật có vú",
+                "birds": "Chim",
+                "reptiles": "Bò sát",
+                "amphibians": "Lưỡng cư",
+                "fish": "Cá",
+                "insects": "Côn trùng"
+            };
+            
+            return categories[categoryCode] || categoryCode;
+        }
+
+        // Mở modal video
+        function openVideoModal(videoId) {
+            const modal = document.getElementById("video-modal");
+            const videoPlayer = document.getElementById("video-player");
+            const modalTitle = document.getElementById("video-modal-title");
+            const modalDescription = document.getElementById("video-modal-description");
+            const modalDate = document.getElementById("video-modal-date");
+            const modalViews = document.getElementById("video-modal-views");
+            
+            // Tìm video theo ID
+            const video = videosData.find(item => item.id === parseInt(videoId)) || videosData[0];
+            currentVideoId = video.id;
+            
+            // Cập nhật nội dung modal
+            videoPlayer.innerHTML = `<iframe width="100%" height="100%" src="${video.videoUrl}" title="${video.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            modalTitle.textContent = video.title;
+            modalDescription.textContent = video.description;
+            modalDate.textContent = `Đăng tải: ${video.date}`;
+            modalViews.textContent = `${video.views} lượt xem`;
+            
+            // Hiển thị modal
+            modal.style.display = "flex";
+        }
+
+        // Đóng modal video
+        function closeVideoModal() {
+            const modal = document.getElementById("video-modal");
+            const videoPlayer = document.getElementById("video-player");
+            
+            // Xóa iframe để dừng video
+            videoPlayer.innerHTML = "";
+            
+            // Ẩn modal
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

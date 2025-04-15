@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cơ hội tình nguyện | Wildlife</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .volunteer-hero {
+            background-image: url("https://images2.thanhnien.vn/zoom/700_438/528068263637045248/2024/1/26/e093e9cfc9027d6a142358d24d2ee350-65a11ac2af785880-17061562929701875684912-37-0-587-880-crop-1706239860681642023140.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .volunteer-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .volunteer-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .volunteer-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .volunteer-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .volunteer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .volunteer-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .volunteer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .volunteer-card:hover .volunteer-image img {
+            transform: scale(1.05);
+        }
+
+        .volunteer-location {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .volunteer-info {
+            padding: 20px;
+        }
+
+        .volunteer-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .volunteer-description {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .volunteer-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .volunteer-detail {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .testimonial-section {
+            background-color: #f1f8e9;
+            padding: 80px 0;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-content {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial-content::before {
+            content: """;
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 50px;
+            color: var(--primary-color);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .application-section {
+            padding: 80px 0;
+        }
+
+        .application-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-check input {
+            margin-top: 5px;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .faq-section {
+            padding: 60px 0;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 500;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="volunteer-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Cơ hội tình nguyện</h1>
+                    <p>
+                        Tham gia cùng chúng tôi trong hành trình bảo vệ động vật hoang dã và môi trường sống của chúng.
+                        Mỗi hành động nhỏ đều có thể tạo nên sự khác biệt lớn.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer Opportunities Section -->
+        <section class="volunteer-opportunities">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Các cơ hội tình nguyện</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="volunteer-cards">
+                    <div class="volunteer-card">
+                        <div class="volunteer-image">
+                            <img src="https://images.unsplash.com/photo-1591448764624-d7973a442bff?q=80&w=1470&auto=format&fit=crop" alt="Bảo tồn rừng">
+                            <div class="volunteer-location">Việt Nam</div>
+                        </div>
+                        <div class="volunteer-info">
+                            <h3 class="volunteer-title">Bảo tồn rừng nhiệt đới</h3>
+                            <p class="volunteer-description">
+                                Tham gia vào các hoạt động bảo vệ và phục hồi rừng nhiệt đới, nơi sinh sống của nhiều loài động vật hoang dã đang bị đe dọa.
+                            </p>
+                            <div class="volunteer-details">
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>2-4 tuần</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>Vườn Quốc gia Cát Tiên</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span>Toàn thời gian</span>
+                                </div>
+                            </div>
+                            <a href="#application" class="button primary-button">Đăng ký ngay</a>
+                        </div>
+                    </div>
+
+                    <div class="volunteer-card">
+                        <div class="volunteer-image">
+                            <img src="https://images.unsplash.com/photo-1584118624012-df056829fbd0?q=80&w=1632&auto=format&fit=crop" alt="Bảo tồn rùa biển">
+                            <div class="volunteer-location">Việt Nam</div>
+                        </div>
+                        <div class="volunteer-info">
+                            <h3 class="volunteer-title">Bảo tồn rùa biển</h3>
+                            <p class="volunteer-description">
+                                Tham gia vào các hoạt động bảo vệ rùa biển, bao gồm tuần tra bãi biển, bảo vệ tổ trứng và thả rùa con về biển.
+                            </p>
+                            <div class="volunteer-details">
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>1-3 tháng</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>Côn Đảo</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span>Theo mùa</span>
+                                </div>
+                            </div>
+                            <a href="#application" class="button primary-button">Đăng ký ngay</a>
+                        </div>
+                    </div>
+
+                    <div class="volunteer-card">
+                        <div class="volunteer-image">
+                            <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?q=80&w=1470&auto=format&fit=crop" alt="Giáo dục môi trường">
+                            <div class="volunteer-location">Toàn quốc</div>
+                        </div>
+                        <div class="volunteer-info">
+                            <h3 class="volunteer-title">Giáo dục môi trường</h3>
+                            <p class="volunteer-description">
+                                Tham gia vào các chương trình giáo dục môi trường tại các trường học, cộng đồng địa phương để nâng cao nhận thức về bảo tồn.
+                            </p>
+                            <div class="volunteer-details">
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>Linh hoạt</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>Nhiều địa điểm</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span>Bán thời gian</span>
+                                </div>
+                            </div>
+                            <a href="#application" class="button primary-button">Đăng ký ngay</a>
+                        </div>
+                    </div>
+
+                    <div class="volunteer-card">
+                        <div class="volunteer-image">
+                            <img src="https://images.unsplash.com/photo-1551651767-d5ffbdd04b83?q=80&w=1470&auto=format&fit=crop" alt="Nghiên cứu động vật hoang dã">
+                            <div class="volunteer-location">Việt Nam</div>
+                        </div>
+                        <div class="volunteer-info">
+                            <h3 class="volunteer-title">Nghiên cứu động vật hoang dã</h3>
+                            <p class="volunteer-description">
+                                Hỗ trợ các nhà khoa học trong việc thu thập dữ liệu, theo dõi và nghiên cứu các loài động vật hoang dã.
+                            </p>
+                            <div class="volunteer-details">
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>3-6 tháng</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>Vườn Quốc gia Cúc Phương</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span>Toàn thời gian</span>
+                                </div>
+                            </div>
+                            <a href="#application" class="button primary-button">Đăng ký ngay</a>
+                        </div>
+                    </div>
+
+                    <div class="volunteer-card">
+                        <div class="volunteer-image">
+                            <img src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?q=80&w=1470&auto=format&fit=crop" alt="Phục hồi môi trường sống">
+                            <div class="volunteer-location">Việt Nam</div>
+                        </div>
+                        <div class="volunteer-info">
+                            <h3 class="volunteer-title">Phục hồi môi trường sống</h3>
+                            <p class="volunteer-description">
+                                Tham gia vào các dự án phục hồi môi trường sống bị suy thoái, bao gồm trồng cây, làm sạch sông hồ và bảo vệ đất ngập nước.
+                            </p>
+                            <div class="volunteer-details">
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>1-2 tuần</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>Đồng bằng sông Cửu Long</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span>Cuối tuần</span>
+                                </div>
+                            </div>
+                            <a href="#application" class="button primary-button">Đăng ký ngay</a>
+                        </div>
+                    </div>
+
+                    <div class="volunteer-card">
+                        <div class="volunteer-image">
+                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1513&auto=format&fit=crop" alt="Hỗ trợ truyền thông">
+                            <div class="volunteer-location">Trực tuyến</div>
+                        </div>
+                        <div class="volunteer-info">
+                            <h3 class="volunteer-title">Hỗ trợ truyền thông</h3>
+                            <p class="volunteer-description">
+                                Hỗ trợ các hoạt động truyền thông, viết bài, thiết kế đồ họa, quản lý mạng xã hội để nâng cao nhận thức về bảo tồn động vật hoang dã.
+                            </p>
+                            <div class="volunteer-details">
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2"   ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>Linh hoạt</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>Từ xa</span>
+                                </div>
+                                <div class="volunteer-detail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span>Bán thời gian</span>
+                                </div>
+                            </div>
+                            <a href="#application" class="button primary-button">Đăng ký ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section" style="background-color: #f1f8e9; padding: 80px 0;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Lợi ích khi tham gia tình nguyện</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="intro-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <h3>Đóng góp cho thiên nhiên</h3>
+                        <p>
+                            Góp phần bảo vệ các loài động vật hoang dã và môi trường sống của chúng cho các thế hệ tương lai.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3>Kết nối cộng đồng</h3>
+                        <p>
+                            Gặp gỡ và làm việc với những người có cùng đam mê và mối quan tâm về bảo tồn động vật hoang dã.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Phát triển kỹ năng</h3>
+                        <p>
+                            Học hỏi và phát triển các kỹ năng mới, từ nghiên cứu khoa học đến truyền thông và làm việc nhóm.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                        </div>
+                        <h3>Trải nghiệm đáng nhớ</h3>
+                        <p>
+                            Tạo ra những kỷ niệm đáng nhớ và có cơ hội khám phá những địa điểm tuyệt đẹp trên khắp Việt Nam.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonial-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Chia sẻ từ tình nguyện viên</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            Tôi đã ủng hộ cho chương trình bảo tồn Đom Đóm trong 5 năm qua,mỗi tháng tôi chu cấp 5 triệu. Thật tuyệt vời khi thấy số lượng Đóm con đang dần tăng lên nhờ những nỗ lực bảo tồn. Tôi rất tự hào khi được đóng góp một phần nhỏ vào thành công này.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD67GGe02b6mccL4K_CiKmlhlefZVolFDb3w&s" alt="Nguyễn Văn An">
+                            </div>
+                            <div class="author-info">
+                                <h4>Trịnh Trần Phương Tuấn </h4>
+                                <p>Nhà tài trợ, Bến Tre</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            Việc ủng hộ cho các dự án bảo tồn rừng nhiệt đới không chỉ giúp bảo vệ động vật hoang dã mà còn góp phần chống biến đổi khí hậu. Tôi rất hài lòng khi biết rằng sự đóng góp của mình đang tạo ra tác động tích cực đến môi trường.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ObhDPnrTFAZ6QIEmc7jcNASOf5bg4zlz6Q&s"alt="Nguyễn Văn An">
+                            </div>
+                            <div class="author-info">
+                                <h4>Đặng Tiến Hoàng </h4>
+                                <p>Nhà tài trợ, Hà Nội</p>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            Tôi đã chọn ủng hộ định kỳ hàng tháng cho chương trình giáo dục môi trường. Thật tuyệt vời khi thấy các em nhỏ được tiếp cận với kiến thức về bảo tồn từ sớm. Đây là cách tốt nhất để xây dựng một thế hệ tương lai yêu thiên nhiên.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxdHDAVMV6lAo4jV4PKc48-V8EoSz7cVJzGQ&s" alt="Lê Minh Tâm">
+                            </div>
+                            <div class="author-info">
+                                <h4>Nguyễn Thị Thái Hằng</h4>
+                                <p>Nhà tài trợ, Cà Mau </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Section -->
+        <section id="application" class="application-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Đăng ký tham gia</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="application-form">
+                    <form id="volunteer-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullname">Họ và tên</label>
+                                <input type="text" id="fullname" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Tuổi</label>
+                                <input type="number" id="age" class="form-control" min="18" max="100" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="program">Chương trình quan tâm</label>
+                            <select id="program" class="form-control" required>
+                                <option value="">-- Chọn chương trình --</option>
+                                <option value="forest">Bảo tồn rừng nhiệt đới</option>
+                                <option value="turtle">Bảo tồn rùa biển</option>
+                                <option value="education">Giáo dục môi trường</option>
+                                <option value="research">Nghiên cứu động vật hoang dã</option>
+                                <option value="restoration">Phục hồi môi trường sống</option>
+                                <option value="media">Hỗ trợ truyền thông</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="availability">Thời gian có thể tham gia</label>
+                            <select id="availability" class="form-control" required>
+                                <option value="">-- Chọn thời gian --</option>
+                                <option value="weekends">Cuối tuần</option>
+                                <option value="part-time">Bán thời gian (10-20 giờ/tuần)</option>
+                                <option value="full-time">Toàn thời gian (20+ giờ/tuần)</option>
+                                <option value="short-term">Ngắn hạn (1-4 tuần)</option>
+                                <option value="long-term">Dài hạn (1-6 tháng)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experience">Kinh nghiệm và kỹ năng liên quan</label>
+                            <textarea id="experience" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="motivation">Lý do bạn muốn tham gia</label>
+                            <textarea id="motivation" class="form-control" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">Tôi đồng ý với các điều khoản và điều kiện của chương trình tình nguyện</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="submit-button">Gửi đơn đăng ký</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Câu hỏi thường gặp</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Tôi cần có kinh nghiệm gì để tham gia tình nguyện không?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Hầu hết các chương trình tình nguyện của chúng tôi không yêu cầu kinh nghiệm trước đó. Chúng tôi sẽ cung cấp đầy đủ đào tạo và hướng dẫn cho tình nguyện viên. Tuy nhiên, một số chương trình nghiên cứu chuyên sâu có thể yêu cầu kiến thức hoặc kỹ năng cụ thể. Trong trường hợp đó, thông tin chi tiết sẽ được nêu rõ trong mô tả chương trình.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Tôi cần chuẩn bị những gì khi tham gia tình nguyện?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Sau khi đơn đăng ký của bạn được chấp nhận, chúng tôi sẽ gửi cho bạn danh sách đầy đủ những vật dụng cần chuẩn bị. Nhìn chung, bạn nên chuẩn bị quần áo phù hợp với điều kiện thời tiết và môi trường làm việc, đồ bảo hộ cá nhân (nếu cần), và tinh thần sẵn sàng học hỏi và làm việc nhóm.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Có chi phí nào khi tham gia tình nguyện không?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Một số chương trình tình nguyện của chúng tôi có thể yêu cầu phí tham gia để trang trải chi phí ăn ở, đào tạo và vận hành dự án. Chi phí cụ thể sẽ được thông báo rõ ràng trước khi bạn đăng ký. Chúng tôi cũng có một số chương trình miễn phí hoặc cung cấp học bổng cho tình nguyện viên có hoàn cảnh khó khăn.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Tôi có thể tham gia tình nguyện nếu tôi không phải là công dân Việt Nam không?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Có, chúng tôi chào đón tình nguyện viên quốc tế tham gia vào các chương trình của chúng tôi. Tuy nhiên, bạn cần đảm bảo có visa phù hợp để tham gia hoạt động tình nguyện tại Việt Nam. Chúng tôi có thể cung cấp thư mời hoặc các tài liệu cần thiết để hỗ trợ quá trình xin visa của bạn.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Tôi có được cấp chứng chỉ sau khi hoàn thành chương trình tình nguyện không?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Có, chúng tôi cấp giấy chứng nhận hoàn thành cho tất cả tình nguyện viên sau khi kết thúc chương trình. Giấy chứng nhận này sẽ nêu rõ thời gian tham gia, vai trò và các kỹ năng bạn đã phát triển trong quá trình tình nguyện. Đây là tài liệu có giá trị có thể được sử dụng cho mục đích học tập hoặc nghề nghiệp trong tương lai.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = answer.classList.contains('active');
+                    
+                    // Close all answers
+                    document.querySelectorAll('.faq-answer').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Toggle current answer
+                    if (!isActive) {
+                        answer.classList.add('active');
+                    }
+                });
+            });
+
+            // Form Submission
+            const volunteerForm = document.getElementById('volunteer-form');
+            
+            if (volunteerForm) {
+                volunteerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple form validation
+                    const fullname = document.getElementById('fullname').value;
+                    const email = document.getElementById('email').value;
+                    
+                    if (!fullname || !email) {
+                        alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+                        return;
+                    }
+                    
+                    // Here you would typically send the form data to a server
+                    // For demo purposes, we'll just show a success message
+                    alert('Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.');
+                    volunteerForm.reset();
+                });
+            }
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

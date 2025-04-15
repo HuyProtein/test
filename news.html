@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức & Sự kiện | Wildlife</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Variables */
+        :root {
+            --primary-color: #2e7d32;
+            --primary-hover: #1b5e20;
+            --secondary-color: #ff9800;
+            --secondary-hover: #f57c00;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --gray-color: #6b7280;
+            --light-gray: #e5e7eb;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --success-color: #10b981;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo a {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover, 
+        nav ul li a.active {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+        }
+
+        .mobile-menu ul li a {
+            display: block;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .mobile-menu ul li a:hover {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, #1b5e20, #2e7d32);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 60px 0;
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .news-main {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .news-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Featured News */
+        .featured-news {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .featured-news:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-image {
+            height: 400px;
+            position: relative;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .featured-content {
+            padding: 30px;
+        }
+
+        .featured-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: var(--dark-color);
+        }
+
+        .featured-excerpt {
+            color: #555;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        /* News List */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .news-card {
+            display: flex;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image {
+            width: 280px;
+            position: relative;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .news-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .news-excerpt {
+            color: #555;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .primary-button {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .primary-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .outline-button {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .outline-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar Widgets */
+        .sidebar-widget {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .widget-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 1.5px;
+        }
+
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            transition: var(--transition);
+        }
+
+        .category-item:hover {
+            padding-left: 5px;
+            color: var(--primary-color);
+        }
+
+        .category-count {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .popular-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .popular-post {
+            display: flex;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .popular-post:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .popular-post-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .popular-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .popular-post-content {
+            flex: 1;
+        }
+
+        .popular-post-title {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .popular-post-title:hover {
+            color: var(--primary-color);
+        }
+
+        .popular-post-date {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+
+        .pagination-button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            color: #555;
+            transition: var(--transition);
+        }
+
+        .pagination-button:hover:not(.active, .disabled) {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .pagination-button.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pagination-button.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: #f1f8e9;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 0 50px 50px 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 80px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3,
+        .footer-links h3,
+        .footer-resources h3,
+        .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-about h3::after,
+        .footer-links h3::after,
+        .footer-resources h3::after,
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 1.5px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links ul li a,
+        .footer-resources ul li a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover,
+        .footer-resources ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .contact-item svg {
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-5px);
+        }
+
+        /* News Popup */
+        .news-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .news-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background-color: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .news-popup.active .popup-content {
+            transform: translateY(0);
+        }
+
+        .popup-header {
+            position: relative;
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .popup-close:hover {
+            background-color: #f1f1f1;
+            transform: rotate(90deg);
+        }
+
+        .popup-category {
+            display: inline-block;
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .popup-date {
+            display: inline-block;
+            color: #666;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        .popup-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            padding-right: 40px;
+        }
+
+        .popup-image {
+            width: 100%;
+            height: 400px;
+        }
+
+        .popup-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .popup-body {
+            padding: 25px;
+        }
+
+        .popup-content-text {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .popup-content-text p {
+            margin-bottom: 20px;
+        }
+
+        .popup-quote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #666;
+        }
+
+        .popup-quote-author {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 10px;
+            font-style: normal;
+        }
+
+        .popup-key-points {
+            margin: 30px 0;
+        }
+
+        .popup-key-points h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .popup-key-points ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        .popup-key-points li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .popup-footer {
+            padding: 20px 25px;
+            border-top: 1px solid #f0f0f0;
+            text-align: right;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .news-card {
+                flex-direction: column;
+            }
+
+            .news-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .newsletter-input {
+                border-radius: 50px;
+            }
+
+            .newsletter-button {
+                border-radius: 50px;
+                padding: 15px;
+            }
+
+            .popup-image {
+                height: 250px;
+            }
+
+            .popup-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .featured-title {
+                font-size: 1.5rem;
+            }
+
+            .featured-content {
+                padding: 20px;
+            }
+        }
+
+        /* Prevent body scroll when popup is open */
+        body.popup-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link active">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="mobile-nav-link active">Tin tức</a></li>
+                    <li><a href="stories.html" class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1>Tin tức & Sự kiện</h1>
+                <p>Cập nhật những thông tin mới nhất về động vật hoang dã, các nỗ lực bảo tồn và sự kiện liên quan trên toàn thế giới</p>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="container">
+                <div class="news-container">
+                    <div class="news-main">
+                        <!-- Featured News -->
+                        <div class="featured-news">
+                            <div class="featured-image">
+                                <img src="https://media.vietnamplus.vn/images/ac883ebb7889b1a4222bb1c88021ac113d97491cfe4cbf97cf2f5176fd3f809e316f2ff4bbe05f7060aa79bc0cccb8736641ed2ddc9f78a02d1059a9bc97c4d6/tiger_ranthambore_2810065f.jpg" alt="Bảo tồn hổ">
+                                <div class="featured-category">Bảo tồn</div>
+                            </div>
+                            <div class="featured-content">
+                                <div class="featured-date">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    10 Tháng 4, 2023
+                                </div>
+                                <h2 class="featured-title">Số lượng hổ hoang dã tăng lần đầu tiên sau một thế kỷ</h2>
+                                <p class="featured-excerpt">
+                                    Theo báo cáo mới nhất từ Quỹ Quốc tế Bảo vệ Thiên nhiên (WWF), số lượng hổ hoang dã trên toàn cầu đã tăng lên đáng kể, đánh dấu lần đầu tiên sau một thế kỷ suy giảm liên tục. Đây là một dấu hiệu đáng mừng cho nỗ lực bảo tồn loài mèo lớn này.
+                                </p>
+                                <a href="#" class="button primary-button" data-id="1">Đọc tiếp</a>
+                            </div>
+                        </div>
+
+                        <!-- News List -->
+                        <div class="news-list">
+                            <div class="news-card">
+                                <div class="news-image">
+                                    <img src="https://sohanews.sohacdn.com/zoom/700_438/160588918557773824/2022/3/1/photo1646102521240-16461025214541704527809.jpg" alt="Phát hiện loài mới">
+                                    <div class="news-category">Khám phá</div>
+                                </div>
+                                <div class="news-content">
+                                    <div class="news-date">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        15 Tháng 4, 2023
+                                    </div>
+                                    <h3 class="news-title">Phát hiện loài ếch mới tại rừng Amazon</h3>
+                                    <p class="news-excerpt">
+                                        Các nhà khoa học vừa phát hiện một loài ếch mới tại rừng Amazon, với khả năng thay đổi màu sắc đặc biệt để ngụy trang. Loài ếch này có thể thay đổi màu từ xanh lá sang nâu đất trong vòng vài phút, giúp chúng tránh được kẻ săn mồi.
+                                    </p>
+                                    <a href="#" class="button outline-button" data-id="2">Đọc thêm</a>
+                                </div>
+                            </div>
+
+                            <div class="news-card">
+                                <div class="news-image">
+                                    <img src="https://icdn.dantri.com.vn/thumb_w/960/b1f4d804b1/2016/11/18/copy-of-dsc-8914-1479468408997.jpg" alt="Hội nghị bảo tồn">
+                                    <div class="news-category">Sự kiện</div>
+                                </div>
+                                <div class="news-content">
+                                    <div class="news-date">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        05 Tháng 4, 2023
+                                    </div>
+                                    <h3 class="news-title">Hội nghị quốc tế về bảo tồn động vật hoang dã sẽ diễn ra tại Hà Nội</h3>
+                                    <p class="news-excerpt">
+                                        Hội nghị quốc tế về bảo tồn động vật hoang dã lần thứ 15 sẽ được tổ chức tại Hà Nội vào tháng 6 năm 2023, với sự tham gia của hơn 50 quốc gia. Hội nghị sẽ tập trung vào các giải pháp bảo tồn đa dạng sinh học.
+                                    </p>
+                                    <a href="#" class="button outline-button" data-id="3">Đọc thêm</a>
+                                </div>
+                            </div>
+
+                            <div class="news-card">
+                                <div class="news-image">
+                                    <img src="https://redsvn.net/wp-content/uploads/2020/03/img_5e7d159541965.jpg" alt="Rạn san hô">
+                                    <div class="news-category">Môi trường</div>
+                                </div>
+                                <div class="news-content">
+                                    <div class="news-date">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        28 Tháng 3, 2023
+                                    </div>
+                                    <h3 class="news-title">Rạn san hô lớn nhất Việt Nam đang phục hồi sau nhiều năm suy giảm</h3>
+                                    <p class="news-excerpt">
+                                        Các nhà khoa học ghi nhận sự phục hồi đáng kể của rạn san hô tại vùng biển Nha Trang sau nhiều năm suy giảm do biến đổi khí hậu và hoạt động du lịch quá mức. Đây là tin vui cho hệ sinh thái biển.
+                                    </p>
+                                    <a href="#" class="button outline-button" data-id="4">Đọc thêm</a>
+                                </div>
+                            </div>
+
+                            <div class="news-card">
+                                <div class="news-image">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGA4vYQna66iO_NA4RtF73gysjvv7d5ySIOQ&s" alt="Vườn quốc gia">
+                                    <div class="news-category">Bảo tồn</div>
+                                </div>
+                                <div class="news-content">
+                                    <div class="news-date">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        20 Tháng 3, 2023
+                                    </div>
+                                    <h3 class="news-title">Vườn quốc gia Cát Tiên mở rộng diện tích bảo tồn thêm 2,000 hecta</h3>
+                                    <p class="news-excerpt">
+                                        Vườn quốc gia Cát Tiên vừa được phê duyệt mở rộng thêm 2,000 hecta, nâng tổng diện tích lên hơn 73,000 hecta. Việc mở rộng này sẽ giúp bảo vệ thêm nhiều loài động thực vật quý hiếm.
+                                    </p>
+                                    <a href="#" class="button outline-button" data-id="5">Đọc thêm</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <a href="#" class="pagination-button disabled">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#" class="pagination-button active">1</a>
+                            <a href="#" class="pagination-button">2</a>
+                            <a href="#" class="pagination-button">3</a>
+                            <span>...</span>
+                            <a href="#" class="pagination-button">8</a>
+                            <a href="#" class="pagination-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="news-sidebar">
+                        <!-- Categories Widget -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Danh mục</h3>
+                            <div class="categories-list">
+                                <a href="#" class="category-item">
+                                    <span>Bảo tồn</span>
+                                    <span class="category-count">24</span>
+                                </a>
+                                <a href="#" class="category-item">
+                                    <span>Khám phá</span>
+                                    <span class="category-count">18</span>
+                                </a>
+                                <a href="#" class="category-item">
+                                    <span>Môi trường</span>
+                                    <span class="category-count">15</span>
+                                </a>
+                                <a href="#" class="category-item">
+                                    <span>Sự kiện</span>
+                                    <span class="category-count">12</span>
+                                </a>
+                                <a href="#" class="category-item">
+                                    <span>Nghiên cứu</span>
+                                    <span class="category-count">9</span>
+                                </a>
+                                <a href="#" class="category-item">
+                                    <span>Giáo dục</span>
+                                    <span class="category-count">7</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Popular Posts Widget -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Bài viết phổ biến</h3>
+                            <div class="popular-posts">
+                                <div class="popular-post">
+                                    <div class="popular-post-image">
+                                        <img src="https://media.vietnamplus.vn/images/ac883ebb7889b1a4222bb1c88021ac113d97491cfe4cbf97cf2f5176fd3f809e316f2ff4bbe05f7060aa79bc0cccb8736641ed2ddc9f78a02d1059a9bc97c4d6/tiger_ranthambore_2810065f.jpg" alt="Bảo tồn hổ">
+                                    </div>
+                                    <div class="popular-post-content">
+                                        <a href="#" class="popular-post-title" data-id="1">Số lượng hổ hoang dã tăng lần đầu tiên sau một thế kỷ</a>
+                                        <div class="popular-post-date">10 Tháng 4, 2023</div>
+                                    </div>
+                                </div>
+                                <div class="popular-post">
+                                    <div class="popular-post-image">
+                                        <img src="https://sohanews.sohacdn.com/zoom/700_438/160588918557773824/2022/3/1/photo1646102521240-16461025214541704527809.jpg" alt="Phát hiện loài mới">
+                                    </div>
+                                    <div class="popular-post-content">
+                                        <a href="#" class="popular-post-title" data-id="2">Phát hiện loài ếch mới tại rừng Amazon</a>
+                                        <div class="popular-post-date">15 Tháng 4, 2023</div>
+                                    </div>
+                                </div>
+                                <div class="popular-post">
+                                    <div class="popular-post-image">
+                                        <img src="https://icdn.dantri.com.vn/thumb_w/960/b1f4d804b1/2016/11/18/copy-of-dsc-8914-1479468408997.jpg" alt="Hội nghị bảo tồn">
+                                    </div>
+                                    <div class="popular-post-content">
+                                        <a href="#" class="popular-post-title" data-id="3">Hội nghị quốc tế về bảo tồn động vật hoang dã</a>
+                                        <div class="popular-post-date">05 Tháng 4, 2023</div>
+                                    </div>
+                                </div>
+                                <div class="popular-post">
+                                    <div class="popular-post-image">
+                                        <img src="https://redsvn.net/wp-content/uploads/2020/03/img_5e7d159541965.jpg" alt="Rạn san hô">
+                                    </div>
+                                    <div class="popular-post-content">
+                                        <a href="#" class="popular-post-title" data-id="4">Rạn san hô lớn nhất Việt Nam đang phục hồi</a>
+                                        <div class="popular-post-date">28 Tháng 3, 2023</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tags Widget -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Thẻ phổ biến</h3>
+                            <div class="tags-cloud">
+                                <a href="#" class="tag">Động vật hoang dã</a>
+                                <a href="#" class="tag">Bảo tồn</a>
+                                <a href="#" class="tag">Môi trường</a>
+                                <a href="#" class="tag">Hổ</a>
+                                <a href="#" class="tag">Voi</a>
+                                <a href="#" class="tag">Rừng Amazon</a>
+                                <a href="#" class="tag">Biển</a>
+                                <a href="#" class="tag">Khí hậu</a>
+                                <a href="#" class="tag">Loài mới</a>
+                                <a href="#" class="tag">Việt Nam</a>
+                                <a href="#" class="tag">Châu Á</a>
+                                <a href="#" class="tag">Châu Phi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Đăng ký nhận tin</h2>
+                    <p>Nhận thông tin mới nhất về động vật hoang dã và các nỗ lực bảo tồn qua email</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email của bạn" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-button">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Popup -->
+        <div class="news-popup" id="news-popup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <div class="popup-close" id="popup-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </div>
+                    <span class="popup-category" id="popup-category"></span>
+                    <span class="popup-date" id="popup-date"></span>
+                    <h2 class="popup-title" id="popup-title"></h2>
+                </div>
+                <div class="popup-image">
+                    <img src="/placeholder.svg" alt="" id="popup-image">
+                </div>
+                <div class="popup-body">
+                    <div class="popup-content-text" id="popup-content-text">
+                        <!-- Content will be inserted here by JavaScript -->
+                    </div>
+                </div>
+                <div class="popup-footer">
+                    <button class="button primary-button" id="popup-close-btn">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        // Dữ liệu tin tức
+        const newsData = [
+            {
+                id: 1,
+                title: "Số lượng hổ hoang dã tăng lần đầu tiên sau một thế kỷ",
+                image: "https://media.vietnamplus.vn/images/ac883ebb7889b1a4222bb1c88021ac113d97491cfe4cbf97cf2f5176fd3f809e316f2ff4bbe05f7060aa79bc0cccb8736641ed2ddc9f78a02d1059a9bc97c4d6/tiger_ranthambore_2810065f.jpg",
+                date: "10 Tháng 4, 2023",
+                category: "Bảo tồn",
+                excerpt: "Theo báo cáo mới nhất từ Quỹ Quốc tế Bảo vệ Thiên nhiên (WWF), số lượng hổ hoang dã trên toàn cầu đã tăng lên đáng kể, đánh dấu lần đầu tiên sau một thế kỷ suy giảm liên tục. Đây là một dấu hiệu đáng mừng cho nỗ lực bảo tồn loài mèo lớn này.",
+                content: [
+                    "Theo báo cáo mới nhất từ Quỹ Quốc tế Bảo vệ Thiên nhiên (WWF), số lượng hổ hoang dã trên toàn cầu đã tăng lên đáng kể, đánh dấu lần đầu tiên sau một thế kỷ suy giảm liên tục. Đây là một dấu hiệu đáng mừng cho nỗ lực bảo tồn loài mèo lớn này.",
+                    "Báo cáo cho biết số lượng hổ hoang dã hiện nay ước tính khoảng 4,500 cá thể, tăng từ mức 3,200 cá thể vào năm 2015. Sự gia tăng này chủ yếu được ghi nhận ở Ấn Độ, Nepal, Bhutan, Nga và Trung Quốc, nơi các biện pháp bảo vệ nghiêm ngặt đã được thực hiện.",
+                    "Đây là một bước ngoặt quan trọng trong nỗ lực bảo tồn loài mèo lớn này, sau nhiều thập kỷ suy giảm do săn bắn trộm, mất môi trường sống và xung đột với con người. Tuy nhiên, các chuyên gia cảnh báo rằng hổ vẫn đang đối mặt với nhiều mối đe dọa nghiêm trọng và cần tiếp tục các nỗ lực bảo vệ."
+                ],
+                quote: {
+                    text: "Sự gia tăng số lượng hổ hoang dã là một minh chứng cho thấy khi chúng ta đầu tư vào bảo tồn với sự cam kết mạnh mẽ, chúng ta có thể đảo ngược xu hướng suy giảm của các loài đang bị đe dọa.",
+                    author: "Marco Lambertini, Tổng Giám đốc WWF International"
+                },
+                keyPoints: [
+                    "Số lượng hổ hoang dã tăng từ 3,200 lên 4,500 cá thể trong vòng 7 năm",
+                    "Ấn Độ, Nepal, Bhutan, Nga và Trung Quốc ghi nhận sự gia tăng đáng kể",
+                    "Chương trình TX2 đóng vai trò quan trọng trong thành công này",
+                    "Mối đe dọa từ săn bắn trộm và mất môi trường sống vẫn còn tồn tại",
+                    "Cần tiếp tục và mở rộng các nỗ lực bảo tồn để duy trì xu hướng tích cực"
+                ]
+            },
+            {
+                id: 2,
+                title: "Phát hiện loài ếch mới tại rừng Amazon",
+                image: "https://sohanews.sohacdn.com/zoom/700_438/160588918557773824/2022/3/1/photo1646102521240-16461025214541704527809.jpg",
+                date: "15 Tháng 4, 2023",
+                category: "Khám phá",
+                excerpt: "Các nhà khoa học vừa phát hiện một loài ếch mới tại rừng Amazon, với khả năng thay đổi màu sắc đặc biệt để ngụy trang. Loài ếch này có thể thay đổi màu từ xanh lá sang nâu đất trong vòng vài phút, giúp chúng tránh được kẻ săn mồi.",
+                content: [
+                    "Các nhà khoa học vừa phát hiện một loài ếch mới tại rừng Amazon, với khả năng thay đổi màu sắc đặc biệt để ngụy trang. Loài ếch này có thể thay đổi màu từ xanh lá sang nâu đất trong vòng vài phút, giúp chúng tránh được kẻ săn mồi.",
+                    "Loài ếch mới được đặt tên khoa học là Boana chromachangus, được phát hiện trong một cuộc khảo sát đa dạng sinh học tại khu vực sâu trong rừng Amazon thuộc Brazil. Đặc điểm nổi bật nhất của loài này là khả năng thay đổi màu sắc nhanh chóng từ xanh lá cây sang nâu đất, giúp chúng ngụy trang hiệu quả trong môi trường sống.",
+                    "Theo các nhà nghiên cứu, khả năng thay đổi màu sắc của loài ếch này khác với hầu hết các loài lưỡng cư khác. Thay vì thay đổi màu sắc theo thời gian dài như tắc kè, Boana chromachangus có thể hoàn thành quá trình này chỉ trong vòng 3-5 phút, một trong những tốc độ nhanh nhất được ghi nhận ở các loài lưỡng cư."
+                ],
+                quote: {
+                    text: "Mỗi loài mới được phát hiện không chỉ làm phong phú thêm hiểu biết của chúng ta về đa dạng sinh học, mà còn có thể mang lại những hiểu biết mới về sinh học và tiến hóa, thậm chí có thể dẫn đến những ứng dụng y học trong tương lai.",
+                    author: "Dr. Carlos Mendoza, trưởng nhóm nghiên cứu"
+                },
+                keyPoints: [
+                    "Loài ếch mới có tên khoa học là Boana chromachangus",
+                    "Có khả năng thay đổi màu sắc từ xanh lá sang nâu đất trong vòng 3-5 phút",
+                    "Kích thước nhỏ, chỉ khoảng 3-4 cm với các đốm hình sao trên lưng",
+                    "Phát hiện tại khu vực sâu trong rừng Amazon thuộc Brazil",
+                    "Nhấn mạnh tầm quan trọng của việc bảo tồn rừng Amazon"
+                ]
+            },
+            {
+                id: 3,
+                title: "Hội nghị quốc tế về bảo tồn động vật hoang dã sẽ diễn ra tại Hà Nội",
+                image: "https://icdn.dantri.com.vn/thumb_w/960/b1f4d804b1/2016/11/18/copy-of-dsc-8914-1479468408997.jpg",
+                date: "05 Tháng 4, 2023",
+                category: "Sự kiện",
+                excerpt: "Hội nghị quốc tế về bảo tồn động vật hoang dã lần thứ 15 sẽ được tổ chức tại Hà Nội vào tháng 6 năm 2023, với sự tham gia của hơn 50 quốc gia. Hội nghị sẽ tập trung vào các giải pháp bảo tồn đa dạng sinh học.",
+                content: [
+                    "Hội nghị quốc tế về bảo tồn động vật hoang dã lần thứ 15 (IWCC 2023) sẽ diễn ra tại Trung tâm Hội nghị Quốc gia, Hà Nội từ ngày 15 đến 18 tháng 6 năm 2023. Đây là lần đầu tiên Việt Nam đăng cai tổ chức sự kiện quan trọng này, với sự tham gia của đại diện từ hơn 50 quốc gia và các tổ chức bảo tồn quốc tế hàng đầu.",
+                    "Hội nghị năm nay sẽ tập trung vào chủ đề 'Hành động toàn cầu cho tương lai bền vững của động vật hoang dã', với các phiên thảo luận về buôn bán động vật hoang dã trái phép, bảo tồn đa dạng sinh học, tác động của biến đổi khí hậu đến các loài động vật, và vai trò của cộng đồng địa phương trong bảo tồn.",
+                    "Việc Việt Nam được chọn làm nơi tổ chức hội nghị phản ánh những nỗ lực và thành tựu của đất nước trong lĩnh vực bảo tồn động vật hoang dã trong những năm gần đây. Việt Nam đã thực hiện nhiều biện pháp mạnh mẽ để chống buôn bán động vật hoang dã trái phép và bảo vệ các loài đang bị đe dọa như tê giác, voi, hổ và tê tê."
+                ],
+                quote: {
+                    text: "Việc đăng cai tổ chức Hội nghị quốc tế về bảo tồn động vật hoang dã là cơ hội để Việt Nam chia sẻ kinh nghiệm, học hỏi từ các quốc gia khác và khẳng định cam kết mạnh mẽ của chúng tôi đối với bảo tồn đa dạng sinh học toàn cầu.",
+                    author: "Ông Nguyễn Văn Thành, Thứ trưởng Bộ Tài nguyên và Môi trường Việt Nam"
+                },
+                keyPoints: [
+                    "Hội nghị diễn ra từ ngày 15-18 tháng 6, 2023 tại Hà Nội",
+                    "Có sự tham gia của đại diện từ hơn 50 quốc gia",
+                    "Chủ đề: 'Hành động toàn cầu cho tương lai bền vững của động vật hoang dã'",
+                    "Thảo luận về buôn bán động vật hoang dã trái phép, bảo tồn đa dạng sinh học",
+                    "Tổ chức các chuyến thăm thực địa đến Vườn Quốc gia Cúc Phương và Cát Tiên"
+                ]
+            },
+            {
+                id: 4,
+                title: "Rạn san hô lớn nhất Việt Nam đang phục hồi sau nhiều năm suy giảm",
+                image: "https://redsvn.net/wp-content/uploads/2020/03/img_5e7d159541965.jpg",
+                date: "28 Tháng 3, 2023",
+                category: "Môi trường",
+                excerpt: "Các nhà khoa học ghi nhận sự phục hồi đáng kể của rạn san hô tại vùng biển Nha Trang sau nhiều năm suy giảm do biến đổi khí hậu và hoạt động du lịch quá mức. Đây là tin vui cho hệ sinh thái biển.",
+                content: [
+                    "Các nhà khoa học ghi nhận sự phục hồi đáng kể của rạn san hô tại vùng biển Nha Trang sau nhiều năm suy giảm do biến đổi khí hậu và hoạt động du lịch quá mức. Đây là tin vui cho hệ sinh thái biển.",
+                    "Theo báo cáo mới nhất từ Viện Hải dương học Nha Trang, rạn san hô tại vịnh Nha Trang - một trong những rạn san hô lớn nhất và đa dạng nhất Việt Nam - đang cho thấy dấu hiệu phục hồi đáng kể sau gần một thập kỷ suy giảm nghiêm trọng. Độ phủ san hô sống đã tăng từ khoảng 10% vào năm 2017 lên gần 25% vào năm 2022.",
+                    "Sự phục hồi này được cho là kết quả của nhiều biện pháp bảo vệ đã được thực hiện trong những năm gần đây. Các biện pháp này bao gồm việc giảm số lượng khách du lịch tại các khu vực nhạy cảm, cấm neo đậu tàu thuyền trực tiếp trên rạn san hô, kiểm soát chặt chẽ nước thải từ các khu nghỉ dưỡng ven biển, và các chương trình trồng san hô nhân tạo."
+                ],
+                quote: {
+                    text: "Sự phục hồi của rạn san hô Nha Trang cho thấy thiên nhiên có khả năng hồi phục đáng kinh ngạc nếu chúng ta giảm áp lực lên các hệ sinh thái. Tuy nhiên, đây mới chỉ là bước đầu, và chúng ta cần tiếp tục nỗ lực bảo vệ để đảm bảo sự phục hồi bền vững.",
+                    author: "TS. Nguyễn Văn Hải, Viện Hải dương học Nha Trang"
+                },
+                keyPoints: [
+                    "Độ phủ san hô sống tại vịnh Nha Trang tăng từ 10% (2017) lên 25% (2022)",
+                    "Các biện pháp bảo vệ bao gồm giảm du lịch tại khu vực nhạy cảm, cấm neo đậu tàu thuyền trên rạn",
+                    "Khu bảo tồn biển Nha Trang đóng vai trò quan trọng trong việc bảo vệ rạn san hô",
+                    "Biến đổi khí hậu và hiện tượng tẩy trắng san hô vẫn là mối đe dọa lớn",
+                    "Cần tiếp tục các nỗ lực bảo vệ để đảm bảo sự phục hồi bền vững"
+                ]
+            },
+            {
+                id: 5,
+                title: "Vườn quốc gia Cát Tiên mở rộng diện tích bảo tồn thêm 2,000 hecta",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGA4vYQna66iO_NA4RtF73gysjvv7d5ySIOQ&s",
+                date: "20 Tháng 3, 2023",
+                category: "Bảo tồn",
+                excerpt: "Vườn quốc gia Cát Tiên vừa được phê duyệt mở rộng thêm 2,000 hecta, nâng tổng diện tích lên hơn 73,000 hecta. Việc mở rộng này sẽ giúp bảo vệ thêm nhiều loài động thực vật quý hiếm.",
+                content: [
+                    "Vườn quốc gia Cát Tiên vừa được phê duyệt mở rộng thêm 2,000 hecta, nâng tổng diện tích lên hơn 73,000 hecta. Việc mở rộng này sẽ giúp bảo vệ thêm nhiều loài động thực vật quý hiếm.",
+                    "Theo quyết định mới được Thủ tướng Chính phủ phê duyệt, Vườn quốc gia Cát Tiên sẽ được mở rộng thêm 2,000 hecta về phía đông bắc, nâng tổng diện tích của khu bảo tồn lên hơn 73,000 hecta. Khu vực mở rộng bao gồm các khu rừng nguyên sinh còn sót lại và các vùng đệm quan trọng, nơi sinh sống của nhiều loài động thực vật quý hiếm.",
+                    "Vườn quốc gia Cát Tiên, nằm trên địa phận ba tỉnh Đồng Nai, Lâm Đồng và Bình Phước, là một trong những khu bảo tồn thiên nhiên quan trọng nhất Việt Nam. Khu vực này là nơi sinh sống của nhiều loài động vật quý hiếm như voi châu Á, bò tót, gấu ngựa, và đặc biệt là loài tê giác một sừng Java - mặc dù loài này được cho là đã tuyệt chủng tại Việt Nam từ năm 2010."
+                ],
+                quote: {
+                    text: "Việc mở rộng Vườn quốc gia Cát Tiên là một bước tiến quan trọng trong nỗ lực bảo tồn đa dạng sinh học của Việt Nam. Điều này không chỉ giúp bảo vệ các loài động thực vật quý hiếm mà còn tạo ra một hành lang sinh thái liên tục, cho phép các loài di chuyển và thích nghi tốt hơn với biến đổi khí hậu.",
+                    author: "Ông Trần Văn Lộc, Giám đốc Vườn quốc gia Cát Tiên"
+                },
+                keyPoints: [
+                    "Vườn quốc gia Cát Tiên được mở rộng thêm 2,000 hecta, nâng tổng diện tích lên 73,000 hecta",
+                    "Khu vực mở rộng bao gồm rừng nguyên sinh và vùng đệm quan trọng",
+                    "Là nơi sinh sống của nhiều loài động vật quý hiếm như voi châu Á, bò tót, gấu ngựa",
+                    "Góp phần vào nỗ lực giảm thiểu biến đổi khí hậu thông qua việc bảo vệ rừng",
+                    "Dự kiến đưa vào quản lý từ tháng 7 năm 2023"
+                ]
+            }
+        ];
+
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (backToTopButton) {
+                // Show/hide button based on scroll position
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                // Scroll to top when button is clicked
+                backToTopButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+
+            // News Popup Functionality
+            const popup = document.getElementById('news-popup');
+            const popupClose = document.getElementById('popup-close');
+            const popupCloseBtn = document.getElementById('popup-close-btn');
+            const popupCategory = document.getElementById('popup-category');
+            const popupDate = document.getElementById('popup-date');
+            const popupTitle = document.getElementById('popup-title');
+            const popupImage = document.getElementById('popup-image');
+            const popupContentText = document.getElementById('popup-content-text');
+
+            // Function to open popup with specific news
+            function openPopup(newsId) {
+                const news = newsData.find(item => item.id === parseInt(newsId));
+                if (!news) return;
+
+                // Set popup content
+                popupCategory.textContent = news.category;
+                popupDate.textContent = news.date;
+                popupTitle.textContent = news.title;
+                popupImage.src = news.image;
+                popupImage.alt = news.title;
+
+                // Clear previous content
+                popupContentText.innerHTML = '';
+
+                // Add paragraphs
+                if (news.content && news.content.length) {
+                    news.content.forEach(paragraph => {
+                        const p = document.createElement('p');
+                        p.textContent = paragraph;
+                        popupContentText.appendChild(p);
+                    });
+                }
+
+                // Add quote if exists
+                if (news.quote) {
+                    const quoteDiv = document.createElement('div');
+                    quoteDiv.className = 'popup-quote';
+                    quoteDiv.innerHTML = `
+                        <p>"${news.quote.text}"</p>
+                        <div class="popup-quote-author">— ${news.quote.author}</div>
+                    `;
+                    popupContentText.appendChild(quoteDiv);
+                }
+
+                // Add key points if exists
+                if (news.keyPoints && news.keyPoints.length) {
+                    const keyPointsDiv = document.createElement('div');
+                    keyPointsDiv.className = 'popup-key-points';
+                    
+                    const keyPointsTitle = document.createElement('h3');
+                    keyPointsTitle.textContent = 'Điểm chính:';
+                    keyPointsDiv.appendChild(keyPointsTitle);
+                    
+                    const keyPointsList = document.createElement('ul');
+                    news.keyPoints.forEach(point => {
+                        const li = document.createElement('li');
+                        li.textContent = point;
+                        keyPointsList.appendChild(li);
+                    });
+                    
+                    keyPointsDiv.appendChild(keyPointsList);
+                    popupContentText.appendChild(keyPointsDiv);
+                }
+
+                // Show popup
+                popup.classList.add('active');
+                document.body.classList.add('popup-open');
+            }
+
+            // Function to close popup
+            function closePopup() {
+                popup.classList.remove('active');
+                document.body.classList.remove('popup-open');
+            }
+
+            // Add event listeners to all "Read More" buttons
+            const readMoreButtons = document.querySelectorAll('.primary-button, .outline-button, .popular-post-title');
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const newsId = this.getAttribute('data-id');
+                    if (newsId) {
+                        openPopup(newsId);
+                    }
+                });
+            });
+
+            // Close popup when clicking close button
+            if (popupClose) {
+                popupClose.addEventListener('click', closePopup);
+            }
+
+            // Close popup when clicking close button in footer
+            if (popupCloseBtn) {
+                popupCloseBtn.addEventListener('click', closePopup);
+            }
+
+            // Close popup when clicking outside
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    closePopup();
+                }
+            });
+
+            // Close popup when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && popup.classList.contains('active')) {
+                    closePopup();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
