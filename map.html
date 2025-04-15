@@ -7,6 +7,46 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Styles riêng cho trang map */
+        .page-hero {
+            background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: 0.2s;
+        }
+
         .map-container {
             padding: 40px 0;
         }
@@ -368,6 +408,56 @@
             gap: 5px;
         }
 
+        .habitats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .habitat-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .habitat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .habitat-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .habitat-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .habitat-card:hover .habitat-image img {
+            transform: scale(1.05);
+        }
+
+        .habitat-info {
+            padding: 20px;
+        }
+
+        .habitat-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .habitat-info p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+
         @media (max-width: 768px) {
             .map-wrapper {
                 height: 400px;
@@ -379,6 +469,10 @@
 
             .animal-info-panel {
                 width: calc(100% - 40px);
+            }
+
+            .habitats-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -400,6 +494,7 @@
                     <li><a href="news.html" class="nav-link">Tin tức</a></li>
                     <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
                     <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+                </ul>
             </nav>
             
 
@@ -414,8 +509,8 @@
                     <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
                     <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
                     <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
-                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
-                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="news.html" class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="mobile-nav-link">Câu chuyện</a></li>
                     <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
                 </ul>
             </div>
@@ -520,7 +615,7 @@
                         </div>
                         <div class="animal-info-content">
                             <div class="animal-info-image">
-                                <img id="animal-info-image" src="/placeholder.svg?height=150&width=270" alt="Hình ảnh động vật">
+                                <img id="animal-info-image" src="https://via.placeholder.com/270x150" alt="Hình ảnh động vật">
                             </div>
                             <div class="animal-info-status" id="animal-info-status">Tình trạng bảo tồn</div>
                             <p class="animal-info-description" id="animal-info-description">Mô tả về loài động vật.</p>
@@ -558,8 +653,15 @@
 
                     <!-- World Map -->
                     <div id="world-map">
-                        <!-- Map will be loaded here by JavaScript -->
-                        <img src="/placeholder.svg?height=600&width=1200&text=World+Map" alt="Bản đồ thế giới" style="width: 100%; height: 100%; object-fit: cover;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249744.03228368837!2d106.5413366745224!3d10.755341087853695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529292e8d3dd1%3A0xf15f5aad773c112b!2zSOG7kyBDaMOtIE1pbmgsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1712471321121!5m2!1svi!2s"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -592,7 +694,7 @@
                 <div class="habitats-grid">
                     <div class="habitat-card">
                         <div class="habitat-image">
-                            <img src="/placeholder.svg?height=200&width=400&text=Rainforest" alt="Rừng nhiệt đới">
+                            <img src="https://ktmt.vnmediacdn.com/images/2021/10/06/45-1633506738-rung-nhiet-doi.jpg" alt="Rừng nhiệt đới">
                         </div>
                         <div class="habitat-info">
                             <h3>Rừng nhiệt đới</h3>
@@ -603,7 +705,7 @@
 
                     <div class="habitat-card">
                         <div class="habitat-image">
-                            <img src="/placeholder.svg?height=200&width=400&text=Savanna" alt="Đồng cỏ Savanna">
+                            <img src="https://media.istockphoto.com/id/1140829787/vi/anh/ho%C3%A0ng-h%C3%B4n-t%E1%BA%A1i-%C4%91%E1%BB%93ng-b%E1%BA%B1ng-th%E1%BA%A3o-nguy%C3%AAn.jpg?s=612x612&w=0&k=20&c=wwhXI7F3IJK7IlriUFxAfkQoQm0IiD2KkCgigTlEa5s=" alt="Đồng cỏ  alt="Đồng cỏ Savanna">
                         </div>
                         <div class="habitat-info">
                             <h3>Đồng cỏ Savanna</h3>
@@ -614,7 +716,7 @@
 
                     <div class="habitat-card">
                         <div class="habitat-image">
-                            <img src="/placeholder.svg?height=200&width=400&text=Ocean" alt="Đại dương">
+                            <img src="https://cdn-images.vtv.vn/zoom/640_400/66349b6076cb4dee98746cf1/2025/03/13/underwater-view-50212401924325883524477-36101979316863936825990.jpg" alt="Đại dương">
                         </div>
                         <div class="habitat-info">
                             <h3>Đại dương</h3>
@@ -625,7 +727,7 @@
 
                     <div class="habitat-card">
                         <div class="habitat-image">
-                            <img src="/placeholder.svg?height=200&width=400&text=Arctic" alt="Vùng Bắc Cực">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0odli45N9jDe1UwT5qvoaiX9LF4PdNho2KQ&s" alt="Vùng Bắc Cực">
                         </div>
                         <div class="habitat-info">
                             <h3>Vùng Bắc Cực</h3>
@@ -752,7 +854,7 @@
                 description: "Hổ Bengal là một trong những loài mèo lớn nhất thế giới, sống chủ yếu ở các khu rừng Ấn Độ, Nepal, Bhutan và Bangladesh.",
                 status: "endangered",
                 statusText: "Nguy cấp",
-                image: "/placeholder.svg?height=150&width=270&text=Tiger",
+                image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 habitat: "Rừng nhiệt đới, đầm lầy, đồng cỏ",
                 diet: "Ăn thịt (nai, lợn rừng, trâu rừng)",
                 lifespan: "8-10 năm trong tự nhiên, 16-18 năm trong nuôi nhốt",
@@ -767,7 +869,7 @@
                 description: "Đại bàng đầu trắc là biểu tượng quốc gia của Hoa Kỳ, là loài chim săn mồi lớn với đầu và đuôi màu trắng đặc trưng.",
                 status: "least-concern",
                 statusText: "Ít quan tâm",
-                image: "/placeholder.svg?height=150&width=270&text=Eagle",
+                image: "https://images.unsplash.com/photo-1611689342806-0863700ce1e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 habitat: "Rừng gần hồ, sông và vùng biển",
                 diet: "Ăn thịt (cá, chim, động vật nhỏ)",
                 lifespan: "20-30 năm trong tự nhiên",
@@ -782,7 +884,7 @@
                 description: "Rắn hổ mang chúa là loài rắn độc dài nhất thế giới, có thể đạt tới 5.5 mét. Chúng sống chủ yếu ở các khu rừng Đông Nam Á.",
                 status: "vulnerable",
                 statusText: "Sắp nguy cấp",
-                image: "/placeholder.svg?height=150&width=270&text=Snake",
+                image: "https://media.vietnamplus.vn/images/7255a701687d11cb8c6bbc58a6c80785024af50252e976b623b46eeb934f666d7c8502fcc9d593378919b4f6ab77cce54f9efb0c8972265f49d8f86164867992/Ranhomangchua.jpg",
                 habitat: "Rừng nhiệt đới, đồng bằng",
                 diet: "Ăn thịt (chủ yếu là rắn khác)",
                 lifespan: "15-20 năm",
@@ -797,7 +899,7 @@
                 description: "Ếch phi tiêu độc xanh dương là một trong những loài ếch độc nhất thế giới, với làn da xanh dương rực rỡ chứa độc tố mạnh.",
                 status: "vulnerable",
                 statusText: "Sắp nguy cấp",
-                image: "/placeholder.svg?height=150&width=270&text=Frog",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRuB-J9rEz5EpKQG1-6ZL9E4AduUhfLEiHg&s",
                 habitat: "Rừng mưa nhiệt đới",
                 diet: "Ăn côn trùng nhỏ",
                 lifespan: "10-15 năm",
@@ -812,7 +914,7 @@
                 description: "Cá mập trắng lớn là một trong những loài cá săn mồi hàng đầu trong đại dương, nổi tiếng với kích thước khổng lồ và sức mạnh.",
                 status: "vulnerable",
                 statusText: "Sắp nguy cấp",
-                image: "/placeholder.svg?height=150&width=270&text=Shark",
+                image: "https://upload.wikimedia.org/wikipedia/commons/5/56/White_shark.jpg",
                 habitat: "Đại dương ven biển và ngoài khơi",
                 diet: "Ăn thịt (hải cẩu, cá lớn, cá heo)",
                 lifespan: "70+ năm",
@@ -827,58 +929,13 @@
                 description: "Bướm Morpho xanh nổi tiếng với đôi cánh màu xanh lam rực rỡ, là một trong những loài bướm đẹp nhất thế giới.",
                 status: "least-concern",
                 statusText: "Ít quan tâm",
-                image: "/placeholder.svg?height=150&width=270&text=Butterfly",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO2V6SoTk3yOF-_9VCAQSoTYYARDcZonrftQ&s",
                 habitat: "Rừng nhiệt đới",
                 diet: "Ăn mật hoa, trái cây thối",
                 lifespan: "115-120 ngày",
                 locations: ["Brazil", "Costa Rica", "Colombia", "Venezuela"],
                 category: "insects",
                 coordinates: { lat: -14.2350, lng: -51.9253 }
-            },
-            {
-                id: 7,
-                name: "Voi châu Phi",
-                scientificName: "Loxodonta africana",
-                description: "Voi châu Phi là loài động vật có vú trên cạn lớn nhất thế giới, nổi tiếng với đôi tai to và ngà dài.",
-                status: "endangered",
-                statusText: "Nguy cấp",
-                image: "/placeholder.svg?height=150&width=270&text=Elephant",
-                habitat: "Đồng cỏ Savanna, rừng thưa",
-                diet: "Ăn cỏ, lá cây, vỏ cây",
-                lifespan: "60-70 năm",
-                locations: ["Kenya", "Tanzania", "Botswana", "Zimbabwe"],
-                category: "mammals",
-                coordinates: { lat: -0.0236, lng: 37.9062 }
-            },
-            {
-                id: 8,
-                name: "Chim hồng hạc",
-                scientificName: "Phoenicopterus roseus",
-                description: "Chim hồng hạc nổi tiếng với bộ lông màu hồng rực rỡ và đôi chân dài, thường sống thành đàn lớn tại các vùng nước nông.",
-                status: "least-concern",
-                statusText: "Ít quan tâm",
-                image: "/placeholder.svg?height=150&width=270&text=Flamingo",
-                habitat: "Hồ nước mặn, đầm lầy",
-                diet: "Ăn tảo, giáp xác nhỏ",
-                lifespan: "20-30 năm",
-                locations: ["Kenya", "Tanzania", "Nam Phi", "Ấn Độ"],
-                category: "birds",
-                coordinates: { lat: -0.0236, lng: 37.9062 }
-            },
-            {
-                id: 9,
-                name: "Cá heo mũi chai",
-                scientificName: "Tursiops truncatus",
-                description: "Cá heo mũi chai là một trong những loài cá heo thông minh nhất, nổi tiếng với khả năng giao tiếp phức tạp và tính cách thân thiện.",
-                status: "least-concern",
-                statusText: "Ít quan tâm",
-                image: "/placeholder.svg?height=150&width=270&text=Dolphin",
-                habitat: "Đại dương ven biển và ngoài khơi",
-                diet: "Ăn cá, mực, tôm",
-                lifespan: "40-60 năm",
-                locations: ["Toàn cầu - vùng biển ôn đới và nhiệt đới"],
-                category: "mammals",
-                coordinates: { lat: 0, lng: 0 }
             }
         ];
 
@@ -934,7 +991,6 @@
             });
 
             document.getElementById("zoom-out").addEventListener("click", function() {
-                // Xử lý thu nhỏ bản  function() {
                 // Xử lý thu nhỏ bản đồ
                 alert("Thu nhỏ bản đồ");
             });
@@ -966,7 +1022,7 @@
             const mobileMenu = document.getElementById("mobile-menu");
             
             mobileMenuButton.addEventListener("click", function() {
-                mobileMenu.classList.toggle("active");
+                mobileMenu.classList.toggle("open");
             });
 
             // Set current year in footer
@@ -1041,8 +1097,8 @@
             document.getElementById("animal-info-diet").textContent = animal.diet;
             document.getElementById("animal-info-lifespan").textContent = animal.lifespan;
             
-            document.getElementById("animal-info-more").href = `animals.html?id=${animal.id}`;
-            document.getElementById("animal-info-conservation").href = `conservation.html?species=${animal.id}`;
+            document.getElementById("animal-info-more").href = `animals.html`;
+            document.getElementById("animal-info-conservation").href = `conservation.html`;
             
             // Hiển thị panel
             document.getElementById("animal-info-panel").style.display = "block";
