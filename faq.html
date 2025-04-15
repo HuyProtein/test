@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu hỏi thường gặp | Wildlife</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .faq-hero {
+            background-image: url("https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1374&auto=format&fit=crop");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .faq-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .faq-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-search {
+            max-width: 600px;
+            margin: 30px auto 0;
+            position: relative;
+        }
+
+        .faq-search input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-search button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-search button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .faq-categories {
+            padding: 60px 0;
+        }
+
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-tab {
+            padding: 12px 20px;
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-tab:hover, .category-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .faq-section {
+            padding: 0 0 60px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 500;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-question svg {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 1000px;
+        }
+
+        .contact-section {
+            background-color: #f1f8e9;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .primary-contact {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .primary-contact:hover {
+            background-color: var(--primary-hover);
+            color: white;
+        }
+
+        .secondary-contact {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .secondary-contact:hover {
+            background-color: #f1f8e9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="faq-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Câu hỏi thường gặp</h1>
+                    <p>
+                        Tìm câu trả lời cho những thắc mắc của bạn về động vật hoang dã, bảo tồn và các hoạt động của chúng tôi.
+                    </p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="Tìm kiếm câu hỏi..." id="faq-search-input">
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Categories Section -->
+        <section class="faq-categories">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Danh mục câu hỏi</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="category-tabs">
+                    <div class="category-tab active" data-category="all">Tất cả</div>
+                    <div class="category-tab" data-category="general">Thông tin chung</div>
+                    <div class="category-tab" data-category="animals">Động vật hoang dã</div>
+                    <div class="category-tab" data-category="conservation">Bảo tồn</div>
+                    <div class="category-tab" data-category="volunteer">Tình nguyện viên</div>
+                    <div class="category-tab" data-category="donation">Ủng hộ & Tài trợ</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq-container">
+                    <!-- General Questions -->
+                    <div class="faq-group" data-category="general">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Wildlife là tổ chức gì?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Wildlife là một tổ chức phi lợi nhuận hoạt động trong lĩnh vực bảo tồn động vật hoang dã và môi trường sống tự nhiên tại Việt Nam. Chúng tôi thành lập vào năm 2010 với sứ mệnh bảo vệ đa dạng sinh học, nâng cao nhận thức cộng đồng và thúc đẩy các giải pháp bền vững cho các vấn đề môi trường.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Wildlife hoạt động ở những khu vực nào?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Hiện tại, Wildlife đang hoạt động tại nhiều khu vực trên khắp Việt Nam, tập trung vào các vùng có đa dạng sinh học cao như Vườn Quốc gia Cát Tiên, Vườn Quốc gia Cúc Phương, Vườn Quốc gia Phong Nha - Kẻ Bàng, Khu Bảo tồn Thiên nhiên Sơn Trà, và các khu vực ven biển như Côn Đảo và Phú Quốc. Chúng tôi cũng có các dự án hợp tác quốc tế với các tổ chức bảo tồn tại các nước láng giềng trong khu vực Đông Nam Á.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Làm thế nào để liên hệ với Wildlife?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Bạn có thể liên hệ với chúng tôi qua các kênh sau:
+                                </p>
+                                <ul>
+                                    <li>Email: dhuyy007@gmail.com</li>
+                                    <li>Điện thoại: (+84)0964509848</li>
+                                    <li>Địa chỉ: Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</li>
+                                    <li>Mạng xã hội: Facebook, Twitter, Instagram, YouTube (tìm kiếm "Wildlife Vietnam")</li>
+                                    <li>Hoặc sử dụng biểu mẫu liên hệ trên trang web của chúng tôi</li>
+                                </ul>
+                                <p>
+                                    Chúng tôi sẽ phản hồi trong vòng 48 giờ làm việc.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Animals Questions -->
+                    <div class="faq-group" data-category="animals">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Có bao nhiêu loài động vật hoang dã tại Việt Nam?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Việt Nam là một trong những quốc gia có đa dạng sinh học cao nhất thế giới. Theo số liệu gần đây, Việt Nam có khoảng:
+                                </p>
+                                <ul>
+                                    <li>310+ loài thú</li>
+                                    <li>850+ loài chim</li>
+                                    <li>300+ loài bò sát</li>
+                                    <li>190+ loài lưỡng cư</li>
+                                    <li>3.000+ loài cá</li>
+                                    <li>Hơn 13.000 loài thực vật</li>
+                                </ul>
+                                <p>
+                                    Trong đó, có nhiều loài đặc hữu chỉ có ở Việt Nam và nhiều loài đang bị đe dọa nghiêm trọng cần được bảo vệ.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Những loài động vật nào đang bị đe dọa nghiêm trọng nhất tại Việt Nam?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Một số loài động vật đang bị đe dọa nghiêm trọng nhất tại Việt Nam bao gồm:
+                                </p>
+                                <ul>
+                                    <li>Tê giác Java (Rhinoceros sondaicus) - Cực kỳ nguy cấp (CR)</li>
+                                    <li>Hổ Đông Dương (Panthera tigris corbetti) - Cực kỳ nguy cấp (CR)</li>
+                                    <li>Voi châu Á (Elephas maximus) - Nguy cấp (EN)</li>
+                                    <li>Sao la (Pseudoryx nghetinhensis) - Cực kỳ nguy cấp (CR)</li>
+                                    <li>Voọc mũi hếch (Rhinopithecus avunculus) - Cực kỳ nguy cấp (CR)</li>
+                                    <li>Cá heo Irrawaddy (Orcaella brevirostris) - Nguy cấp (EN)</li>
+                                    <li>Rùa Hoàn Kiếm (Rafetus swinhoei) - Cực kỳ nguy cấp (CR)</li>
+                                </ul>
+                                <p>
+                                    Các loài này đang đối mặt với nguy cơ tuyệt chủng do mất môi trường sống, săn bắt trái phép và buôn bán động vật hoang dã.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Làm thế nào để phân biệt các loài động vật hoang dã?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Phân biệt các loài động vật hoang dã đòi hỏi kiến thức và kỹ năng quan sát. Một số cách để phân biệt bao gồm:
+                                </p>
+                                <ul>
+                                    <li><strong>Đặc điểm hình thái:</strong> Kích thước, màu sắc, hình dạng cơ thể, đặc điểm đầu, chân, đuôi, v.v.</li>
+                                    <li><strong>Dấu vết:</strong> Dấu chân, phân, hang ổ, dấu hiệu kiếm ăn</li>
+                                    <li><strong>Âm thanh:</strong> Tiếng kêu, tiếng hót đặc trưng</li>
+                                    <li><strong>Môi trường sống:</strong> Nơi thường xuất hiện (rừng, đồng cỏ, đầm lầy, v.v.)</li>
+                                    <li><strong>Hành vi:</strong> Cách di chuyển, kiếm ăn, sinh sản</li>
+                                </ul>
+                                <p>
+                                    Bạn có thể tìm hiểu thêm thông qua các sách hướng dẫn nhận dạng động vật, ứng dụng di động, hoặc tham gia các khóa học và tour tham quan có hướng dẫn viên chuyên nghiệp.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conservation Questions -->
+                    <div class="faq-group" data-category="conservation">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Tại sao việc bảo tồn động vật hoang dã lại quan trọng?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Bảo tồn động vật hoang dã có tầm quan trọng đặc biệt vì nhiều lý do:
+                                </p>
+                                <ul>
+                                    <li><strong>Duy trì cân bằng sinh thái:</strong> Mỗi loài đều có vai trò riêng trong hệ sinh thái, từ thụ phấn đến kiểm soát sâu bệnh và duy trì chuỗi thức ăn.</li>
+                                    <li><strong>Bảo vệ đa dạng sinh học:</strong> Đa dạng sinh học giúp hệ sinh thái phục hồi sau thiên tai và thích ứng với biến đổi khí hậu.</li>
+                                    <li><strong>Giá trị y học:</strong> Nhiều loài cung cấp hợp chất quan trọng cho nghiên cứu y học và phát triển thuốc mới.</li>
+                                    <li><strong>Giá trị kinh tế:</strong> Du lịch sinh thái, nông nghiệp bền vững và các ngành công nghiệp khác phụ thuộc vào hệ sinh thái khỏe mạnh.</li>
+                                    <li><strong>Giá trị văn hóa và tinh thần:</strong> Động vật hoang dã là một phần quan trọng trong văn hóa, nghệ thuật và tín ngưỡng của nhiều cộng đồng.</li>
+                                    <li><strong>Trách nhiệm đạo đức:</strong> Chúng ta có trách nhiệm bảo vệ các loài khác và môi trường sống của chúng cho các thế hệ tương lai.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Những mối đe dọa chính đối với động vật hoang dã là gì?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Động vật hoang dã đang đối mặt với nhiều mối đe dọa, bao gồm:
+                                </p>
+                                <ul>
+                                    <li><strong>Mất và suy thoái môi trường sống:</strong> Do phá rừng, đô thị hóa, phát triển nông nghiệp và cơ sở hạ tầng.</li>
+                                    <li><strong>Săn bắt và buôn bán trái phép:</strong> Để lấy thịt, da, ngà, sừng, làm thú cưng hoặc sử dụng trong y học cổ truyền.</li>
+                                    <li><strong>Biến đổi khí hậu:</strong> Gây ra thay đổi nhiệt độ, mực nước biển dâng, và các hiện tượng thời tiết cực đoan.</li>
+                                    <li><strong>Ô nhiễm:</strong> Ô nhiễm không khí, nước, đất và rác thải nhựa ảnh hưởng đến sức khỏe và khả năng sinh sản của động vật.</li>
+                                    <li><strong>Loài xâm lấn:</strong> Các loài ngoại lai xâm lấn cạnh tranh với các loài bản địa về thức ăn và môi trường sống.</li>
+                                    <li><strong>Bệnh dịch:</strong> Các bệnh mới nổi và lây lan giữa động vật hoang dã, vật nuôi và con người.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Làm thế nào để tôi có thể góp phần bảo tồn động vật hoang dã?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Có nhiều cách để bạn có thể đóng góp vào công tác bảo tồn động vật hoang dã:
+                                </p>
+                                <ul>
+                                    <li><strong>Ủng hộ tài chính:</strong> Quyên góp cho các tổ chức bảo tồn uy tín như Wildlife.</li>
+                                    <li><strong>Tình nguyện viên:</strong> Tham gia các chương trình tình nguyện bảo tồn, từ công việc văn phòng đến nghiên cứu thực địa.</li>
+                                    <li><strong>Tiêu dùng có trách nhiệm:</strong> Không mua các sản phẩm từ động vật hoang dã, chọn các sản phẩm thân thiện với môi trường và có chứng nhận bền vững.</li>
+                                    <li><strong>Giảm thiểu rác thải:</strong> Giảm sử dụng nhựa một lần, tái chế và xử lý rác thải đúng cách.</li>
+                                    <li><strong>Nâng cao nhận thức:</strong> Chia sẻ kiến thức về bảo tồn với gia đình, bạn bè và cộng đồng.</li>
+                                    <li><strong>Du lịch có trách nhiệm:</strong> Chọn các tour du lịch sinh thái có trách nhiệm và tôn trọng động vật hoang dã.</li>
+                                    <li><strong>Vận động chính sách:</strong> Ủng hộ các chính sách và luật pháp bảo vệ động vật hoang dã và môi trường.</li>
+                                    <li><strong>Tạo môi trường thân thiện:</strong> Trồng cây bản địa và tạo không gian thân thiện với động vật hoang dã trong vườn nhà bạn.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Volunteer Questions -->
+                    <div class="faq-group" data-category="volunteer">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Làm thế nào để trở thành tình nguyện viên cho Wildlife?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Để trở thành tình nguyện viên cho Wildlife, bạn có thể thực hiện các bước sau:
+                                </p>
+                                <ol>
+                                    <li>Truy cập trang <a href="volunteer.html">Cơ hội tình nguyện</a> trên website của chúng tôi.</li>
+                                    <li>Xem qua các chương trình tình nguyện hiện có và chọn chương trình phù hợp với sở thích, kỹ năng và thời gian của bạn.</li>
+                                    <li>Điền vào mẫu đơn đăng ký trực tuyến, cung cấp thông tin cá nhân, kinh nghiệm và lý do bạn muốn tham gia.</li>
+                                    <li>Sau khi nhận được đơn đăng ký, chúng tôi sẽ liên hệ với bạn trong vòng 2 tuần để thảo luận thêm và có thể mời bạn tham gia phỏng vấn.</li>
+                                    <li>Nếu được chấp nhận, bạn sẽ nhận được thông tin chi tiết về chương trình, bao gồm thời gian, địa điểm, và hướng dẫn chuẩn bị.</li>
+                                </ol>
+                                <p>
+                                    Bạn cũng có thể liên hệ trực tiếp với chúng tôi qua email volunteer@wildlife.vn hoặc điện thoại (+84)0964509848 để biết thêm thông tin.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Tôi cần có kinh nghiệm gì để tham gia tình nguyện không?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Yêu cầu kinh nghiệm phụ thuộc vào loại chương trình tình nguyện bạn muốn tham gia:
+                                </p>
+                                <ul>
+                                    <li><strong>Chương trình cơ bản:</strong> Hầu hết các chương trình tình nguyện cơ bản như bảo tồn rừng, giáo dục môi trường, và hỗ trợ truyền thông không yêu cầu kinh nghiệm trước đó. Chúng tôi sẽ cung cấp đầy đủ đào tạo và hướng dẫn.</li>
+                                    <li><strong>Chương trình chuyên sâu:</strong> Một số chương trình như nghiên cứu động vật hoang dã có thể yêu cầu nền tảng kiến thức về sinh học, sinh thái học hoặc các lĩnh vực liên quan.</li>
+                                    <li><strong>Kỹ năng chuyên môn:</strong> Các vị trí như nhiếp ảnh, thiết kế đồ họa, phát triển web, y tế thú y, v.v. sẽ yêu cầu kỹ năng và kinh nghiệm trong lĩnh vực đó.</li>
+                                </ul>
+                                <p>
+                                    Quan trọng nhất là bạn cần có niềm đam mê với bảo tồn động vật hoang dã, tinh thần làm việc nhóm, và sẵn sàng học hỏi. Chúng tôi luôn cố gắng tìm vị trí phù hợp với kỹ năng và sở thích của mỗi tình nguyện viên.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Có chi phí nào khi tham gia tình nguyện không?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Chi phí tham gia các chương trình tình nguyện của chúng tôi phụ thuộc vào loại chương trình và thời gian tham gia:
+                                </p>
+                                <ul>
+                                    <li><strong>Tình nguyện ngắn hạn tại địa phương:</strong> Các chương trình tình nguyện ngắn hạn (1-2 ngày) tại địa phương thường miễn phí. Chúng tôi cung cấp bữa ăn và các thiết bị cần thiết.</li>
+                                    <li><strong>Tình nguyện dài hạn tại thực địa:</strong> Các chương trình dài hạn (từ 1 tuần trở lên) tại các khu vực thực địa có thể yêu cầu phí tham gia để trang trải chi phí ăn ở, đi lại và vận hành dự án. Chi phí này thường từ 1-5 triệu đồng/tuần tùy thuộc vào địa điểm và thời gian.</li>
+                                    <li><strong>Tình nguyện quốc tế:</strong> Đối với tình nguyện viên quốc tế, chi phí có thể cao hơn do bao gồm hỗ trợ visa, đón tiễn sân bay và các dịch vụ bổ sung khác.</li>
+                                </ul>
+                                <p>
+                                    Chúng tôi cũng cung cấp một số học bổng và hỗ trợ tài chính cho tình nguyện viên có hoàn cảnh khó khăn hoặc sinh viên. Chi tiết cụ thể về chi phí sẽ được thông báo rõ ràng khi bạn đăng ký chương trình.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donation Questions -->
+                    <div class="faq-group" data-category="donation">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Làm thế nào để tôi có thể ủng hộ tài chính cho Wildlife?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Bạn có thể ủng hộ tài chính cho Wildlife thông qua nhiều cách khác nhau:
+                                </p>
+                                <ul>
+                                    <li><strong>Ủng hộ trực tuyến:</strong> Truy cập trang <a href="donate.html">Ủng hộ bảo tồn</a> trên website của chúng tôi và thực hiện thanh toán an toàn qua các cổng thanh toán như MoMo, ZaloPay, thẻ tín dụng/ghi nợ.</li>
+                                    <li><strong>Chuyển khoản ngân hàng:</strong> Chuyển khoản trực tiếp đến tài khoản ngân hàng của tổ chức (thông tin chi tiết được cung cấp khi bạn liên hệ với chúng tôi).</li>
+                                    <li><strong>Ủng hộ định kỳ:</strong> Đăng ký chương trình ủng hộ định kỳ hàng tháng để hỗ trợ liên tục cho các dự án bảo tồn.</li>
+                                    <li><strong>Tài trợ dự án cụ thể:</strong> Bạn có thể chọn tài trợ cho một dự án cụ thể như bảo tồn hổ, rùa biển, hoặc phục hồi rừng.</li>
+                                    <li><strong>Quyên góp hiện vật:</strong> Chúng tôi cũng nhận quyên góp hiện vật như thiết bị, vật tư y tế, và các vật dụng khác phục vụ cho công tác bảo tồn.</li>
+                                </ul>
+                                <p>
+                                    Mọi khoản đóng góp đều được sử dụng hiệu quả và minh bạch. Chúng tôi sẽ gửi biên nhận và báo cáo định kỳ về cách sử dụng nguồn quỹ.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Tiền ủng hộ của tôi sẽ được sử dụng như thế nào?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Khoản ủng hộ của bạn sẽ được sử dụng để hỗ trợ các hoạt động bảo tồn của chúng tôi, bao gồm:
+                                </p>
+                                <ul>
+                                    <li><strong>Bảo vệ trực tiếp:</strong> Hỗ trợ các đội tuần tra chống săn bắt trái phép, cung cấp thiết bị và đào tạo cho kiểm lâm.</li>
+                                    <li><strong>Nghiên cứu khoa học:</strong> Tài trợ cho các dự án nghiên cứu về động vật hoang dã, môi trường sống và các mối đe dọa.</li>
+                                    <li><strong>Phục hồi môi trường sống:</strong> Hỗ trợ các dự án trồng rừng, phục hồi đất ngập nước và các hệ sinh thái bị suy thoái.</li>
+                                    <li><strong>Giáo dục và nâng cao nhận thức:</strong> Phát triển tài liệu giáo dục, tổ chức hội thảo và chiến dịch nâng cao nhận thức cộng đồng.</li>
+                                    <li><strong>Hỗ trợ cộng đồng:</strong> Phát triển các mô hình sinh kế bền vững cho cộng đồng địa phương để giảm áp lực lên tài nguyên thiên nhiên.</li>
+                                    <li><strong>Vận động chính sách:</strong> Làm việc với các cơ quan chức năng để phát triển và thực thi các chính sách bảo tồn hiệu quả.</li>
+                                </ul>
+                                <p>
+                                    Chúng tôi cam kết sử dụng ít nhất 80% nguồn quỹ trực tiếp cho các hoạt động bảo tồn, với tối đa 20% cho chi phí hành chính và vận hành. Báo cáo tài chính hàng năm của chúng tôi được kiểm toán độc lập và công khai trên website.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Tôi có được giảm thuế khi ủng hộ cho Wildlife không?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Có, Wildlife là tổ chức phi lợi nhuận được công nhận chính thức tại Việt Nam, và các khoản đóng góp cho chúng tôi có thể được khấu trừ thuế theo quy định của pháp luật Việt Nam.
+                                </p>
+                                <ul>
+                                    <li><strong>Đối với cá nhân:</strong> Các khoản đóng góp từ thiện có thể được khấu trừ khi tính thuế thu nhập cá nhân, tùy theo quy định hiện hành.</li>
+                                    <li><strong>Đối với doanh nghiệp:</strong> Doanh nghiệp có thể khấu trừ các khoản đóng góp từ thiện lên đến một tỷ lệ nhất định của thu nhập chịu thuế, theo Luật Thuế Thu nhập Doanh nghiệp.</li>
+                                </ul>
+                                <p>
+                                    Sau khi nhận được khoản đóng góp của bạn, chúng tôi sẽ cấp biên lai từ thiện chính thức mà bạn có thể sử dụng cho mục đích kê khai thuế. Vui lòng tham khảo ý kiến của chuyên gia tư vấn thuế để biết thêm chi tiết về quy định khấu trừ thuế hiện hành.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <h2>Không tìm thấy câu trả lời bạn cần?</h2>
+                <p>
+                    Nếu bạn có thắc mắc khác hoặc cần thêm thông tin, đừng ngần ngại liên hệ với chúng tôi.
+                    Đội ngũ của chúng tôi luôn sẵn sàng hỗ trợ bạn.
+                </p>
+                <div class="contact-buttons">
+                    <a href="contact.html" class="contact-button primary-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        Gửi email cho chúng tôi
+                    </a>
+                    <a href="tel:+84964509848" class="contact-button secondary-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        Gọi điện cho chúng tôi
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = answer.classList.contains('active');
+                    
+                    // Close all answers
+                    document.querySelectorAll('.faq-answer').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Toggle current answer
+                    if (!isActive) {
+                        answer.classList.add('active');
+                        this.classList.add('active');
+                    } else {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+
+            // Category Tabs
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            const faqGroups = document.querySelectorAll('.faq-group');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    if (category === 'all') {
+                        // Show all FAQ groups
+                        faqGroups.forEach(group => {
+                            group.style.display = 'block';
+                        });
+                    } else {
+                        // Hide all FAQ groups
+                        faqGroups.forEach(group => {
+                            group.style.display = 'none';
+                        });
+                        
+                        // Show only the selected category
+                        document.querySelectorAll(`.faq-group[data-category="${category}"]`).forEach(group => {
+                            group.style.display = 'block';
+                        });
+                    }
+                });
+            });
+
+            // Search Functionality
+            const searchInput = document.getElementById('faq-search-input');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    
+                    if (searchTerm.length < 2) {
+                        // If search term is too short, show all questions
+                        faqQuestions.forEach(question => {
+                            question.parentElement.style.display = 'block';
+                        });
+                        return;
+                    }
+                    
+                    // Show all FAQ groups for searching
+                    faqGroups.forEach(group => {
+                        group.style.display = 'block';
+                    });
+                    
+                    // Filter questions based on search term
+                    faqQuestions.forEach(question => {
+                        const questionText = question.textContent.toLowerCase();
+                        const answerText = question.nextElementSibling.textContent.toLowerCase();
+                        
+                        if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                            question.parentElement.style.display = 'block';
+                        } else {
+                            question.parentElement.style.display = 'none';
+                        }
+                    });
+                    
+                    // Reset category tabs
+                    categoryTabs.forEach(tab => tab.classList.remove('active'));
+                    document.querySelector('.category-tab[data-category="all"]').classList.add('active');
+                });
+            }
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+    <script src="education.js"></script>
+</body>
+</html>

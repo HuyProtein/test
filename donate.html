@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ủng hộ bảo tồn | Wildlife</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .donate-hero {
+            background-image: url("https://kenh14cdn.com/203336854389633024/2022/12/23/photo-4-16717813472601354096366.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .donate-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .donate-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .donation-options {
+            padding: 80px 0;
+        }
+
+        .donation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .donation-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .donation-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .donation-card:hover .donation-image img {
+            transform: scale(1.05);
+        }
+
+        .donation-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .donation-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .donation-description {
+            margin-bottom: 20px;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        .donation-amount {
+            margin-top: auto;
+        }
+
+        .amount-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .amount-option {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .amount-option:hover, .amount-option.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .impact-section {
+            background-color: #f1f8e9;
+            padding: 80px 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .impact-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .impact-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #e8f5e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+        }
+
+        .impact-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .impact-card p {
+            color: #666;
+        }
+
+        .donation-form-section {
+            padding: 80px 0;
+        }
+
+        .donation-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-check input {
+            margin-top: 5px;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .donation-methods {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .donation-method {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .donation-method:hover, .donation-method.active {
+            border-color: var(--primary-color);
+            background-color: #f1f8e9;
+        }
+
+        .donation-method img {
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .partners-section {
+            padding: 60px 0;
+            background-color: #f9fafb;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .partner-logo {
+            max-width: 120px;
+            height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .testimonial-section {
+            padding: 80px 0;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-content {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial-content::before {
+            content: """;
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 50px;
+            color: var(--primary-color);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul>
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="donate-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Ủng hộ bảo tồn động vật hoang dã</h1>
+                    <p>
+                        Sự đóng góp của bạn sẽ giúp chúng tôi bảo vệ các loài động vật hoang dã và môi trường sống của chúng
+                        cho các thế hệ tương lai.
+                    </p>
+                    <a href="#donate-form" class="button primary-button">Ủng hộ ngay</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Options Section -->
+        <section class="donation-options">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Các chương trình bảo tồn</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="donation-cards">
+                    <div class="donation-card">
+                        <div class="donation-image">
+                            <img src="https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?q=80&w=1470&auto=format&fit=crop" alt="Bảo tồn hổ">
+                        </div>
+                        <div class="donation-info">
+                            <h3 class="donation-title">Bảo tồn hổ Đông Dương</h3>
+                            <p class="donation-description">
+                                Hỗ trợ các nỗ lực bảo vệ hổ Đông Dương, một trong những loài mèo lớn đang bị đe dọa nghiêm trọng tại Việt Nam và khu vực Đông Nam Á.
+                            </p>
+                            <div class="donation-amount">
+                                <div class="amount-options">
+                                    <div class="amount-option">100.000đ</div>
+                                    <div class="amount-option">200.000đ</div>
+                                    <div class="amount-option">500.000đ</div>
+                                    <div class="amount-option">Khác</div>
+                                </div>
+                                <a href="#donate-form" class="button primary-button">Ủng hộ ngay</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="donation-card">
+                        <div class="donation-image">
+                            <img src="https://images.unsplash.com/photo-1584118624012-df056829fbd0?q=80&w=1632&auto=format&fit=crop" alt="Bảo tồn rùa biển">
+                        </div>
+                        <div class="donation-info">
+                            <h3 class="donation-title">Bảo tồn rùa biển</h3>
+                            <p class="donation-description">
+                                Hỗ trợ các chương trình bảo vệ rùa biển, bao gồm tuần tra bãi biển, bảo vệ tổ trứng và thả rùa con về biển tại các khu vực ven biển Việt Nam.
+                            </p>
+                            <div class="donation-amount">
+                                <div class="amount-options">
+                                    <div class="amount-option">100.000đ</div>
+                                    <div class="amount-option">200.000đ</div>
+                                    <div class="amount-option">500.000đ</div>
+                                    <div class="amount-option">Khác</div>
+                                </div>
+                                <a href="#donate-form" class="button primary-button">Ủng hộ ngay</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="donation-card">
+                        <div class="donation-image">
+                            <img src="https://images.unsplash.com/photo-1591448764624-d7973a442bff?q=80&w=1470&auto=format&fit=crop" alt="Bảo tồn rừng">
+                        </div>
+                        <div class="donation-info">
+                            <h3 class="donation-title">Bảo tồn rừng nhiệt đới</h3>
+                            <p class="donation-description">
+                                Hỗ trợ các dự án bảo vệ và phục hồi rừng nhiệt đới, nơi sinh sống của nhiều loài động vật hoang dã đang bị đe dọa tại Việt Nam.
+                            </p>
+                            <div class="donation-amount">
+                                <div class="amount-options">
+                                    <div class="amount-option">100.000đ</div>
+                                    <div class="amount-option">200.000đ</div>
+                                    <div class="amount-option">500.000đ</div>
+                                    <div class="amount-option">Khác</div>
+                                </div>
+                                <a href="#donate-form" class="button primary-button">Ủng hộ ngay</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="donation-card">
+                        <div class="donation-image">
+                            <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?q=80&w=1470&auto=format&fit=crop" alt="Giáo dục môi trường">
+                        </div>
+                        <div class="donation-info">
+                            <h3 class="donation-title">Giáo dục môi trường</h3>
+                            <p class="donation-description">
+                                Hỗ trợ các chương trình giáo dục môi trường tại các trường học và cộng đồng địa phương để nâng cao nhận thức về bảo tồn động vật hoang dã.
+                            </p>
+                            <div class="donation-amount">
+                                <div class="amount-options">
+                                    <div class="amount-option">100.000đ</div>
+                                    <div class="amount-option">200.000đ</div>
+                                    <div class="amount-option">500.000đ</div>
+                                    <div class="amount-option">Khác</div>
+                                </div>
+                                <a href="#donate-form" class="button primary-button">Ủng hộ ngay</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="donation-card">
+                        <div class="donation-image">
+                            <img src="https://images.unsplash.com/photo-1551651767-d5ffbdd04b83?q=80&w=1470&auto=format&fit=crop" alt="Nghiên cứu động vật hoang dã">
+                        </div>
+                        <div class="donation-info">
+                            <h3 class="donation-title">Nghiên cứu động vật hoang dã</h3>
+                            <p class="donation-description">
+                                Hỗ trợ các dự án nghiên cứu khoa học về động vật hoang dã, giúp chúng ta hiểu rõ hơn về các loài và phát triển các biện pháp bảo tồn hiệu quả.
+                            </p>
+                            <div class="donation-amount">
+                                <div class="amount-options">
+                                    <div class="amount-option">100.000đ</div>
+                                    <div class="amount-option">200.000đ</div>
+                                    <div class="amount-option">500.000đ</div>
+                                    <div class="amount-option">Khác</div>
+                                </div>
+                                <a href="#donate-form" class="button primary-button">Ủng hộ ngay</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="donation-card">
+                        <div class="donation-image">
+                            <img src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?q=80&w=1470&auto=format&fit=crop" alt="Phục hồi môi trường sống">
+                        </div>
+                        <div class="donation-info">
+                            <h3 class="donation-title">Phục hồi môi trường sống</h3>
+                            <p class="donation-description">
+                                Hỗ trợ các dự án phục hồi môi trường sống bị suy thoái, bao gồm trồng cây, làm sạch sông hồ và bảo vệ đất ngập nước.
+                            </p>
+                            <div class="donation-amount">
+                                <div class="amount-options">
+                                    <div class="amount-option">100.000đ</div>
+                                    <div class="amount-option">200.000đ</div>
+                                    <div class="amount-option">500.000đ</div>
+                                    <div class="amount-option">Khác</div>
+                                </div>
+                                <a href="#donate-form" class="button primary-button">Ủng hộ ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="impact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tác động của sự đóng góp</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <h3>100.000đ</h3>
+                        <p>
+                            Có thể cung cấp thức ăn cho một con hổ trong một ngày hoặc hỗ trợ chi phí tuần tra bảo vệ rừng trong một ngày.
+                        </p>
+                    </div>
+
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>500.000đ</h3>
+                        <p>
+                            Có thể hỗ trợ chi phí bảo vệ một tổ trứng rùa biển hoặc trang bị thiết bị theo dõi cho một nhà nghiên cứu.
+                        </p>
+                    </div>
+
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3>1.000.000đ</h3>
+                        <p>
+                            Có thể hỗ trợ chi phí trồng và chăm sóc 50 cây con trong dự án phục hồi rừng hoặc tổ chức một buổi giáo dục môi trường.
+                        </p>
+                    </div>
+
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M2 12h20"></path>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                        <h3>5.000.000đ</h3>
+                        <p>
+                            Có thể hỗ trợ chi phí cho một dự án nghi cứu nhỏ hoặc trang bị camera bẫy để theo dõi động vật hoang dã.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Form Section -->
+        <section id="donate-form" class="donation-form-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Ủng hộ ngay</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="donation-form">
+                    <form id="donation-form">
+                        <div class="form-group">
+                            <label>Chọn chương trình</label>
+                            <select class="form-control" required>
+                                <option value="">-- Chọn chương trình --</option>
+                                <option value="tiger">Bảo tồn hổ Đông Dương</option>
+                                <option value="turtle">Bảo tồn rùa biển</option>
+                                <option value="forest">Bảo tồn rừng nhiệt đới</option>
+                                <option value="education">Giáo dục môi trường</option>
+                                <option value="research">Nghiên cứu động vật hoang dã</option>
+                                <option value="habitat">Phục hồi môi trường sống</option>
+                                <option value="general">Quỹ chung</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Số tiền ủng hộ</label>
+                            <div class="amount-options">
+                                <div class="amount-option">100.000đ</div>
+                                <div class="amount-option">200.000đ</div>
+                                <div class="amount-option">500.000đ</div>
+                                <div class="amount-option">1.000.000đ</div>
+                                <div class="amount-option">2.000.000đ</div>
+                                <div class="amount-option">5.000.000đ</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Số tiền khác</label>
+                            <input type="number" class="form-control" placeholder="Nhập số tiền (VNĐ)">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phương thức thanh toán</label>
+                            <div class="donation-methods">
+                                <div class="donation-method active">
+                                    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo">
+                                    <span>MoMo</span>
+                                </div>
+                                <div class="donation-method">
+                                    <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-ZaloPay-Square.png" alt="ZaloPay">
+                                    <span>ZaloPay</span>
+                                </div>
+                                <div class="donation-method">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa">
+                                    <span>Thẻ tín dụng</span>
+                                </div>
+                                <div class="donation-method">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png" alt="MasterCard">
+                                    <span>Thẻ tín dụng</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullname">Họ và tên</label>
+                                <input type="text" id="fullname" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Địa chỉ</label>
+                                <input type="text" id="address" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="recurring" name="recurring">
+                                <label for="recurring">Tôi muốn ủng hộ định kỳ hàng tháng</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="anonymous" name="anonymous">
+                                <label for="anonymous">Tôi muốn ủng hộ ẩn danh</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">Tôi đồng ý với các điều khoản và điều kiện</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="submit-button">Ủng hộ ngay</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="partners-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Đối tác của chúng tôi</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="partners-grid">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScV9KhlJXBXBim5faCTwew8Whip6EQ8CpQVw&s" alt="WWF" class="partner-logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrsfGAwBZlPB8wLMruvOdBdAynVpD9AQhy0Q&s" alt="IUCN" class="partner-logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlXVikq142lKxNU46Yy2HrwpX_NORHi78DLA&s" alt="UNDP" class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/PNUMA_logo.png" alt="UNEP" class="partner-logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ20odEb_V5m51zUBnxcqvLHjMzwu4tjIPw5g&s" alt="Panthera" class="partner-logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr3tjSzY-JDs1aI4IvU0F9FCNTItr4Z6mYRg&s" alt="WCS" class="partner-logo">
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonial-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Chia sẻ từ nhà tài trợ</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            Tôi đã ủng hộ cho chương trình bảo tồn Đom Đóm trong 5 năm qua,mỗi tháng tôi chu cấp 5 triệu. Thật tuyệt vời khi thấy số lượng Đóm con đang dần tăng lên nhờ những nỗ lực bảo tồn. Tôi rất tự hào khi được đóng góp một phần nhỏ vào thành công này.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD67GGe02b6mccL4K_CiKmlhlefZVolFDb3w&s" alt="Nguyễn Văn An">
+                            </div>
+                            <div class="author-info">
+                                <h4>Trịnh Trần Phương Tuấn </h4>
+                                <p>Nhà tài trợ, Bến Tre</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            Việc ủng hộ cho các dự án bảo tồn rừng nhiệt đới không chỉ giúp bảo vệ động vật hoang dã mà còn góp phần chống biến đổi khí hậu. Tôi rất hài lòng khi biết rằng sự đóng góp của mình đang tạo ra tác động tích cực đến môi trường.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ObhDPnrTFAZ6QIEmc7jcNASOf5bg4zlz6Q&s"alt="Nguyễn Văn An">
+                            </div>
+                            <div class="author-info">
+                                <h4>Đặng Tiến Hoàng </h4>
+                                <p>Nhà tài trợ, Hà Nội</p>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            Tôi đã chọn ủng hộ định kỳ hàng tháng cho chương trình giáo dục môi trường. Thật tuyệt vời khi thấy các em nhỏ được tiếp cận với kiến thức về bảo tồn từ sớm. Đây là cách tốt nhất để xây dựng một thế hệ tương lai yêu thiên nhiên.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxdHDAVMV6lAo4jV4PKc48-V8EoSz7cVJzGQ&s" alt="Lê Minh Tâm">
+                            </div>
+                            <div class="author-info">
+                                <h4>Nguyễn Thị Thái Hằng</h4>
+                                <p>Nhà tài trợ, Cà Mau </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // Amount Options
+            const amountOptions = document.querySelectorAll('.amount-option');
+            
+            amountOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from siblings
+                    this.parentNode.querySelectorAll('.amount-option').forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                });
+            });
+
+            // Payment Methods
+            const paymentMethods = document.querySelectorAll('.donation-method');
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // Remove active class from siblings
+                    document.querySelectorAll('.donation-method').forEach(m => {
+                        m.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked method
+                    this.classList.add('active');
+                });
+            });
+
+            // Form Submission
+            const donationForm = document.getElementById('donation-form');
+            
+            if (donationForm) {
+                donationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple form validation
+                    const fullname = document.getElementById('fullname').value;
+                    const email = document.getElementById('email').value;
+                    
+                    if (!fullname || !email) {
+                        alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+                        return;
+                    }
+                    
+                    // Here you would typically send the form data to a payment processor
+                    // For demo purposes, we'll just show a success message
+                    alert('Cảm ơn bạn đã ủng hộ! Chúng tôi sẽ liên hệ với bạn để xác nhận thông tin thanh toán.');
+                    donationForm.reset();
+                });
+            }
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện ảnh - Khám phá thế giới Động vật Hoang dã</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+           /* Styles riêng cho trang gallery */
+           .gallery-container {
+            padding: 40px 0;
+        }
+
+        .gallery-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .filter-button {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-button:hover {
+            background-color: #e8f5e9;
+        }
+
+        .filter-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            cursor: pointer;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-info {
+            transform: translateY(0);
+        }
+
+        .gallery-item-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .gallery-item-description {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .gallery-item-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .gallery-item-tag {
+            background-color: rgba(255,255,255,0.2);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .gallery-lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 40px;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 5px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox-prev {
+            left: -70px;
+        }
+
+        .lightbox-next {
+            right: -70px;
+        }
+
+        .load-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .lightbox-prev {
+                left: -50px;
+            }
+            
+            .lightbox-next {
+                right: -50px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .lightbox-nav {
+                top: auto;
+                bottom: -60px;
+            }
+            
+            .lightbox-prev {
+                left: 30%;
+            }
+            
+            .lightbox-next {
+                right: 30%;
+            }
+        }
+        /* Gallery Page Specific Styles */
+.gallery-container {
+    padding: 40px 0;
+}
+
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.filter-button {
+    background-color: #f1f8e9;
+    color: var(--primary-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.filter-button:hover {
+    background-color: #e8f5e9;
+}
+
+.filter-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    height: 250px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-info {
+    transform: translateY(0);
+}
+
+.gallery-item-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.gallery-item-description {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.gallery-item-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.gallery-item-tag {
+    background-color: rgba(255,255,255,0.2);
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.gallery-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 40px;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 5px;
+}
+
+.lightbox-caption {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.lightbox-prev {
+    left: -70px;
+}
+
+.lightbox-next {
+    right: -70px;
+}
+
+.load-more {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Photographer Section */
+.photographers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.photographer-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+}
+
+.photographer-card:hover {
+    transform: translateY(-5px);
+}
+
+.photographer-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.photographer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photographer-info {
+    padding: 20px;
+}
+
+.photographer-info h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.photographer-specialty {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.photographer-bio {
+    color: var(--gray-color);
+    margin-bottom: 15px;
+}
+
+.photographer-social {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+/* Submit Photos Section */
+.submit-form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--light-gray);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    width: auto;
+    margin-top: 5px;
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .lightbox-nav {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lightbox-prev {
+        left: -50px;
+    }
+    
+    .lightbox-next {
+        right: -50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .lightbox-nav {
+        top: auto;
+        bottom: -60px;
+    }
+    
+    .lightbox-prev {
+        left: 30%;
+    }
+    
+    .lightbox-next {
+        right: 30%;
+    }
+    
+    .photographers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.habitat-hero {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.habitat-hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.habitat-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: 0.2s;
+}
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+          <!-- Hero Section -->
+          <section class="hero" style="background-image: url('https://cdn.mobilecity.vn/mobilecity-vn/images/2024/11/top-anh-thien-nhien-dep-nhat-58.png.webp'); background-size: cover; background-position: center;">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 style="color: white;">Thư viện ảnh</h1>
+                    <p style="color: white;">
+                        Khám phá vẻ đẹp của động vật hoang dã qua những hình ảnh tuyệt đẹp
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-container">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Bộ sưu tập hình ảnh</h2>
+                    <div class="underline"></div>
+                    <p>Khám phá thế giới động vật hoang dã qua những khoảnh khắc đẹp được ghi lại bởi các nhiếp ảnh gia tài năng</p>
+                </div>
+
+                <div class="gallery-filters">
+                    <button class="filter-button active" data-filter="all">Tất cả</button>
+                    <button class="filter-button" data-filter="mammals">Động vật có vú</button>
+                    <button class="filter-button" data-filter="birds">Chim</button>
+                    <button class="filter-button" data-filter="reptiles">Bò sát</button>
+                    <button class="filter-button" data-filter="amphibians">Lưỡng cư</button>
+                    <button class="filter-button" data-filter="fish">Cá</button>
+                    <button class="filter-button" data-filter="insects">Côn trùng</button>
+                </div>
+
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Hình ảnh sẽ được thêm vào đây bằng JavaScript -->
+                </div>
+
+                <div class="load-more">
+                    <button class="button primary-button" id="load-more-btn">Xem thêm</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photographer Spotlight -->
+        <section class="photographer-spotlight">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Góc nhiếp ảnh gia</h2>
+                    <div class="underline"></div>
+                    <p>Gặp gỡ những nhiếp ảnh gia tài năng đã ghi lại những khoảnh khắc tuyệt vời của động vật hoang dã</p>
+                </div>
+
+                <div class="photographers-grid">
+                    <div class="photographer-card">
+                        <div class="photographer-image">
+                            <img src="https://image.anninhthudo.vn/1200x630/Uploaded/2025/123/2016_07_21/andynguyen.jpg" alt="Nguyễn Văn A">
+                        </div>
+                        <div class="photographer-info">
+                            <h3>Andy Nguyễn </h3>
+                            <p class="photographer-specialty">Chuyên về động vật có vú</p>
+                            <p class="photographer-bio">
+                                Với hơn 17 năm kinh nghiệm, Andy Nguyễn đã ghi lại những khoảnh khắc quý giá của các loài động vật hoang dã trên khắp thế giới.
+                            </p>
+                            <div class="photographer-social">
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="photographer-card">
+                        <div class="photographer-image">
+                            <img src="https://image.tienphong.vn/w460/Uploaded/2025/lkyqski001/2016_08_14/DMH_5__JUAS.jpg.ashx?width=600" alt="Trần Thị B">
+                        </div>
+                        <div class="photographer-info">
+                            <h3>Đặng Mỹ Hạnh</h3>
+                            <p class="photographer-specialty">Chuyên về chim và côn trùng</p>
+                            <p class="photographer-bio">
+                                Đặng Mỹ Hạnh nổi tiếng với những bức ảnh tuyệt đẹp về các loài chim và côn trùng, đặc biệt là những loài quý hiếm và khó bắt gặp.
+                            </p>
+                            <div class="photographer-social">
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="photographer-card">
+                        <div class="photographer-image">
+                            <img src="https://cdn2.tuoitre.vn/thumb_w/730/471584752817336320/2025/4/7/brandenburgtto-1744017347833824824921.jpeg" alt="Lê Văn C">
+                        </div>
+                        <div class="photographer-info">
+                            <h3>Jim Brandenburg</h3>
+                            <p class="photographer-specialty">Chuyên về động vật biển</p>
+                            <p class="photographer-bio">
+                                Jim Brandenburg là một nhiếp ảnh gia dưới nước nổi tiếng, với những bức ảnh tuyệt đẹp về các loài động vật biển và hệ sinh thái đại dương.
+                            </p>
+                            <div class="photographer-social">
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submit Your Photos -->
+        <section class="submit-photos">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Chia sẻ ảnh của bạn</h2>
+                    <div class="underline"></div>
+                    <p>Bạn có những bức ảnh đẹp về động vật hoang dã? Hãy chia sẻ với chúng tôi!</p>
+                </div>
+
+                <div class="submit-form">
+                    <form id="photo-submission-form">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photo-title">Tiêu đề ảnh</label>
+                            <input type="text" id="photo-title" name="photo-title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photo-category">Danh mục</label>
+                            <select id="photo-category" name="photo-category" required>
+                                <option value="">-- Chọn danh mục --</option>
+                                <option value="mammals">Động vật có vú</option>
+                                <option value="birds">Chim</option>
+                                <option value="reptiles">Bò sát</option>
+                                <option value="amphibians">Lưỡng cư</option>
+                                <option value="fish">Cá</option>
+                                <option value="insects">Côn trùng</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photo-description">Mô tả</label>
+                            <textarea id="photo-description" name="photo-description" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photo-upload">Tải ảnh lên</label>
+                            <input type="file" id="photo-upload" name="photo-upload" accept="image/*" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" required>
+                                <span>Tôi đồng ý với <a href="#">điều khoản sử dụng</a> và cho phép sử dụng ảnh của tôi trên trang web này</span>
+                            </label>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="button primary-button">Gửi ảnh</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="gallery-lightbox" id="gallery-lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img src="/placeholder.svg" alt="" class="lightbox-image" id="lightbox-image">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        // Dữ liệu mẫu cho thư viện ảnh
+        const galleryData = [
+            {
+                id: 1,
+                title: "Hổ Bengal trong rừng rậm",
+                description: "Hổ Bengal đang rình mồi trong khu rừng nhiệt đới Ấn Độ",
+                image: "https://doanhnhanplus.vn/wp-content/uploads/2021/11/ho-bengal-trong-rung-ngap-man-sundarbans-21201108-dnplus-01.jpg",
+                category: "mammals",
+                photographer: "Andy Nguyễn",
+                date: "15/03/2023",
+                tags: ["Hổ", "Động vật có vú", "Ấn Độ"]
+            },
+            {
+                id: 2,
+                title: "Đại bàng đầu trắng",
+                description: "Đại bàng đầu trắng đang săn mồi trên bầu trời Alaska",
+                image: "https://vcdn1-vnexpress.vnecdn.net/2018/09/03/dai-bang-dau-trang-2125-1535963326.jpg?w=460&h=0&q=100&dpr=2&fit=crop&s=AgGRvEXrfgCuU7xLd2eQSA",
+                category: "birds",
+                photographer: "Đặng Mỹ HạnhHạnh",
+                date: "22/04/2023",
+                tags: ["Đại bàng", "Chim", "Alaska"]
+            },
+            {
+                id: 3,
+                title: "Rắn hổ mang chúa",
+                description: "Rắn hổ mang chúa trong tư thế phòng thủ tại rừng nhiệt đới Thái Lan",
+                image: "https://image.tinnhanhchungkhoan.vn/w1200/Uploaded/2025/gtnwae/2021_01_28/z-b-2693.jpg",
+                category: "reptiles",
+                photographer: "Lê Văn C",
+                date: "10/05/2023",
+                tags: ["Rắn", "Bò sát", "Thái Lan"]
+            },
+            {
+                id: 4,
+                title: "Ếch phi tiêu độc",
+                description: "Ếch phi tiêu độc xanh dương tại rừng Amazon",
+                image: "https://image.tienphong.vn/w460/Uploaded/2025/itmtu/2020_01_13/dendrobatesazureus_dhmt.jpg",
+                category: "amphibians",
+                photographer: "Nguyễn Văn A",
+                date: "05/06/2023",
+                tags: ["Ếch", "Lưỡng cư", "Amazon"]
+            },
+            {
+                id: 5,
+                title: "Cá mập trắng",
+                description: "Cá mập trắng lớn đang bơi trong vùng biển Nam Phi",
+                image: "camaptrang.png",
+                category: "fish",
+                photographer: "Lê Văn C",
+                date: "18/07/2023",
+                tags: ["Cá mập", "Cá", "Nam Phi"]
+            },
+            {
+                id: 6,
+                title: "Bướm Morpho xanh",
+                description: "Bướm Morpho xanh rực rỡ trong rừng nhiệt đới Brazil",
+                image: "https://cdn.baogialai.com.vn/images/822863faa89937513fac62d7aa33eaf6dd6b56dabf467887cd087f0fd97eaf1167eeb5fae32f99672268de5d8e91a635d825a7d5e6ac6c973c0dbfa98625859e/images3058177_5a.jpg",
+                category: "insects",
+                photographer: "Trần Thị B",
+                date: "29/08/2023",
+                tags: ["Bướm", "Côn trùng", "Brazil"]
+            },
+            {
+                id: 7,
+                title: "Voi châu Phi",
+                description: "Đàn voi châu Phi đang di chuyển qua đồng cỏ Serengeti",
+                image: "https://thiennhienmoitruong.vn/upload/images/cong-nghe-xanh/btv6/voi-chau-phi.jpg",
+                category: "mammals",
+                photographer: "Nguyễn Văn A",
+                date: "12/09/2023",
+                tags: ["Voi", "Động vật có vú", "Tanzania"]
+            },
+            {
+                id: 8,
+                title: "Chim hồng hạc",
+                description: "Đàn chim hồng hạc tại hồ Nakuru, Kenya",
+                image: "https://e.khoahoc.tv/photos/image/2020/01/17/chim-hong-hac-dung-1-chan-1.jpg",
+                category: "birds",
+                photographer: "Trần Thị B",
+                date: "03/10/2023",
+                tags: ["Hồng hạc", "Chim", "Kenya"]
+            },
+            {
+                id: 9,
+                title: "Cá heo mũi chai",
+                description: "Cá heo mũi chai đang nhảy khỏi mặt nước tại vịnh Shark, Australia",
+                image: "https://vietnamese.korea.net/upload/fileShare/2022/11/1668581102727.jpg",
+                category: "mammals",
+                photographer: "Lê Văn C",
+                date: "25/11/2023",
+                tags: ["Cá heo", "Động vật có vú", "Australia"]
+            },
+            {
+                id: 10,
+                title: "Rùa biển xanh",
+                description: "Rùa biển xanh đang bơi trong vùng biển Caribe",
+                image: "https://wildfor.life/sites/default/files/species/hero/hawksbill_turtle_hero.jpg",
+                category: "reptiles",
+                photographer: "Lê Văn C",
+                date: "14/12/2023",
+                tags: ["Rùa", "Bò sát", "Caribe"]
+            },
+            {
+                id: 11,
+                title: "Sư tử đực",
+                description: "Sư tử đực oai vệ trong công viên quốc gia Kruger",
+                image: "https://genk.mediacdn.vn/139269124445442048/2024/6/4/52337acf5d3341a684f37eb234bddcfd-1717473666986605044173.jpg",
+                category: "mammals",
+                photographer: "Nguyễn Văn A",
+                date: "08/01/2024",
+                tags: ["Sư tử", "Động vật có vú", "Nam Phi"]
+            },
+            {
+                id: 12,
+                title: "Cá ngựa",
+                description: "Cá ngựa nhỏ bé trong rạn san hô Great Barrier",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnV76EihPgUenw336DrTOf3VWM4a0JuZIpCQ&s",
+                category: "fish",
+                photographer: "Lê Văn C",
+                date: "19/02/2024",
+                tags: ["Cá ngựa", "Cá", "Australia"]
+            }
+        ];
+
+        // Biến toàn cục
+        let activeFilter = "all";
+        let currentPage = 1;
+        let itemsPerPage = 6;
+        let currentLightboxIndex = 0;
+
+        // Khởi tạo trang
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hiển thị danh sách ảnh
+            renderGallery();
+
+            // Xử lý sự kiện cho các nút lọc
+            const filterButtons = document.querySelectorAll(".filter-button");
+            filterButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    activeFilter = this.dataset.filter;
+                    currentPage = 1;
+                    
+                    // Cập nhật trạng thái active
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                    
+                    // Hiển thị lại danh sách ảnh
+                    renderGallery();
+                });
+            });
+
+            // Xử lý sự kiện nút "Xem thêm"
+            document.getElementById("load-more-btn").addEventListener("click", function() {
+                currentPage++;
+                renderGallery(true);
+            });
+
+            // Xử lý sự kiện đóng lightbox
+            document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+
+            // Xử lý sự kiện nút prev/next trong lightbox
+            document.getElementById("lightbox-prev").addEventListener("click", function() {
+                navigateLightbox(-1);
+            });
+            
+            document.getElementById("lightbox-next").addEventListener("click", function() {
+                navigateLightbox(1);
+            });
+
+            // Đóng lightbox khi click bên ngoài
+            document.getElementById("gallery-lightbox").addEventListener("click", function(event) {
+                if (event.target === this) {
+                    closeLightbox();
+                }
+            });
+
+            // Xử lý form gửi ảnh
+            document.getElementById("photo-submission-form").addEventListener("submit", function(event) {
+                event.preventDefault();
+                alert("Cảm ơn bạn đã gửi ảnh! Chúng tôi sẽ xem xét và đăng tải sớm nhất có thể.");
+                this.reset();
+            });
+
+            // Xử lý nút back-to-top
+            const backToTopButton = document.getElementById("back-to-top");
+            window.addEventListener("scroll", function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add("visible");
+                } else {
+                    backToTopButton.classList.remove("visible");
+                }
+            });
+            
+            backToTopButton.addEventListener("click", function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            // Xử lý menu mobile
+            const mobileMenuButton = document.getElementById("mobile-menu-button");
+            const mobileMenu = document.getElementById("mobile-menu");
+            
+            mobileMenuButton.addEventListener("click", function() {
+                mobileMenu.classList.toggle("active");
+            });
+
+            // Set current year in footer
+            document.getElementById("current-year").textContent = new Date().getFullYear();
+        });
+
+        // Hiển thị danh sách ảnh
+        function renderGallery(append = false) {
+            const galleryGrid = document.getElementById("gallery-grid");
+            
+            // Lọc ảnh theo danh mục
+            const filteredImages = activeFilter === "all" 
+                ? galleryData 
+                : galleryData.filter(item => item.category === activeFilter);
+            
+            // Phân trang
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedImages = filteredImages.slice(startIndex, endIndex);
+            
+            // Xóa nội dung cũ nếu không phải append
+            if (!append) {
+                galleryGrid.innerHTML = "";
+            }
+            
+            // Thêm các ảnh mới
+            paginatedImages.forEach(item => {
+                const galleryItem = document.createElement("div");
+                galleryItem.className = "gallery-item";
+                galleryItem.dataset.id = item.id;
+                
+                galleryItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="gallery-item-info">
+                        <h3 class="gallery-item-title">${item.title}</h3>
+                        <p class="gallery-item-description">${item.description}</p>
+                        <div class="gallery-item-tags">
+                            ${item.tags.map(tag => `<span class="gallery-item-tag">${tag}</span>`).join("")}
+                        </div>
+                    </div>
+                `;
+                
+                galleryItem.addEventListener("click", function() {
+                    openLightbox(item.id);
+                });
+                
+                galleryGrid.appendChild(galleryItem);
+            });
+            
+            // Ẩn/hiện nút "Xem thêm"
+            const loadMoreBtn = document.getElementById("load-more-btn");
+            if (endIndex >= filteredImages.length) {
+                loadMoreBtn.style.display = "none";
+            } else {
+                loadMoreBtn.style.display = "inline-block";
+            }
+        }
+
+        // Mở lightbox
+        function openLightbox(imageId) {
+            const lightbox = document.getElementById("gallery-lightbox");
+            const lightboxImage = document.getElementById("lightbox-image");
+            const lightboxCaption = document.getElementById("lightbox-caption");
+            
+            // Lọc ảnh theo danh mục hiện tại
+            const filteredImages = activeFilter === "all" 
+                ? galleryData 
+                : galleryData.filter(item => item.category === activeFilter);
+            
+            // Tìm index của ảnh trong danh sách đã lọc
+            const imageIndex = filteredImages.findIndex(item => item.id === imageId);
+            if (imageIndex === -1) return;
+            
+            currentLightboxIndex = imageIndex;
+            const image = filteredImages[currentLightboxIndex];
+            
+            // Cập nhật nội dung lightbox
+            lightboxImage.src = image.image;
+            lightboxImage.alt = image.title;
+            lightboxCaption.innerHTML = `
+                <h3>${image.title}</h3>
+                <p>${image.description}</p>
+                <p class="lightbox-meta">Chụp bởi: ${image.photographer} | Ngày: ${image.date}</p>
+            `;
+            
+            // Hiển thị lightbox
+            lightbox.style.display = "flex";
+            
+            // Cập nhật trạng thái nút prev/next
+            updateLightboxNavigation(filteredImages);
+        }
+
+        // Đóng lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById("gallery-lightbox");
+            lightbox.style.display = "none";
+        }
+
+        // Di chuyển trong lightbox
+        function navigateLightbox(direction) {
+            // Lọc ảnh theo danh mục hiện tại
+            const filteredImages = activeFilter === "all" 
+                ? galleryData 
+                : galleryData.filter(item => item.category === activeFilter);
+            
+            // Tính toán index mới
+            currentLightboxIndex += direction;
+            
+            // Kiểm tra giới hạn
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = filteredImages.length - 1;
+            } else if (currentLightboxIndex >= filteredImages.length) {
+                currentLightboxIndex = 0;
+            }
+            
+            // Cập nhật nội dung lightbox
+            const image = filteredImages[currentLightboxIndex];
+            const lightboxImage = document.getElementById("lightbox-image");
+            const lightboxCaption = document.getElementById("lightbox-caption");
+            
+            lightboxImage.src = image.image;
+            lightboxImage.alt = image.title;
+            lightboxCaption.innerHTML = `
+                <h3>${image.title}</h3>
+                <p>${image.description}</p>
+                <p class="lightbox-meta">Chụp bởi: ${image.photographer} | Ngày: ${image.date}</p>
+            `;
+            
+            // Cập nhật trạng thái nút prev/next
+            updateLightboxNavigation(filteredImages);
+        }
+
+        // Cập nhật trạng thái nút prev/next
+        function updateLightboxNavigation(filteredImages) {
+            const prevButton = document.getElementById("lightbox-prev");
+            const nextButton = document.getElementById("lightbox-next");
+            
+            // Ẩn/hiện nút prev/next nếu chỉ có 1 ảnh
+            if (filteredImages.length <= 1) {
+                prevButton.style.display = "none";
+                nextButton.style.display = "none";
+            } else {
+                prevButton.style.display = "flex";
+                nextButton.style.display = "flex";
+            }
+        }
+    </script>
+</body>
+</html>

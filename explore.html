@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc khám phá - Khám phá thế giới Động vật Hoang dã</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style> 
+     
+/* Hero Section */
+.habitat-hero {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.habitat-hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.habitat-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: 0.2s;
+}
+
+/* === Educational Resources === */
+.educational-resources-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 2); margin-top: calc(var(--spacing-unit) * 2.5);
+}
+.educational-resource-card {
+    background-color: var(--card-bg); padding: calc(var(--spacing-unit) * 1.8);
+    border-radius: var(--border-radius); box-shadow: var(--box-shadow-light);
+    display: flex; flex-direction: column;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border-left: 5px solid var(--primary-color); /* Left accent border */
+}
+.educational-resource-card:hover { transform: translateY(-5px); box-shadow: var(--box-shadow-strong); }
+.educational-resource-card h3 { margin-bottom: var(--spacing-unit) * 0.6; color: var(--primary-color); }
+.resource-list { margin: var(--spacing-unit) 0 calc(var(--spacing-unit) * 1.5); padding-left: 0; flex-grow: 1; }
+.resource-list li {
+    margin-bottom: calc(var(--spacing-unit) * 0.6); padding-left: calc(var(--spacing-unit) * 1.5);
+    position: relative; color: var(--text-light);
+}
+
+.educational-resource-card .button { margin-top: auto; align-self: flex-start; }
+/* === Explore Page Specific Styles === */
+
+
+.explore-category-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.explore-category-card:hover {
+    transform: translateY(-5px);
+}
+
+.explore-category-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Featured Content Section */
+.featured-content-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: white;
+    border-radius: var(--border-radius);
+    margin: 30px 0;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.featured-content-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.featured-content-info {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Interactive Experience Section */
+.interactive-experience-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    padding: 60px 0;
+    background: var(--light-gray);
+}
+
+.interactive-experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.interactive-experience-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.check-icon {
+    width: 24px;
+    height: 24px;
+    background: var(--primary-color);
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-color: var(--primary-color);
+}
+
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .featured-content-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .interactive-experience-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .interactive-experience-image {
+        order: -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .habitat-hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+}
+
+    </style>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+<!-- Hero Section -->
+<section class="habitat-hero">
+    <div class="container">
+        <div class="habitat-hero-content">
+            <h1>Góc khám phá</h1>
+            <p class="page-description">
+                Khám phá thế giới động vật hoang dã qua hình ảnh, video, bản đồ tương tác và nhiều hoạt động thú vị khác. Hãy
+                bắt đầu cuộc phiêu lưu của bạn ngay hôm nay!
+            </p>
+           
+        </div>
+    </div>
+</section>
+           
+
+            <!-- Explore Categories -->
+            <div id="explore-categories" class="explore-section">
+                <div class="section-header">
+                    <h2>Các hoạt động khám phá</h2>
+                    <p>
+                        Chọn một trong các hoạt động dưới đây để bắt đầu cuộc phiêu lưu của bạn vào thế giới động vật hoang dã.
+                    </p>
+                    <a href="explore.html" class="button primary-button">Bắt đầu khám phá </a>
+                </div>
+
+                <div class="explore-categories-grid" id="explore-categories-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Featured Content -->
+            <div class="explore-section">
+                <div class="section-header">
+                    <h2>Nội dung nổi bật</h2>
+                    <p>
+                        Khám phá những nội dung hấp dẫn và được yêu thích nhất về động vật hoang dã.
+                    </p>
+                    <img src="https://i.makeagif.com/media/6-22-2020/ozdRiB.gif" alt="Mô tả ảnh GIF">
+                </div>
+
+                
+                        <div class="featured-content-info">
+                            <h3>Những thước phim ngắn về động vật hoang dã</h3>
+                            <p>
+                                Khám phá cuộc sống hàng ngày của loài động vật trong môi trường tự nhiên qua video tài
+                                liệu độc đáo này.
+                            </p>
+                            <a href="videos.html" class="button primary-button">Xem video</a>
+                        </div>
+                    </div>
+
+                    <div class="featured-content-item">
+                        <div class="featured-content-image">
+                            <img src="https://images.pexels.com/photos/10519044/pexels-photo-10519044.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Bộ sưu tập ảnh nổi bật">
+                        </div>
+                        <div class="featured-content-info">
+                            <h3>Bộ sưu tập ảnh: Vẻ đẹp của thiên nhiên hoang dã</h3>
+                            <p>
+                                Chiêm ngưỡng bộ sưu tập ảnh tuyệt đẹp về động vật hoang dã và môi trường sống tự nhiên của chúng từ các
+                                nhiếp ảnh gia hàng đầu.
+                            </p>
+                            <a href="gallery.html" class="button primary-button">Xem bộ sưu tập</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Experience -->
+            <div class="interactive-experience-section">
+                <div class="interactive-experience-content">
+                    <h2>Trải nghiệm tương tác</h2>
+                    <p>
+                        Tham gia các hoạt động tương tác thú vị để học hỏi về động vật hoang dã một cách vui nhộn và hấp dẫn. Từ
+                        trò chơi câu đố đến bản đồ tương tác, chúng tôi có nhiều hoạt động phù hợp với mọi lứa tuổi.
+                    </p>
+                    <ul class="interactive-experience-list">
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Trò chơi nhận diện động vật</span>
+                        </li>
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Câu đố về động vật hoang dã</span>
+                        </li>
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Bản đồ tương tác về phân bố động vật</span>
+                        </li>
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Tô màu động vật cho trẻ em</span>
+                        </li>
+                    </ul>
+                    <a href="games.html" class="button primary-button">Khám phá các hoạt động</a>
+                </div>
+                <div class="interactive-experience-image">
+                    <img src="https://i0.wp.com/campingcangio.com/wp-content/uploads/2025/02/example-111.jpg?fit=1024%2C512&ssl=1" alt="Trải nghiệm tương tác">
+                </div>
+            </div>
+
+            <!-- Educational Resources -->
+            <div class="explore-section">
+                <div class="section-header">
+                    <h2>Tài nguyên giáo dục</h2>
+                    <p>
+                        Khám phá các tài nguyên giáo dục về động vật hoang dã và bảo tồn, phù hợp cho học sinh, sinh viên và những
+                        người yêu thích thiên nhiên.
+                    </p>
+                </div>
+
+                <div class="educational-resources-grid">
+                    <div class="educational-resource-card">
+                        <h3>Tài liệu cho giáo viên</h3>
+                        <p>Các tài liệu và kế hoạch bài giảng để tích hợp trò chơi vào chương trình học</p>
+                        <ul class="resource-list">
+                            <li>Kế hoạch bài giảng theo chủ đề và cấp lớp</li>
+                            <li>Hoạt động mở rộng và thảo luận</li>
+                            <li>Tài liệu đánh giá và theo dõi tiến độ</li>
+                            <li>Hướng dẫn tổ chức hoạt động nhóm</li>
+                        </ul>
+                        <a href="education.html" class="button outline-button">Xem tài liệu</a>
+                    </div>
+
+                    <div class="educational-resource-card">
+                        <h3>Tài liệu cho học sinh</h3>
+                        <p>Tài liệu học tập thú vị về động vật hoang dã</p>
+                        <ul class="resource-list">
+                            <li>Tờ thông tin về các loài động vật</li>
+                            <li>Hoạt động tương tác</li>
+                            <li>Dự án nghiên cứu</li>
+                            <li>Câu đố và trò chơi giáo dục</li>
+                        </ul>
+                        <a href="education.html" class="button outline-button">Xem tài liệu</a>
+                    </div>
+
+                    <div class="educational-resource-card">
+                        <h3>Tài liệu cho gia đình</h3>
+                        <p>Hoạt động gia đình về động vật hoang dã</p>
+                        <ul class="resource-list">
+                            <li>Hoạt động ngoài trời</li>
+                            <li>Dự án thủ công</li>
+                            <li>Hướng dẫn quan sát động vật</li>
+                            <li>Trò chơi gia đình</li>
+                        </ul>
+                        <a href="education.html" class="button outline-button">Xem tài liệu</a>
+                    </div>
+                </div>
+            </div>
+
+           
+
+              
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh,Thị xã Hoàng Mai,Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="explore.js"></script>
+</body>
+</html>

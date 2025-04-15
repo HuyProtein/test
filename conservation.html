@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảo tồn Động vật Hoang dã</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+         <style>
+        /* Habitat Hero Section */
+.habitat-hero {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.habitat-hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.habitat-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: 0.2s;
+}
+/* CONSERVATION PAGE SPECIFIC STYLES */
+/* Hero Section */
+.conservation-hero {
+  background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.conservation-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.conservation-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.conservation-hero p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: 0.2s;
+}
+
+/* Threats Grid */
+.threats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.threat-card {
+  background: white;
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.threat-card:hover {
+  transform: translateY(-5px);
+}
+
+.threat-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Methods Grid */
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.method-card {
+  background: white;
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.method-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Success Story */
+.success-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: white;
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-top: 40px;
+}
+
+.success-story-image {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.success-story-content h3 {
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+}
+
+/* Organizations Grid */
+.organizations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.organization-card {
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.organization-card:hover {
+  transform: translateY(-5px);
+}
+
+.organization-card img {
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Take Action Section */
+.take-action-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--primary-light);
+  padding: 60px 0;
+  margin-top: 60px;
+}
+
+.take-action-content {
+  padding: 0 20px;
+}
+
+.take-action-list {
+  margin: 25px 0;
+}
+
+.take-action-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.check-icon {
+  width: 24px;
+  height: 24px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%232e7d32" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>');
+}
+
+.take-action-image img {
+  border-radius: var(--border-radius);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .success-story,
+  .take-action-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .take-action-image {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .conservation-hero h2 {
+    font-size: 2rem;
+  }
+}
+
+    </style>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link ">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Menu">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link active">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+<section class="hero" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJCHwmoBZaldaipEgAeAPDTDj5QNs1KTkEpg&s'); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 style="color: white;">Bảo tồn Động vật Hoang dã</h1>
+            <p style="color: white;">
+                Bảo tồn động vật hoang dã là nỗ lực bảo vệ các loài động vật và môi trường sống của chúng khỏi sự tuyệt chủng
+                và suy giảm. Tìm hiểu về các mối đe dọa, biện pháp bảo tồn và cách bạn có thể đóng góp.
+            </p>
+        </div>
+    </div>
+</section>
+       
+       
+        <div class="container">
+            <!-- Threats Section -->
+            <section class="conservation-section">
+                <div class="section-header">
+                    <h2>Các mối đe dọa</h2>
+                    <p>
+                        Động vật hoang dã đang đối mặt với nhiều mối đe dọa khác nhau, chủ yếu do hoạt động của con người. Hiểu rõ
+                        các mối đe dọa này là bước đầu tiên để bảo vệ chúng.
+                    </p>
+                </div>
+
+                <div class="threats-grid" id="threats-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Conservation Methods Section -->
+            <section class="conservation-section">
+                <div class="section-header">
+                    <h2>Các biện pháp bảo tồn</h2>
+                    <p>
+                        Nhiều biện pháp bảo tồn đang được thực hiện để bảo vệ động vật hoang dã và môi trường sống của chúng. Mỗi
+                        biện pháp đều đóng vai trò quan trọng trong nỗ lực bảo tồn tổng thể.
+                    </p>
+                </div>
+
+                <div class="methods-grid" id="methods-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Success Stories -->
+            <section class="conservation-section">
+                <div class="section-header">
+                    <h2>Câu chuyện thành công</h2>
+                    <p>
+                        Mặc dù còn nhiều thách thức, nhưng đã có nhiều câu chuyện thành công trong bảo tồn động vật hoang dã. Những
+                        câu chuyện này mang lại hy vọng và động lực cho công tác bảo tồn.
+                    </p>
+                </div>
+
+                <div class="success-story">
+                    <div class="success-story-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQltgGTqtxLXITJBXK36xkWAlM5T8Q3XKZgfg&s" alt="Hổ hoang dã ở Ấn Độ">
+                    </div>
+                    <div class="success-story-content">
+                        <h3>Phục hồi quần thể hổ ở Ấn Độ</h3>
+                        <p>
+                            Ấn Độ đã thành công trong việc tăng số lượng hổ hoang dã từ khoảng 1,400 cá thể vào năm 2006 lên hơn
+                            3,000 cá thể vào năm 2022. Đây là kết quả của các nỗ lực bảo tồn toàn diện, bao gồm thành lập các khu
+                            bảo tồn, chống săn trộm và giáo dục cộng đồng.
+                        </p>
+                        <p>
+                            Dự án Hổ của Ấn Độ là một trong những chương trình bảo tồn loài đơn lẻ thành công nhất thế giới, chứng
+                            minh rằng với cam kết và nguồn lực phù hợp, chúng ta có thể đảo ngược xu hướng suy giảm của các loài bị
+                            đe dọa.
+                        </p>
+                        <a href="stories.html" class="button primary-button">Xem thêm câu chuyện</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Organizations -->
+            <section class="conservation-section">
+                <div class="section-header">
+                    <h2>Tổ chức bảo tồn</h2>
+                    <p>
+                        Nhiều tổ chức trên toàn thế giới đang nỗ lực bảo tồn động vật hoang dã. Tìm hiểu về công việc của họ và cách
+                        bạn có thể hỗ trợ.
+                    </p>
+                    <a href="organizations.html" class="button primary-button">Xem tất cả tổ chức bảo tồn</a>
+                    <div class="organization-image">
+                        <img src="https://media.thuonghieucongluan.vn/uploads/2018_01_22/16-to-chuc-tham-gia-ki-vao-thu-keu-goi-1516606713.png" alt="Tổ chức bảo tồn" class="img-responsive">
+                    </div>
+                </div>
+
+                <div class="organizations-grid" id="organizations-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <div class="text-center" style="margin-top: 30px;">
+                    
+                  
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="conservation-section">
+                <div class="section-header">
+                    <h2>Hành động ngay hôm nay</h2>
+                    <p>
+                        Mỗi người đều có thể đóng góp vào công tác bảo tồn động vật hoang dã. Hãy tham gia cùng chúng tôi để bảo
+                        vệ những loài động vật tuyệt vời này cho các thế hệ tương lai.
+                    </p>
+                    <a href="take-action.html" class="button primary-button">Tìm hiểu cách bạn có thể giúp đỡ</a>
+                </div>
+            </section>
+
+            <!-- Take Action -->
+            <section class="take-action-section">
+                <div class="take-action-content">
+                    <h2>Bạn có thể làm gì để giúp đỡ?</h2>
+                    <p>
+                        Mỗi người đều có thể đóng góp vào công tác bảo tồn động vật hoang dã thông qua những hành động đơn giản
+                        hàng ngày. Từ việc ủng hộ các tổ chức bảo tồn đến thay đổi thói quen tiêu dùng, mọi hành động đều quan
+                        trọng.
+                    </p>
+                    <ul class="take-action-list">
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Ủng hộ các tổ chức bảo tồn động vật hoang dã</span>
+                        </li>
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Không mua các sản phẩm làm từ động vật hoang dã</span>
+                        </li>
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Giảm thiểu tác động đến môi trường thông qua lối sống bền vững</span>
+                        </li>
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Nâng cao nhận thức về bảo tồn động vật hoang dã</span>
+                        </li>
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Tham gia các chương trình tình nguyện bảo tồn</span>
+                        </li>
+                        <li>
+                            <div class="check-icon"></div>
+                            <span>Chia sẻ kiến thức về bảo tồn với người thân và bạn bè</span>
+                        </li>
+                    </ul>
+                    <a href="take-action.html" class="button primary-button">Hành động ngay</a>
+                </div>
+                <div class="take-action-image">
+                    <img src="https://hnm.1cdn.vn/2022/08/26/hanoimoi.com.vn-uploads-images-tuandiep-2022-08-26-_can-bo-trung-tam-cuu-ho-don.jpg" alt="Hành động bảo tồn">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84) 0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top" aria-label="Lên đầu trang">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Current Year for Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Populate Threats Grid
+        const threatsData = [
+            {
+                title: 'Mất môi trường sống',
+                description: 'Phá rừng, đô thị hóa và phát triển nông nghiệp đang làm mất đi môi trường sống tự nhiên của nhiều loài động vật.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"></path><path d="M17 22v-9l-5-5V2"></path><path d="M7 22v-9l5-5"></path></svg>'
+            },
+            {
+                title: 'Săn bắn và buôn bán trái phép',
+                description: 'Săn bắn và buôn bán trái phép động vật hoang dã là mối đe dọa lớn đối với nhiều loài, đặc biệt là các loài có giá trị cao trên thị trường đen.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>'
+            },
+            {
+                title: 'Biến đổi khí hậu',
+                description: 'Biến đổi khí hậu đang làm thay đổi môi trường sống và chu kỳ sinh học của nhiều loài, gây ra những tác động tiêu cực đến sự tồn tại của chúng.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"></path><path d="M12 18v4"></path><path d="M4.93 4.93l5.66 5.66"></path><path d="M13.41 13.41l5.66 5.66"></path><path d="M2 12h8"></path><path d="M18 12h4"></path><path d="M4.93 19.07l5.66-5.66"></path><path d="M13.41 10.59l5.66-5.66"></path></svg>'
+            },
+            {
+                title: 'Ô nhiễm môi trường',
+                description: 'Ô nhiễm không khí, nước và đất đang gây ra những tác động tiêu cực đến sức khỏe và khả năng sinh sản của nhiều loài động vật.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.4 10.6a2.1 2.1 0 0 0 0 2.8c.8.8 2 .8 2.8 0l10.6-10.6"></path><path d="M8.4 10.6l-4.2 4.2"></path><path d="M2.2 22.8l3.4-3.4"></path><path d="M18.4 2.8l3.4-3.4"></path></svg>'
+            }
+        ];
+
+        const threatsGrid = document.getElementById('threats-grid');
+        threatsData.forEach(threat => {
+            const threatCard = document.createElement('div');
+            threatCard.className = 'threat-card';
+            threatCard.innerHTML = `
+                <div class="threat-icon">${threat.icon}</div>
+                <h3>${threat.title}</h3>
+                <p>${threat.description}</p>
+            `;
+            threatsGrid.appendChild(threatCard);
+        });
+
+        // Populate Methods Grid
+        const methodsData = [
+            {
+                title: 'Bảo vệ môi trường sống',
+                description: 'Thành lập các khu bảo tồn và vườn quốc gia để bảo vệ môi trường sống tự nhiên của động vật hoang dã.',
+                link: 'habitats.html'
+            },
+            {
+                title: 'Chống săn bắn trái phép',
+                description: 'Tăng cường thực thi pháp luật và giám sát để ngăn chặn săn bắn và buôn bán trái phép động vật hoang dã.',
+                link: 'laws.html'
+            },
+            {
+                title: 'Nhân giống bảo tồn',
+                description: 'Thực hiện các chương trình nhân giống trong điều kiện nuôi nhốt để tăng số lượng các loài bị đe dọa và tái thả vào tự nhiên.',
+                link: 'restoration.html'
+            },
+            {
+                title: 'Giáo dục và nâng cao nhận thức',
+                description: 'Thực hiện các chương trình giáo dục và nâng cao nhận thức về tầm quan trọng của bảo tồn động vật hoang dã.',
+                link: 'education.html'
+            },
+            {
+                title: 'Nghiên cứu khoa học',
+                description: 'Tiến hành nghiên cứu để hiểu rõ hơn về các loài động vật và các mối đe dọa đối với chúng, từ đó phát triển các biện pháp bảo tồn hiệu quả.',
+                link: 'research.html'
+            },
+            {
+                title: 'Hợp tác quốc tế',
+                description: 'Thúc đẩy hợp tác giữa các quốc gia và tổ chức để giải quyết các vấn đề bảo tồn xuyên biên giới và chia sẻ kiến thức, kinh nghiệm.',
+                link: 'cooperation.html'
+            }
+        ];
+
+        const methodsGrid = document.getElementById('methods-grid');
+        methodsData.forEach(method => {
+            const methodCard = document.createElement('div');
+            methodCard.className = 'method-card';
+            methodCard.innerHTML = `
+                <h3>${method.title}</h3>
+                <p>${method.description}</p>
+                <a href="${method.link}" class="method-link">Tìm hiểu thêm</a>
+            `;
+            methodsGrid.appendChild(methodCard);
+        });
+
+       
+
+        const organizationsGrid = document.getElementById('organizations-grid');
+        organizationsData.forEach(org => {
+            const orgCard = document.createElement('div');
+            orgCard.className = 'organization-card';
+            orgCard.innerHTML = `
+                <img src="${org.logo}" alt="${org.name}">
+                <h3>${org.name}</h3>
+                <p>${org.description}</p>
+                <a href="${org.link}" class="button outline-button" target="_blank">Truy cập trang web</a>
+            `;
+            organizationsGrid.appendChild(orgCard);
+        });
+    </script>
+</body>
+</html>

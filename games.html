@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò chơi & Câu đố - Khám phá thế giới Động vật Hoang dã</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles riêng cho trang games */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tabs {
+            margin-bottom: 30px;
+        }
+
+        .tabs-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tab-button:hover {
+            background-color: #e8f5e9;
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .game-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .game-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .game-card:hover .game-image img {
+            transform: scale(1.05);
+        }
+
+        .game-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-card:hover .game-overlay {
+            opacity: 1;
+        }
+
+        .full-width {
+            width: 80%;
+        }
+
+        .game-header {
+            padding: 20px 20px 10px;
+        }
+
+        .game-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .game-title h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .game-content {
+            padding: 0 20px 20px;
+        }
+
+        .game-description {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .game-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .game-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+
+        .game-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Game Dialog */
+        .game-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .game-dialog.open {
+            display: flex;
+        }
+
+        .dialog-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dialog-header {
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            position: relative;
+        }
+
+        .dialog-header h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .dialog-header p {
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .dialog-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        /* Quiz Styles */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-progress {
+            margin-bottom: 20px;
+        }
+
+        .quiz-progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-question {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--primary-light);
+            border-radius: 10px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            background-color: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success-color);
+            background-color: #d1fae5;
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--danger-color);
+            background-color: #fee2e2;
+        }
+
+        .quiz-feedback {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-feedback.correct {
+            background-color: #d1fae5;
+            border: 1px solid var(--success-color);
+        }
+
+        .quiz-feedback.incorrect {
+            background-color: #fee2e2;
+            border: 1px solid var(--danger-color);
+        }
+
+        .quiz-feedback-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Memory Game Styles */
+        .memory-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .memory-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .memory-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .memory-card.flipped .memory-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .memory-card-front, .memory-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .memory-card-front {
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .memory-card-back {
+            background-color: white;
+            transform: rotateY(180deg);
+            border: 2px solid var(--light-gray);
+            overflow: hidden;
+        }
+
+        .memory-card.matched .memory-card-back {
+            border-color: var(--success-color);
+            background-color: #d1fae5;
+        }
+
+        .memory-card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .memory-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Puzzle Game Styles */
+        .puzzle-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .puzzle-board {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .puzzle-board-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .puzzle-board-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            aspect-ratio: 1;
+        }
+
+        .puzzle-slot {
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-color);
+            cursor: pointer;
+        }
+
+        .puzzle-slot.filled {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            overflow: hidden;
+        }
+
+        .puzzle-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .puzzle-pieces {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .puzzle-piece {
+            aspect-ratio: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .puzzle-piece.selected {
+            transform: scale(0.9);
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+
+        .puzzle-piece.placed {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .puzzle-piece img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .puzzle-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Results Styles */
+        .quiz-results, .memory-results, .puzzle-results {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .results-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .results-score {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .results-message {
+            margin-bottom: 30px;
+            color: var(--gray-color);
+        }
+
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .memory-stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .memory-stat {
+            text-align: center;
+        }
+
+        .memory-stat-label {
+            font-size: 14px;
+            color: var(--gray-color);
+            margin-bottom: 5px;
+        }
+
+        .memory-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .puzzle-complete-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .puzzle-complete-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 60px 0;
+            background-color: var(--light-gray);
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .info-card .icon-circle {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+        }
+
+        .info-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            padding: 60px 0;
+        }
+
+        .resources-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .resource-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .resource-card p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+
+        .resource-card ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .resource-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .resource-card ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2000;
+            display: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .memory-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .puzzle-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .memory-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quiz-actions, .memory-actions, .puzzle-actions, .results-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .memory-stats-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">WildLife</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html" class="nav-link">Tin tức</a></li>
+                    <li><a href="stories.html" class="nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </nav>
+            
+
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <span class="menu-icon"></span>
+            </button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Trang chủ</a></li>
+                    <li><a href="animals.html" class="mobile-nav-link">Các loài động vật</a></li>
+                    <li><a href="habitats.html" class="mobile-nav-link">Môi trường sống</a></li>
+                    <li><a href="conservation.html" class="mobile-nav-link">Bảo tồn</a></li>
+                    <li><a href="explore.html" class="mobile-nav-link">Góc khám phá</a></li>
+                    <li><a href="news.html"class="mobile-nav-link">Tin tức</a></li>
+                    <li><a href="stories.html"class="mobile-nav-link">Câu chuyện</a></li>
+                    <li><a href="contact.html" class="mobile-nav-link">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+       <!-- Hero Section -->
+<section class="hero" style="background-image: url('https://c.pxhere.com/images/a4/c1/407e451fa0617fdbf562eb9442ef-1636854.jpg!d'); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 style="color: white;">Trò chơi & Câu đố</h1>
+            <p style="color: white;">
+                Học hỏi về động vật hoang dã qua các trò chơi thú vị và câu đố hấp dẫn. Phù hợp cho mọi lứa tuổi, từ trẻ em đến người lớn.
+            </p>
+        </div>
+    </div>
+</section>
+      
+
+        <div class="container">
+            <!-- Tabs danh mục -->
+            <div class="tabs">
+                <div class="tabs-list">
+                    <button class="tab-button active" data-category="all">Tất cả</button>
+                    <button class="tab-button" data-category="quiz">Câu đố</button>
+                    <button class="tab-button" data-category="puzzle">Ghép hình</button>
+                    <button class="tab-button" data-category="memory">Ghi nhớ</button>
+                    <button class="tab-button" data-category="coloring">Tô màu</button>
+                    <button class="tab-button" data-category="word">Tìm từ</button>
+                </div>
+            </div>
+
+            <!-- Danh sách trò chơi -->
+            <div class="games-grid" id="games-container">
+                <!-- Các thẻ game sẽ được thêm vào đây bằng JavaScript -->
+            </div>
+
+            <!-- Dialog hiển thị trò chơi -->
+            <div class="game-dialog" id="game-dialog">
+                <div class="dialog-content">
+                    <div class="dialog-header">
+                        <h2 id="dialog-title">Tên trò chơi</h2>
+                        <p id="dialog-description">Mô tả trò chơi</p>
+                        <button class="close-button" id="dialog-close">&times;</button>
+                    </div>
+                    <div class="dialog-body" id="dialog-body">
+                        <!-- Nội dung trò chơi sẽ được thêm vào đây bằng JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas cho hiệu ứng confetti -->
+            <canvas id="confetti-canvas"></canvas>
+        </div>
+
+       <!-- Phần thông tin -->
+       <section class="info-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lợi ích của trò chơi giáo dục</h2>
+                <div class="underline"></div>
+                <p>Khám phá những lợi ích tuyệt vời mà trò chơi giáo dục về động vật hoang dã mang lại</p>
+            </div>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3>Học tập vui vẻ</h3>
+                    <p>Trò chơi giúp việc học trở nên thú vị và hấp dẫn hơn, đặc biệt là đối với trẻ em. Thông qua trò chơi, kiến thức về động vật hoang dã được truyền đạt một cách tự nhiên và dễ dàng.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                    </div>
+                    <h3>Phát triển kỹ năng</h3>
+                    <p>Trò chơi giúp phát triển nhiều kỹ năng quan trọng như tư duy logic, trí nhớ, khả năng giải quyết vấn đề và kỹ năng quan sát. Đây là những kỹ năng cần thiết trong cuộc sống.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Nâng cao nhận thức</h3>
+                    <p>Thông qua trò chơi, người chơi hiểu rõ hơn về các loài động vật hoang dã, môi trường sống của chúng và những thách thức mà chúng đang phải đối mặt, từ đó nâng cao ý thức bảo vệ thiên nhiên.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Về chúng tôi</h3>
+                    <p>
+                        Trang web cung cấp thông tin về các loài động vật hoang dã, môi trường sống và các nỗ lực bảo tồn, nhằm
+                        nâng cao nhận thức và thúc đẩy hành động bảo vệ thiên nhiên.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="animals.html">Các loài động vật</a></li>
+                        <li><a href="habitats.html">Môi trường sống</a></li>
+                        <li><a href="conservation.html">Bảo tồn</a></li>
+                        <li><a href="explore.html">Góc khám phá</a></li>
+                        <li><a href="news.html">Tin tức & Sự kiện</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Tài nguyên</h3>
+                    <ul>
+                        <li><a href="education.html">Tài liệu giáo dục</a></li>
+                        <li><a href="research.html">Nghiên cứu khoa học</a></li>
+                        <li><a href="organizations.html">Tổ chức bảo tồn</a></li>
+                        <li><a href="volunteer.html">Cơ hội tình nguyện</a></li>
+                        <li><a href="donate.html">Ủng hộ bảo tồn</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Tầng 4 Mường Thanh, Thị xã Hoàng Mai, Nghệ An</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(+84)0964509848</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>dhuyy007@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> Wildlife - Khám phá thế giới Động vật Hoang dã. Tất cả các quyền được bảo
+                    lưu.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+    <script src="games.js"></script>
+</body>
+</html>
